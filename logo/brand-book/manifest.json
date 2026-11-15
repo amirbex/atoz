@@ -1,0 +1,75 @@
+{
+  "version": "3.0.0",
+  "slide_count": 16,
+  "slides": [
+    {
+      "number": 1,
+      "path": "logo/brand-book/slides/slide-01.svg"
+    },
+    {
+      "number": 2,
+      "path": "logo/brand-book/slides/slide-02.svg"
+    },
+    {
+      "number": 3,
+      "path": "logo/brand-book/slides/slide-03.svg"
+    },
+    {
+      "number": 4,
+      "path": "logo/brand-book/slides/slide-04.svg"
+    },
+    {
+      "number": 5,
+      "path": "logo/brand-book/slides/slide-05.svg"
+    },
+    {
+      "number": 6,
+      "path": "logo/brand-book/slides/slide-06.svg"
+    },
+    {
+      "number": 7,
+      "path": "logo/brand-book/slides/slide-07.svg"
+    },
+    {
+      "number": 8,
+      "path": "logo/brand-book/slides/slide-08.svg"
+    },
+    {
+      "number": 9,
+      "path": "logo/brand-book/slides/slide-09.svg"
+    },
+    {
+      "number": 10,
+      "path": "logo/brand-book/slides/slide-10.svg"
+    },
+    {
+      "number": 11,
+      "path": "logo/brand-book/slides/slide-11.svg"
+    },
+    {
+      "number": 12,
+      "path": "logo/brand-book/slides/slide-12.svg"
+    },
+    {
+      "number": 13,
+      "path": "logo/brand-book/slides/slide-13.svg"
+    },
+    {
+      "number": 14,
+      "path": "logo/brand-book/slides/slide-14.svg"
+    },
+    {
+      "number": 15,
+      "path": "logo/brand-book/slides/slide-15.svg"
+    },
+    {
+      "number": 16,
+      "path": "logo/brand-book/slides/slide-16.svg"
+    }
+  ],
+  "formats": [
+    "SVG source and PNG preview per slide",
+    "responsive HTML",
+    "PDF"
+  ]
+}

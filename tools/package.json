@@ -3,10 +3,11 @@
   "private": true,
   "version": "2.0.0",
   "type": "module",
-  "description": "Reproducible build and preview tools for the AtoZ.FnB visual identity system",
+  "description": "Reproducible build and preview tools for the AtoZ master and sub-brand identity",
   "scripts": {
-    "render-png": "node render_png.mjs",
-    "render-identity": "node render_identity_assets.mjs ../brand/brand-book/slides ../brand/sheets ../content-templates",
+    "render-png": "node render_brand_assets.mjs",
+    "render-identity": "node render_brand_assets.mjs",
+    "render-brand": "node render_brand_assets.mjs && (if [ -x ../.venv/bin/python ]; then ../.venv/bin/python build_brand_book_pdf.py; else python3 build_brand_book_pdf.py; fi)",
     "audit": "npm audit --omit=dev"
   },
   "dependencies": {

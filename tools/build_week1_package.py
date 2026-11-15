@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the first AtoZ.FnB pre-publication content package from structured source data.
+"""Legacy pre-publication package builder; retained for compatibility, not used by the brand identity build.
 
 No publishing or website upload is performed. Social output is a manual handoff:
 copyable text, SVG/PNG artwork and silent-of-voice video with original synthesized SFX.
@@ -41,8 +41,8 @@ PILLARS = {
     6: {"id": "community-roadmaps", "name": "جامعه‌سازی و نقشهٔ راه", "color": "#0284C7", "dark": "#38BDF8", "hub": "آکادمی"},
 }
 DAY_NAMES = ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه"]
-BRAND_SITE = "https://atozfnb.info/"
-INSTAGRAM = "@atozfnb.info"
+BRAND_SITE = "[[APPROVED_URL]]"
+INSTAGRAM = "[[APPROVED_SOCIAL_HANDLE]]"
 
 # content_id, title, pillar, series, personas, thesis, source asset IDs, summary.
 IDEAS = [
@@ -55,7 +55,7 @@ IDEAS = [
  (7,"ماتریس رشد آنسوف و نفوذ در بازار",4,"استراتژی‌های رشد",["سینا","کیان"],"رشد را می‌توان با گزینه‌های محصول/بازار سنجید؛ تخفیف‌دادن به‌تنهایی استراتژی رشد نیست.",[13,14],"چهار مسیر ماتریس و یک تمرین برای ساعات خلوت."),
  (8,"تلهٔ اپراتور بودن به‌جای مالک کسب‌وکار بودن",2,"تغییر ذهنیت مالک به رهبر",["سینا"],"اگر کیفیت فقط با حضور مالک حفظ می‌شود، فرصت بازبینی سیستم‌ها و تفویض روشن وجود دارد.",[15],"میکرو‌ریلز B-roll و کپشن تأملی."),
  (9,"پیش‌نویس بوم کسب‌وکار با پرامپت AI",3,"ابزارهای AI برای مدیران F&B",["سینا","مریم"],["AI می‌تواند به ساخت پیش‌نویس و پرسیدن سؤال‌های بهتر کمک کند؛ خروجی آن باید با داده و تجربهٔ واقعی بررسی شود."][0],[16],"نمایش پرامپت و خروجی فرضی؛ نه وعدهٔ نتیجهٔ تضمینی."),
- (10,"بیانیهٔ آغاز مسیر AtoZ.FnB",2,"بیانیه‌های استراتژیک",["عمومی"],"کیفیت محصول نقطهٔ شروع است؛ سیستم و تجربهٔ پایدار نیز برای ادارهٔ کسب‌وکار اهمیت دارند.",[17],"کارت نقل‌قول برای معرفی لحن برند."),
+ (10,"بیانیهٔ آغاز مسیر AtoZ",2,"بیانیه‌های استراتژیک",["عمومی"],"کیفیت محصول نقطهٔ شروع است؛ سیستم و تجربهٔ پایدار نیز برای ادارهٔ کسب‌وکار اهمیت دارند.",[17],"کارت نقل‌قول برای معرفی لحن برند."),
  (11,"نمای کلی ۹ بلوک بوم کسب‌وکار",1,"مبانی کسب‌وکار و بوم",["مریم","سینا"],"بلوک‌های بوم به هم وابسته‌اند؛ تغییر در مشتری یا ارزش پیشنهادی بر فعالیت‌ها و هزینه‌ها هم اثر می‌گذارد.",[18],"نقشهٔ ۹ بلوک با برچسب‌های فارسی و انگلیسی."),
  (12,"باور غلط: ایده و دکور خاص برای موفقیت کافی است",1,"باورهای غلط مدیریتی",["مریم"],"ایده باید در کنار مدل درآمد، عملیات و تقاضای واقعی آزموده شود.",[19],"ریلز موشن‌گرافیک با صداهای افکت و بدون نریشن."),
  (13,"مقایسهٔ دو کافه با تعداد مشتری و اقتصاد متفاوت",5,"کیس‌استادی‌های واقعی",["سینا","کیان"],"تعداد مشتری به‌تنهایی سودآوری را توضیح نمی‌دهد؛ ارقام داستانی باید صریحاً نمونه فرضی نامیده شوند.",[20],"کیس فرضی برای آموزش محاسبه، نه ادعای دادهٔ واقعی."),
@@ -206,8 +206,8 @@ def make_card(title,subtitle,pillar,kind="feed",slide=1,total=1,style="editorial
         parts.append(f'<path d="M90 {H-210} Q300 {H-260} 510 {H-215} T980 {H-220}" fill="none" stroke="#FFB400" stroke-width="8" stroke-linecap="round"/>')
     # Logo and brand label; full domain/handle on normal-size creative.
     parts.append(mark_svg(W-160,72,0.055))
-    parts.append(shaped_text("AtoZ.FnB",W-190,112,30,fg,"Montserrat-SemiBold.ttf",max_width=240)[0])
-    parts.append(shaped_text("آ تو ز",W-190,165,25,accent,"Vazirmatn-Bold.ttf",max_width=220)[0])
+    parts.append(shaped_text("AtoZ",W-190,112,30,fg,"Montserrat-SemiBold.ttf",max_width=240)[0])
+    parts.append(shaped_text("AtoZ",W-190,165,25,accent,"Montserrat-ExtraBold.ttf",max_width=220)[0])
     parts.append(shaped_text(f"ستون {pillar}  ·  {PILLARS[pillar]['name']}",W-70,245,28,accent,"Vazirmatn-Bold.ttf",max_width=W-150)[0])
     title_size=64 if kind in {"feed","story","reel"} else 54
     title_svg,title_h=shaped_text(title,W-82,330,title_size,fg,"Vazirmatn-ExtraBold.ttf",max_width=W-170,align="right")
@@ -223,7 +223,7 @@ def make_card(title,subtitle,pillar,kind="feed",slide=1,total=1,style="editorial
     # Footer signature and site/handle, readable at the intended social size.
     footer_y=H-95
     parts.append(f'<line x1="70" y1="{footer_y-48}" x2="{W-70}" y2="{footer_y-48}" stroke="{accent}" stroke-opacity=".35" stroke-width="2"/>')
-    footer="atozfnb.info  ·  @atozfnb.info"
+    footer="[[APPROVED_URL]]  ·  [[APPROVED_SOCIAL_HANDLE]]"
     parts.append(shaped_text(footer,W-78,footer_y,24,fg,"Montserrat-SemiBold.ttf",max_width=W-240)[0])
     if num: parts.append(shaped_text(num,90,footer_y,22,accent,"Montserrat-Bold.ttf",max_width=140,align="right")[0])
     # Keep the CTA concise and editable in the companion text file.
@@ -233,7 +233,7 @@ def make_card(title,subtitle,pillar,kind="feed",slide=1,total=1,style="editorial
 def make_document_html(title, body, caption, hashtags, extra=""):
     return f'''<!doctype html><html lang="fa" dir="rtl"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{html.escape(title)}</title>
 <style>@font-face{{font-family:Vazirmatn;src:url('../../../../tools/fonts/Vazirmatn-Regular.ttf')}}@font-face{{font-family:Vazirmatn;src:url('../../../../tools/fonts/Vazirmatn-Bold.ttf');font-weight:700}}body{{margin:0;background:#f1f5f9;color:#0A1931;font:16px/1.9 Vazirmatn,Tahoma,sans-serif}}main{{max-width:860px;margin:30px auto;padding:28px;background:#fff;border-radius:18px}}h1,h2{{line-height:1.5}}.copy{{white-space:pre-wrap;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:16px}}button{{background:#0A1931;color:#fff;border:0;border-radius:8px;padding:10px 16px;cursor:pointer;margin:8px 0}}small{{color:#64748b}}a{{color:#3B5998}}</style><main>
-<p><b>AtoZ.FnB</b> · atozfnb.info · {INSTAGRAM}</p><h1>{html.escape(title)}</h1><p>{html.escape(body)}</p>{extra}
+<p><b>AtoZ</b> · {BRAND_SITE} · {INSTAGRAM}</p><h1>{html.escape(title)}</h1><p>{html.escape(body)}</p>{extra}
 <h2>کپشن — قابل کپی</h2><div class="copy" id="caption">{html.escape(caption)}</div><button onclick="navigator.clipboard.writeText(document.getElementById('caption').innerText)">کپی کپشن</button>
 <h2>هشتگ‌ها — قابل کپی</h2><div class="copy" id="tags">{html.escape(hashtags)}</div><button onclick="navigator.clipboard.writeText(document.getElementById('tags').innerText)">کپی هشتگ‌ها</button>
 <p><small>پیش‌نویس برای بازبینی و انتشار دستی. لینک‌های خروجی را در صورت نیاز ویرایش کنید.</small></p></main></html>'''
@@ -278,7 +278,7 @@ def make_delivery(dno, day, channel, content_no, fmt, time, hook, *, story_text=
     if channel in {"website","telegram"}: kind="feed"
     style=style_for(content_no)
     visual=make_card(hook or title,summary,pillar,kind=kind,slide=1,total=1,style=style)
-    caption=(f"{hook or title}\n\n{summary}\n\nمحتوای مرتبط و منابع بیشتر: atozfnb.info\nپیوندهای برند: {INSTAGRAM}\n\n{thesis}")
+    caption=(f"{hook or title}\n\n{summary}\n\nمحتوای مرتبط و منابع بیشتر: {BRAND_SITE}\nپیوندهای برند: {INSTAGRAM}\n\n{thesis}")
     tags="#AtoZFnB #مدیریت_FnB #کافه_رستوران"
     row={"delivery_id":did(dno),"content_id":cid(content_no),"schedule_key":schedule,"channel_id":channel,"format_id":fmt,"planned_day_index":day,"day_name_fa":DAY_NAMES[day-1],"planned_time_local":time,"language":"fa-IR","hook":hook or title,"caption":caption,"hashtags":[tags],"primary_kpi_id":primary,"secondary_kpi_ids":["profile_visits","resource_clicks"],"creative_spec":{"template_id":f"{fmt}-{PILLARS[pillar]['id']}-{style}","template_version":"0.1.0","aspect_ratio":"9:16" if kind=="story" or kind=="reel" else "4:5","width_px":1080,"height_px":1920 if kind in {"story","reel"} else 1350,"duration_seconds":({"micro_reel":8,"mini_reel":24,"main_reel":55,"animated_reel":28}.get(fmt) if fmt in {"micro_reel","mini_reel","main_reel","animated_reel"} else None),"slides":8 if fmt=="carousel" else None,"language":"fa-IR","pillar_token":PILLARS[pillar]["id"],"background_token":"brand-navy" if pillar==2 else "neutral-surface","font_ids":["vazirmatn-extrabold","vazirmatn-regular","montserrat-semibold","lato-regular"],"style_id":style,"brand_signature":True,"website_url_visible":True,"instagram_handle_visible":True},"asset_ids":asset_ids_list,"platform_post_id":None,"status":"produced","_visual_svg":visual,"_kind":kind,"_style":style,"_idea_summary":summary,"_idea_title":title,"_pillar_num":pillar,"_story_text":story_text}
     if channel in {"website","telegram"}:
@@ -333,7 +333,7 @@ def generate_plan():
             mime="image/svg+xml"
         relative=f"{DAY_NAMES[selected['planned_day_index']-1]}/{selected['content_id']}/{selected['delivery_id']}/{subpath}"
         asset_records.append({"asset_id":aid(aid_num),"content_id":cid(content_no),"delivery_id":selected["delivery_id"],"asset_type":typ,"path":relative,"mime_type":mime,"source_or_generated":"generated","license_status":"owned","template_id":None,"template_version":"0.1.0","status":"rendered","title":name})
-    plan={"schema_version":"2.0.0-relational-telemetry","plan_id":"ATZ-M01-W01","brand_id":"atoz-fnb","period":{"month_index":1,"week_index":1},"timezone":"Asia/Tehran","locale":"fa-IR","weekly_theme":"فونداسیون کسب‌وکار F&B، معماری بوم و آغاز اکوسیستم محتوایی متصل","goals":["پوشش ۶ ستون محتوا در یک روایت متصل","تولید محتوای مادر و بازبسته‌بندی دستی برای وب، تلگرام و اینستاگرام","ساخت مرجع‌های قابل‌استفاده برای هفته‌های بعد"],"active_channels":["website","instagram","telegram"],"upcoming_channels":["youtube"],"content_items":contents,"deliveries":[],"relationships":[{"from_id":d["delivery_id"],"to_id":d["content_id"],"relationship_type":"repurposes"} for d in deliveries],"assets":asset_records,"notes":["این برنامه برای تولید و انتشار دستی است؛ هیچ بارگذاری یا زمان‌بندی خودکاری اجرا نمی‌شود.","URL پیش‌فرض محتوا: https://atozfnb.info/ و شناسهٔ اینستاگرام: @atozfnb.info؛ URLهای صفحه را مالک می‌تواند پیش از انتشار ویرایش کند.","مقادیر KPI نمونه و داده‌های عملکرد بعد از انتشار ثبت می‌شوند؛ هیچ آماری در این نسخه جعل نشده است.","تعداد تجمیعی 84 در خلاصهٔ ورودی با جمع delivery_count_w1 ردیف‌ها (64) اختلاف دارد؛ برنامهٔ تولیدی 84 شناسهٔ تحویلی را بر مبنای جمع کانال‌های ادعاشده نگه می‌دارد و 20 مورد باید با ردیف‌های منبع تطبیق داده شود."]}
+    plan={"schema_version":"2.0.0-relational-telemetry","plan_id":"ATZ-M01-W01","brand_id":"atoz-fnb","period":{"month_index":1,"week_index":1},"timezone":"Asia/Tehran","locale":"fa-IR","weekly_theme":"فونداسیون کسب‌وکار F&B، معماری بوم و آغاز اکوسیستم محتوایی متصل","goals":["پوشش ۶ ستون محتوا در یک روایت متصل","تولید محتوای مادر و بازبسته‌بندی دستی برای وب، تلگرام و اینستاگرام","ساخت مرجع‌های قابل‌استفاده برای هفته‌های بعد"],"active_channels":["website","instagram","telegram"],"upcoming_channels":["youtube"],"content_items":contents,"deliveries":[],"relationships":[{"from_id":d["delivery_id"],"to_id":d["content_id"],"relationship_type":"repurposes"} for d in deliveries],"assets":asset_records,"notes":["این برنامه برای تولید و انتشار دستی است؛ هیچ بارگذاری یا زمان‌بندی خودکاری اجرا نمی‌شود.","URL و شناسهٔ شبکهٔ اجتماعی تا تأیید مالک به‌صورت placeholder باقی می‌مانند.","مقادیر KPI نمونه و داده‌های عملکرد بعد از انتشار ثبت می‌شوند؛ هیچ آماری در این نسخه جعل نشده است.","تعداد تجمیعی 84 در خلاصهٔ ورودی با جمع delivery_count_w1 ردیف‌ها (64) اختلاف دارد؛ برنامهٔ تولیدی 84 شناسهٔ تحویلی را بر مبنای جمع کانال‌های ادعاشده نگه می‌دارد و 20 مورد باید با ردیف‌های منبع تطبیق داده شود."]}
     for d in deliveries:
         clean={k:v for k,v in d.items() if not k.startswith("_")}
         plan["deliveries"].append(clean)
@@ -356,7 +356,7 @@ def write_plan(plan, deliveries):
         folder=idea_root/cid(n); folder.mkdir(exist_ok=True)
         meta={"content_id":cid(n),"title":title,"pillar":PILLARS[pillar],"series":series,"target_personas":personas,"core_thesis":thesis,"production_summary":summary,"asset_ids":[aid(a) for a in asset_ids],"linked_deliveries":[d["delivery_id"] for d in deliveries if d["content_id"]==cid(n)],"status":"draft_for_review"}
         (folder/"content-item.json").write_text(json.dumps(meta,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-        (folder/"brief.fa.md").write_text(f"# {title}\n\n**شناسه:** `{cid(n)}`  \n**ستون:** {PILLARS[pillar]['name']}  \n**سری:** {series}  \n**مخاطبان اولیه:** {'، '.join(personas)}\n\n## پیام محوری\n{thesis}\n\n## هدف تولید\n{summary}\n\n## CTA پیش‌فرض\nمنابع و محتوای مرتبط در [AtoZfnb.info]({BRAND_SITE}) · اینستاگرام {INSTAGRAM}\n\n> پیش‌نویس برای بازبینی مالک؛ آمار/درصدهای نیازمند منبع در قالب ادعای قطعی منتشر نشوند.\n",encoding="utf-8")
+        (folder/"brief.fa.md").write_text(f"# {title}\n\n**شناسه:** `{cid(n)}`  \n**ستون:** {PILLARS[pillar]['name']}  \n**سری:** {series}  \n**مخاطبان اولیه:** {'، '.join(personas)}\n\n## پیام محوری\n{thesis}\n\n## هدف تولید\n{summary}\n\n## CTA پیش‌فرض\nمنابع و محتوای مرتبط در [{BRAND_SITE}]({BRAND_SITE}) · اینستاگرام {INSTAGRAM}\n\n> پیش‌نویس برای بازبینی مالک؛ آمار/درصدهای نیازمند منبع در قالب ادعای قطعی منتشر نشوند.\n",encoding="utf-8")
 
 
 def write_delivery_files(plan, deliveries):
@@ -458,7 +458,7 @@ def write_package_guide(plan):
 
 ## ویرایش و انتشار
 
-`AtoZfnb.info` و `@atozfnb.info` امضای پایه‌اند. لینک مقصدها در metadata قابل‌ویرایش است؛ CTA نهایی، URL صفحه و زمان انتشار را مالک انتخاب می‌کند. هیچ سایت، API شبکهٔ اجتماعی، صف زمان‌بندی یا آمار ساختگی در این بسته فعال نیست.
+`AtoZ` نام برند مادر است. URL و شناسهٔ شبکهٔ اجتماعی باید با مقادیر تأییدشده جایگزین شوند؛ هیچ سایت، API شبکهٔ اجتماعی، صف زمان‌بندی یا آمار ساختگی در این بسته فعال نیست.
 
 ## بازبینی ادعاها
 
