@@ -1,0 +1,15 @@
+# Resolved Python dependency lock for the tested Linux x86_64 / Python 3.11.2 asset runtime.
+# Regenerate only after rebuilding and re-validating the full brand asset pipeline.
+attrs==26.1.0
+brotli==1.2.1
+charset-normalizer==3.5.2
+fonttools==4.68.0
+imageio-ffmpeg==0.8.1
+jsonschema==4.26.0
+jsonschema-specifications==2025.9.1
+pillow==13.0.0
+referencing==0.37.0
+reportlab==5.1.0
+rpds-py==2026.9.1
+typing_extensions==4.16.0
+uharfbuzz==0.57.0
