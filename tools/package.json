@@ -1,13 +1,15 @@
 {
   "name": "atoz-brand-tools",
   "private": true,
-  "version": "1.0.0",
+  "version": "2.0.0",
   "type": "module",
-  "description": "Build tools for AtoZfnb.info visual identity (Phase 1: logo)",
+  "description": "Reproducible build and preview tools for the AtoZ.FnB visual identity system",
   "scripts": {
-    "render-png": "node render_png.mjs"
+    "render-png": "node render_png.mjs",
+    "render-identity": "node render_identity_assets.mjs ../brand/brand-book/slides ../brand/sheets ../content-templates",
+    "audit": "npm audit --omit=dev"
   },
   "dependencies": {
-    "sharp": "^0.34.0"
+    "sharp": "0.35.5"
   }
 }

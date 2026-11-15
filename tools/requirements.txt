@@ -1,6 +1,9 @@
-fonttools>=4.50
-brotli>=1.1
-uharfbuzz>=0.40
-jsonschema>=4.21
-Pillow>=10.0
-imageio-ffmpeg>=0.5
+# Tested asset-build and validation runtime (Python 3.11.2, Linux x86_64).
+# Direct dependencies only; exact versions are also captured in requirements.lock.
+fonttools==4.68.0
+brotli==1.2.1
+uharfbuzz==0.57.0
+jsonschema==4.26.0
+Pillow==13.0.0
+imageio-ffmpeg==0.8.1
+reportlab==5.1.0

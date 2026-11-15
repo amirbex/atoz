@@ -1,0 +1,42 @@
+{
+  "presentation": {
+    "width": 1920,
+    "height": 1080,
+    "safe_margin_pct": 6,
+    "grid_columns": 12,
+    "gutter_pct": 1.25
+  },
+  "feed_portrait": {
+    "width": 1080,
+    "height": 1350,
+    "safe_margin_pct": 7,
+    "grid_columns": 6,
+    "gutter_px": 24
+  },
+  "feed_square": {
+    "width": 1080,
+    "height": 1080,
+    "safe_margin_pct": 7,
+    "grid_columns": 6,
+    "gutter_px": 24
+  },
+  "story_reel": {
+    "width": 1080,
+    "height": 1920,
+    "safe_margin_pct": 8,
+    "top_ui_safe_pct": 12,
+    "bottom_ui_safe_pct": 16,
+    "grid_columns": 4,
+    "gutter_px": 24
+  },
+  "logo_motion_horizontal": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30
+  },
+  "logo_motion_vertical": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  }
+}

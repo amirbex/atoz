@@ -1,0 +1,292 @@
+{
+  "version": "1.0.0-draft",
+  "description": "Blank brand templates only; no week-one editorial text.",
+  "templates": [
+    {
+      "template_id": "social-post-editorial",
+      "label": "Single editorial post",
+      "format": "single_post",
+      "source_svg": "content-templates/social/post-editorial.svg",
+      "width": 1080,
+      "height": 1350,
+      "aspect_ratio": "1080:1350",
+      "status": "template_for_owner_review",
+      "slots": [
+        "headline",
+        "body_or_visual",
+        "section",
+        "source_if_claim",
+        "editable_cta",
+        "brand_signature"
+      ],
+      "fonts": {
+        "fa": "Vazirmatn",
+        "latin": "Montserrat + Lato"
+      }
+    },
+    {
+      "template_id": "social-post-data",
+      "label": "Evidence / data post",
+      "format": "single_post",
+      "source_svg": "content-templates/social/post-data.svg",
+      "width": 1080,
+      "height": 1350,
+      "aspect_ratio": "1080:1350",
+      "status": "template_for_owner_review",
+      "slots": [
+        "headline",
+        "body_or_visual",
+        "section",
+        "source_if_claim",
+        "editable_cta",
+        "brand_signature"
+      ],
+      "fonts": {
+        "fa": "Vazirmatn",
+        "latin": "Montserrat + Lato"
+      }
+    },
+    {
+      "template_id": "social-post-case-study",
+      "label": "Case study / comparison post",
+      "format": "single_post",
+      "source_svg": "content-templates/social/post-case-study.svg",
+      "width": 1080,
+      "height": 1350,
+      "aspect_ratio": "1080:1350",
+      "status": "template_for_owner_review",
+      "slots": [
+        "headline",
+        "body_or_visual",
+        "section",
+        "source_if_claim",
+        "editable_cta",
+        "brand_signature"
+      ],
+      "fonts": {
+        "fa": "Vazirmatn",
+        "latin": "Montserrat + Lato"
+      }
+    },
+    {
+      "template_id": "social-post-quote",
+      "label": "Quote / field note post",
+      "format": "single_post",
+      "source_svg": "content-templates/social/post-quote.svg",
+      "width": 1080,
+      "height": 1350,
+      "aspect_ratio": "1080:1350",
+      "status": "template_for_owner_review",
+      "slots": [
+        "headline",
+        "body_or_visual",
+        "section",
+        "source_if_claim",
+        "editable_cta",
+        "brand_signature"
+      ],
+      "fonts": {
+        "fa": "Vazirmatn",
+        "latin": "Montserrat + Lato"
+      }
+    },
+    {
+      "template_id": "carousels-slide-01-cover",
+      "label": "Carousel cover",
+      "format": "carousel_cover",
+      "source_svg": "content-templates/carousels/slide-01-cover.svg",
+      "width": 1080,
+      "height": 1350,
+      "aspect_ratio": "1080:1350",
+      "status": "template_for_owner_review",
+      "slots": [
+        "headline",
+        "body_or_visual",
+        "section",
+        "source_if_claim",
+        "editable_cta",
+        "brand_signature"
+      ],
+      "fonts": {
+        "fa": "Vazirmatn",
+        "latin": "Montserrat + Lato"
+      }
+    },
+    {
+      "template_id": "carousels-slide-02-body",
+      "label": "Carousel body / one key idea",
+      "format": "carousel_body",
+      "source_svg": "content-templates/carousels/slide-02-body.svg",
+      "width": 1080,
+      "height": 1350,
+      "aspect_ratio": "1080:1350",
+      "status": "template_for_owner_review",
+      "slots": [
+        "headline",
+        "body_or_visual",
+        "section",
+        "source_if_claim",
+        "editable_cta",
+        "brand_signature"
+      ],
+      "fonts": {
+        "fa": "Vazirmatn",
+        "latin": "Montserrat + Lato"
+      }
+    },
+    {
+      "template_id": "carousels-slide-03-comparison",
+      "label": "Carousel comparison",
+      "format": "carousel_comparison",
+      "source_svg": "content-templates/carousels/slide-03-comparison.svg",
+      "width": 1080,
+      "height": 1350,
+      "aspect_ratio": "1080:1350",
+      "status": "template_for_owner_review",
+      "slots": [
+        "headline",
+        "body_or_visual",
+        "section",
+        "source_if_claim",
+        "editable_cta",
+        "brand_signature"
+      ],
+      "fonts": {
+        "fa": "Vazirmatn",
+        "latin": "Montserrat + Lato"
+      }
+    },
+    {
+      "template_id": "carousels-slide-04-evidence",
+      "label": "Carousel evidence / source",
+      "format": "carousel_evidence",
+      "source_svg": "content-templates/carousels/slide-04-evidence.svg",
+      "width": 1080,
+      "height": 1350,
+      "aspect_ratio": "1080:1350",
+      "status": "template_for_owner_review",
+      "slots": [
+        "headline",
+        "body_or_visual",
+        "section",
+        "source_if_claim",
+        "editable_cta",
+        "brand_signature"
+      ],
+      "fonts": {
+        "fa": "Vazirmatn",
+        "latin": "Montserrat + Lato"
+      }
+    },
+    {
+      "template_id": "carousels-slide-05-checklist",
+      "label": "Carousel checklist",
+      "format": "carousel_checklist",
+      "source_svg": "content-templates/carousels/slide-05-checklist.svg",
+      "width": 1080,
+      "height": 1350,
+      "aspect_ratio": "1080:1350",
+      "status": "template_for_owner_review",
+      "slots": [
+        "headline",
+        "body_or_visual",
+        "section",
+        "source_if_claim",
+        "editable_cta",
+        "brand_signature"
+      ],
+      "fonts": {
+        "fa": "Vazirmatn",
+        "latin": "Montserrat + Lato"
+      }
+    },
+    {
+      "template_id": "carousels-slide-06-outro",
+      "label": "Carousel closing / CTA",
+      "format": "carousel_outro",
+      "source_svg": "content-templates/carousels/slide-06-outro.svg",
+      "width": 1080,
+      "height": 1350,
+      "aspect_ratio": "1080:1350",
+      "status": "template_for_owner_review",
+      "slots": [
+        "headline",
+        "body_or_visual",
+        "section",
+        "source_if_claim",
+        "editable_cta",
+        "brand_signature"
+      ],
+      "fonts": {
+        "fa": "Vazirmatn",
+        "latin": "Montserrat + Lato"
+      }
+    },
+    {
+      "template_id": "video-covers-reel-cover",
+      "label": "Reel cover / safe zones",
+      "format": "reel_cover",
+      "source_svg": "content-templates/video-covers/reel-cover.svg",
+      "width": 1080,
+      "height": 1920,
+      "aspect_ratio": "1080:1920",
+      "status": "template_for_owner_review",
+      "slots": [
+        "headline",
+        "body_or_visual",
+        "section",
+        "source_if_claim",
+        "editable_cta",
+        "brand_signature"
+      ],
+      "fonts": {
+        "fa": "Vazirmatn",
+        "latin": "Montserrat + Lato"
+      }
+    },
+    {
+      "template_id": "video-covers-reel-lower-third",
+      "label": "Reel lower-third overlay",
+      "format": "reel_overlay",
+      "source_svg": "content-templates/video-covers/reel-lower-third.svg",
+      "width": 1080,
+      "height": 1920,
+      "aspect_ratio": "1080:1920",
+      "status": "template_for_owner_review",
+      "slots": [
+        "headline",
+        "body_or_visual",
+        "section",
+        "source_if_claim",
+        "editable_cta",
+        "brand_signature"
+      ],
+      "fonts": {
+        "fa": "Vazirmatn",
+        "latin": "Montserrat + Lato"
+      }
+    },
+    {
+      "template_id": "video-covers-reel-end-card",
+      "label": "Reel end card",
+      "format": "reel_outro",
+      "source_svg": "content-templates/video-covers/reel-end-card.svg",
+      "width": 1080,
+      "height": 1920,
+      "aspect_ratio": "1080:1920",
+      "status": "template_for_owner_review",
+      "slots": [
+        "headline",
+        "body_or_visual",
+        "section",
+        "source_if_claim",
+        "editable_cta",
+        "brand_signature"
+      ],
+      "fonts": {
+        "fa": "Vazirmatn",
+        "latin": "Montserrat + Lato"
+      }
+    }
+  ]
+}
