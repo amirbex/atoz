@@ -1,0 +1,68 @@
+{
+  "delivery_id": "ATZ-D-000071",
+  "content_id": "ATZ-C-000026",
+  "schedule_key": "M01-W01-D07-WEB-MAG-71",
+  "channel_id": "website",
+  "format_id": "case_article",
+  "planned_day_index": 7,
+  "day_name_fa": "جمعه",
+  "planned_time_local": null,
+  "language": "fa-IR",
+  "hook": "سه مدل کسب‌وکار نوآورانه در F&B",
+  "caption": "سه مدل کسب‌وکار نوآورانه در F&B\n\nمقالهٔ تحلیلی و کاروسل؛ فقط با منابع قابل‌ارجاع.\n\nمحتوای مرتبط و منابع بیشتر: atozfnb.info\nپیوندهای برند: @atozfnb.info\n\nمیکروکافه، آشپزخانهٔ ابری و اشتراک، الگوهایی برای مقایسه‌اند؛ نتیجهٔ مالی به بازار و اجرا وابسته است.",
+  "hashtags": [
+    "#AtoZFnB #مدیریت_FnB #کافه_رستوران"
+  ],
+  "primary_kpi_id": "resource_clicks",
+  "secondary_kpi_ids": [
+    "profile_visits",
+    "resource_clicks"
+  ],
+  "creative_spec": {
+    "template_id": "case_article-case-studies-minimal",
+    "template_version": "0.1.0",
+    "aspect_ratio": "4:5",
+    "width_px": 1080,
+    "height_px": 1350,
+    "duration_seconds": null,
+    "slides": null,
+    "language": "fa-IR",
+    "pillar_token": "case-studies",
+    "background_token": "neutral-surface",
+    "font_ids": [
+      "vazirmatn-extrabold",
+      "vazirmatn-regular",
+      "montserrat-semibold",
+      "lato-regular"
+    ],
+    "style_id": "minimal",
+    "brand_signature": true,
+    "website_url_visible": true,
+    "instagram_handle_visible": true
+  },
+  "asset_ids": [
+    "ATZ-A-000034",
+    "ATZ-A-000035"
+  ],
+  "platform_post_id": null,
+  "status": "produced",
+  "cta": {
+    "label": "مشاهدهٔ منابع و فایل‌های مرتبط",
+    "target_id": "case-studies",
+    "target_url": "https://atozfnb.info/",
+    "link_status": "ready_owner_confirmed",
+    "utm_campaign": "M01-W01",
+    "utm_source": "website",
+    "utm_medium": "owned"
+  },
+  "content_title": "سه مدل کسب‌وکار نوآورانه در F&B",
+  "content_summary": "مقالهٔ تحلیلی و کاروسل؛ فقط با منابع قابل‌ارجاع.",
+  "content_pillar": {
+    "id": "case-studies",
+    "name": "مطالعات موردی و کالبدشکافی",
+    "color": "#C05746",
+    "dark": "#E06D5B",
+    "hub": "مجله تخصصی"
+  },
+  "platform_manual_action": "تولید فایل انجام شده؛ زمان‌بندی/آپلود دستی است."
+}

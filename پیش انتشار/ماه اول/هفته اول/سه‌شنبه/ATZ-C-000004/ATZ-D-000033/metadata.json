@@ -1,0 +1,68 @@
+{
+  "delivery_id": "ATZ-D-000033",
+  "content_id": "ATZ-C-000004",
+  "schedule_key": "M01-W01-D04-TG-GUIDE-33",
+  "channel_id": "telegram",
+  "format_id": "telegram_guide",
+  "planned_day_index": 4,
+  "day_name_fa": "سه‌شنبه",
+  "planned_time_local": null,
+  "language": "fa-IR",
+  "hook": "اقتصاد کافه و نقطهٔ سربه‌سر",
+  "caption": "اقتصاد کافه و نقطهٔ سربه‌سر\n\nتفکیک هزینه‌ها و معرفی ابزار محاسبه؛ نسبت‌های نمونه باید با دادهٔ واقعی کسب‌وکار تنظیم شوند.\n\nمحتوای مرتبط و منابع بیشتر: atozfnb.info\nپیوندهای برند: @atozfnb.info\n\nفروش و حاشیهٔ سود ناخالص به‌تنهایی سود خالص یا نقطهٔ سربه‌سر را نشان نمی‌دهند.",
+  "hashtags": [
+    "#AtoZFnB #مدیریت_FnB #کافه_رستوران"
+  ],
+  "primary_kpi_id": "resource_clicks",
+  "secondary_kpi_ids": [
+    "profile_visits",
+    "resource_clicks"
+  ],
+  "creative_spec": {
+    "template_id": "telegram_guide-finance-market-retro",
+    "template_version": "0.1.0",
+    "aspect_ratio": "4:5",
+    "width_px": 1080,
+    "height_px": 1350,
+    "duration_seconds": null,
+    "slides": null,
+    "language": "fa-IR",
+    "pillar_token": "finance-market",
+    "background_token": "neutral-surface",
+    "font_ids": [
+      "vazirmatn-extrabold",
+      "vazirmatn-regular",
+      "montserrat-semibold",
+      "lato-regular"
+    ],
+    "style_id": "retro",
+    "brand_signature": true,
+    "website_url_visible": true,
+    "instagram_handle_visible": true
+  },
+  "asset_ids": [
+    "ATZ-A-000007",
+    "ATZ-A-000008"
+  ],
+  "platform_post_id": null,
+  "status": "produced",
+  "cta": {
+    "label": "مشاهدهٔ منابع و فایل‌های مرتبط",
+    "target_id": "finance-market",
+    "target_url": "https://atozfnb.info/",
+    "link_status": "ready_owner_confirmed",
+    "utm_campaign": "M01-W01",
+    "utm_source": "telegram",
+    "utm_medium": "owned"
+  },
+  "content_title": "اقتصاد کافه و نقطهٔ سربه‌سر",
+  "content_summary": "تفکیک هزینه‌ها و معرفی ابزار محاسبه؛ نسبت‌های نمونه باید با دادهٔ واقعی کسب‌وکار تنظیم شوند.",
+  "content_pillar": {
+    "id": "finance-market",
+    "name": "اقتصاد F&B و تحلیل بازار",
+    "color": "#0F766E",
+    "dark": "#2DD4BF",
+    "hub": "آزمایشگاه ابزارها"
+  },
+  "platform_manual_action": "تولید فایل انجام شده؛ زمان‌بندی/آپلود دستی است."
+}

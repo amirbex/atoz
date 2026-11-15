@@ -1,0 +1,67 @@
+{
+  "delivery_id": "ATZ-D-000036",
+  "content_id": "ATZ-C-000017",
+  "schedule_key": "M01-W01-D04-IG-ANM-36",
+  "channel_id": "instagram",
+  "format_id": "animated_reel",
+  "planned_day_index": 4,
+  "day_name_fa": "سه‌شنبه",
+  "planned_time_local": null,
+  "language": "fa-IR",
+  "hook": "منوی بلند چه هزینه‌هایی را به عملیات اضافه می‌کند؟",
+  "caption": "منوی بلند چه هزینه‌هایی را به عملیات اضافه می‌کند؟\n\nموشن‌گرافیک با افکت صوتی؛ پرهیز از حد قطعی بدون داده.\n\nمحتوای مرتبط و منابع بیشتر: atozfnb.info\nپیوندهای برند: @atozfnb.info\n\nپیچیدگی منو می‌تواند بر موجودی، آموزش و سرعت اثر بگذارد؛ تعداد بهینه به مدل و ظرفیت هر مجموعه بستگی دارد.",
+  "hashtags": [
+    "#AtoZFnB #مدیریت_FnB #کافه_رستوران"
+  ],
+  "primary_kpi_id": "shares_and_watch_time",
+  "secondary_kpi_ids": [
+    "profile_visits",
+    "resource_clicks"
+  ],
+  "creative_spec": {
+    "template_id": "animated_reel-case-studies-handwritten-accent",
+    "template_version": "0.1.0",
+    "aspect_ratio": "9:16",
+    "width_px": 1080,
+    "height_px": 1920,
+    "duration_seconds": 28,
+    "slides": null,
+    "language": "fa-IR",
+    "pillar_token": "case-studies",
+    "background_token": "neutral-surface",
+    "font_ids": [
+      "vazirmatn-extrabold",
+      "vazirmatn-regular",
+      "montserrat-semibold",
+      "lato-regular"
+    ],
+    "style_id": "handwritten-accent",
+    "brand_signature": true,
+    "website_url_visible": true,
+    "instagram_handle_visible": true
+  },
+  "asset_ids": [
+    "ATZ-A-000024"
+  ],
+  "platform_post_id": null,
+  "status": "produced",
+  "cta": {
+    "label": "منابع و ابزارهای مرتبط",
+    "target_id": "case-studies",
+    "target_url": "https://atozfnb.info/",
+    "link_status": "ready_owner_confirmed",
+    "utm_campaign": "M01-W01",
+    "utm_source": "instagram",
+    "utm_medium": "social"
+  },
+  "content_title": "کالبدشکافی منوی شلوغ و پیچیدگی عملیات",
+  "content_summary": "موشن‌گرافیک با افکت صوتی؛ پرهیز از حد قطعی بدون داده.",
+  "content_pillar": {
+    "id": "case-studies",
+    "name": "مطالعات موردی و کالبدشکافی",
+    "color": "#C05746",
+    "dark": "#E06D5B",
+    "hub": "مجله تخصصی"
+  },
+  "platform_manual_action": "تولید فایل انجام شده؛ زمان‌بندی/آپلود دستی است."
+}

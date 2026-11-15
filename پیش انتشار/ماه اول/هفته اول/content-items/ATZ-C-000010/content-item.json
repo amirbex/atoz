@@ -1,0 +1,24 @@
+{
+  "content_id": "ATZ-C-000010",
+  "title": "بیانیهٔ آغاز مسیر AtoZ.FnB",
+  "pillar": {
+    "id": "leadership",
+    "name": "الهام‌بخشی، رهبری و ذهنیت",
+    "color": "#0A1931",
+    "dark": "#FFB400",
+    "hub": "Solutions"
+  },
+  "series": "بیانیه‌های استراتژیک",
+  "target_personas": [
+    "عمومی"
+  ],
+  "core_thesis": "کیفیت محصول نقطهٔ شروع است؛ سیستم و تجربهٔ پایدار نیز برای ادارهٔ کسب‌وکار اهمیت دارند.",
+  "production_summary": "کارت نقل‌قول برای معرفی لحن برند.",
+  "asset_ids": [
+    "ATZ-A-000017"
+  ],
+  "linked_deliveries": [
+    "ATZ-D-000017"
+  ],
+  "status": "draft_for_review"
+}

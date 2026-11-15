@@ -1,0 +1,25 @@
+{
+  "content_id": "ATZ-C-000023",
+  "title": "نشتی مالی در دریافت کالا و انبار",
+  "pillar": {
+    "id": "education-sops",
+    "name": "آموزش و استانداردسازی عملیاتی",
+    "color": "#3B5998",
+    "dark": "#6085D6",
+    "hub": "کتابخانه و SOPها"
+  },
+  "series": "SOP دریافت کالا",
+  "target_personas": [
+    "سینا"
+  ],
+  "core_thesis": "وزن‌کشی، تاریخ مصرف و روش FIFO از کنترل‌های قابل‌تعریف برای دریافت کالا هستند.",
+  "production_summary": "ریلز میدانی و فرم نمونهٔ دریافت.",
+  "asset_ids": [
+    "ATZ-A-000030"
+  ],
+  "linked_deliveries": [
+    "ATZ-D-000062",
+    "ATZ-D-000068"
+  ],
+  "status": "draft_for_review"
+}

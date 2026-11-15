@@ -1,0 +1,136 @@
+{
+  "schema_version": "2.0.0-relational-telemetry",
+  "plan_id": "ATZ-M01-W01",
+  "brand_id": "atoz-fnb",
+  "period": {
+    "month_index": 1,
+    "week_index": 1
+  },
+  "timezone": "Asia/Tehran",
+  "locale": "fa-IR",
+  "weekly_theme": "فونداسیون کسب‌وکار F&B و معرفی بوم مدل کسب‌وکار",
+  "goals": [
+    "ساخت مرجع آموزشی قابل ارجاع",
+    "هدایت مخاطب از محتوای اجتماعی به منابع سایت"
+  ],
+  "active_channels": [
+    "website",
+    "instagram",
+    "telegram"
+  ],
+  "upcoming_channels": [
+    "youtube"
+  ],
+  "content_items": [
+    {
+      "content_id": "ATZ-C-000123",
+      "pillar_id": "education-sops",
+      "series_id": "business-model-canvas",
+      "primary_persona_id": "cafe-owner-operator",
+      "secondary_persona_ids": [
+        "aspiring-founder"
+      ],
+      "objective": "saves_and_library_visits",
+      "topic": "بخش مشتریان در بوم مدل کسب‌وکار کافه",
+      "core_message": "اگر بخش مشتریان مبهم باشد، پیشنهاد ارزش و کانال فروش هم آزمون‌پذیر نیست.",
+      "audience_problem": "مخاطب همه را مشتری فرض می‌کند و برای هیچ گروهی پیشنهاد مشخص ندارد.",
+      "evidence_level": "hypothesis",
+      "source_ids": [],
+      "claim_ids": [],
+      "status": "draft",
+      "review_labels": null,
+      "linked_asset_ids": []
+    }
+  ],
+  "deliveries": [
+    {
+      "delivery_id": "ATZ-D-000456",
+      "content_id": "ATZ-C-000123",
+      "schedule_key": "M01-W01-D01-IG-FEED-01",
+      "channel_id": "instagram",
+      "format_id": "carousel",
+      "language": "fa-IR",
+      "hook": "وقتی می‌گویید مشتری من همه است، هنوز مشتری‌تان را تعریف نکرده‌اید.",
+      "hashtags": [
+        "#AtoZFnB",
+        "#بوم_مدل_کسب_و_کار",
+        "#مدیریت_کافه"
+      ],
+      "primary_kpi_id": "save_rate_by_reach",
+      "secondary_kpi_ids": [
+        "share_rate_by_reach",
+        "resource_clicks"
+      ],
+      "cta": {
+        "label": "دریافت کاربرگ تمرین بوم",
+        "target_id": "library.business-model-canvas",
+        "link_status": "ready_owner_confirmed"
+      },
+      "creative_spec": {
+        "template_id": "carousel-education-editorial",
+        "template_version": "0.1.0",
+        "aspect_ratio": "4:5",
+        "width_px": 1080,
+        "height_px": 1350,
+        "slides": 8,
+        "language": "fa-IR",
+        "pillar_token": "library",
+        "background_token": "neutral-surface",
+        "font_ids": [
+          "vazirmatn-bold",
+          "vazirmatn-regular"
+        ],
+        "brand_signature": true,
+        "website_url_visible": true
+      },
+      "asset_ids": [],
+      "platform_post_id": null,
+      "status": "planned",
+      "planned_day_index": 1,
+      "day_name_fa": "شنبه",
+      "planned_time_local": null,
+      "caption": "وقتی می‌گویید مشتری من همه است، هنوز مشتری‌تان را تعریف نکرده‌اید."
+    },
+    {
+      "delivery_id": "ATZ-D-000457",
+      "content_id": "ATZ-C-000123",
+      "schedule_key": "M01-W01-D01-TG-DOC-01",
+      "channel_id": "telegram",
+      "format_id": "checklist_document",
+      "language": "fa-IR",
+      "hook": "کاربرگ تمرین بخش مشتریان بوم کسب‌وکار",
+      "primary_kpi_id": "document_views_and_downloads",
+      "secondary_kpi_ids": [
+        "forwards",
+        "resource_clicks"
+      ],
+      "asset_ids": [],
+      "platform_post_id": null,
+      "status": "planned",
+      "planned_day_index": 1,
+      "day_name_fa": "شنبه",
+      "planned_time_local": null,
+      "caption": "کاربرگ تمرین بخش مشتریان بوم کسب‌وکار",
+      "hashtags": [],
+      "creative_spec": {
+        "template_id": "example",
+        "template_version": "0.1.0",
+        "aspect_ratio": "4:5",
+        "width_px": 1080,
+        "height_px": 1350,
+        "language": "fa-IR"
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "from_id": "ATZ-C-000123",
+      "to_id": "library.business-model-canvas",
+      "relationship_type": "cross_links"
+    }
+  ],
+  "assets": [],
+  "notes": [
+    "نمونهٔ ساختار برای آزمون schema؛ تاریخ‌ها و محتوای انتشار، برنامهٔ واقعی یا تأییدشده نیستند."
+  ]
+}

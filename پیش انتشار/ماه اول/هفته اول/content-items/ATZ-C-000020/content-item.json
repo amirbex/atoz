@@ -1,0 +1,24 @@
+{
+  "content_id": "ATZ-C-000020",
+  "title": "ساخت پیش‌نویس Opening SOP با AI",
+  "pillar": {
+    "id": "innovation-ai",
+    "name": "نوآوری، هوش مصنوعی و اتوماسیون",
+    "color": "#5D5FEF",
+    "dark": "#8183FF",
+    "hub": "بانک پرامپت"
+  },
+  "series": "AI در عملیات روزانه",
+  "target_personas": [
+    "سینا"
+  ],
+  "core_thesis": "پرامپت می‌تواند پیش‌نویس چک‌لیست بسازد؛ مدیر باید آن را با فرایند، مسئولیت و ایمنی محل تطبیق دهد.",
+  "production_summary": "دموی فرضی و قابل‌ویرایش از متن به چک‌لیست.",
+  "asset_ids": [
+    "ATZ-A-000027"
+  ],
+  "linked_deliveries": [
+    "ATZ-D-000050"
+  ],
+  "status": "draft_for_review"
+}

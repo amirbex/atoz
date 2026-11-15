@@ -1,0 +1,32 @@
+{
+  "content_id": "ATZ-C-000005",
+  "title": "SOP و چک‌لیست بازگشایی و بستن شیفت",
+  "pillar": {
+    "id": "education-sops",
+    "name": "آموزش و استانداردسازی عملیاتی",
+    "color": "#3B5998",
+    "dark": "#6085D6",
+    "hub": "کتابخانه و SOPها"
+  },
+  "series": "ساختار و فرآیندها",
+  "target_personas": [
+    "سینا",
+    "مریم"
+  ],
+  "core_thesis": "فرآیند روشن و قابل‌آموزش، وابستگی عملیات به حافظه و حضور یک فرد را کم می‌کند.",
+  "production_summary": "نمونهٔ چک‌لیست قابل‌ویرایش و مراحل ساخت SOP.",
+  "asset_ids": [
+    "ATZ-A-000009",
+    "ATZ-A-000010"
+  ],
+  "linked_deliveries": [
+    "ATZ-D-000026",
+    "ATZ-D-000030",
+    "ATZ-D-000034",
+    "ATZ-D-000039",
+    "ATZ-D-000040",
+    "ATZ-D-000043",
+    "ATZ-D-000045"
+  ],
+  "status": "draft_for_review"
+}

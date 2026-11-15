@@ -1,0 +1,24 @@
+{
+  "content_id": "ATZ-C-000008",
+  "title": "تلهٔ اپراتور بودن به‌جای مالک کسب‌وکار بودن",
+  "pillar": {
+    "id": "leadership",
+    "name": "الهام‌بخشی، رهبری و ذهنیت",
+    "color": "#0A1931",
+    "dark": "#FFB400",
+    "hub": "Solutions"
+  },
+  "series": "تغییر ذهنیت مالک به رهبر",
+  "target_personas": [
+    "سینا"
+  ],
+  "core_thesis": "اگر کیفیت فقط با حضور مالک حفظ می‌شود، فرصت بازبینی سیستم‌ها و تفویض روشن وجود دارد.",
+  "production_summary": "میکرو‌ریلز B-roll و کپشن تأملی.",
+  "asset_ids": [
+    "ATZ-A-000015"
+  ],
+  "linked_deliveries": [
+    "ATZ-D-000004"
+  ],
+  "status": "draft_for_review"
+}
