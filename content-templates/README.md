@@ -1,10 +1,3 @@
-# قالب‌های هویت بصری AtoZ.FnB
+# AtoZ visual templates
 
-این‌ها masterهای خالی و قابل‌ویرایش‌اند؛ محتوا، عنوان‌های هفته و آمار واقعی در آن‌ها درج نشده است.
-
-- `social/`: پست ادیتوریال، داده/منبع، کیس‌استادی، نقل‌قول
-- `carousels/`: جلد، بدنه، مقایسه، شواهد، چک‌لیست، پایان/CTA
-- `video-covers/`: کاور عمودی، lower-third، end-card
-- `template-manifest.json`: ابعاد، نوع خروجی و slotهای قابل‌جایگزینی
-
-هر master در SVG نگهداری و در PNG پیش‌نمایش می‌شود. قبل از پرکردن با محتوا، نمونه‌های قالب را با مرجع‌های مالک تطبیق دهید. لینک CTA قابل‌ویرایش می‌ماند و خودکار به مقصدی هدایت نمی‌شود.
+Blank, editable SVG masters with PNG previews. Branding uses the AtoZ Latin wordmark only. Social, carousel and vertical reel formats remain content slots; no new copy, data or claim has been inserted. See `template-manifest.json` for dimensions.

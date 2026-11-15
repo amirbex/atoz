@@ -1,22 +1,14 @@
 {
-  "name": "AtoZfnb.info",
-  "short_name": "AtoZ.FnB",
-  "lang": "fa",
-  "dir": "rtl",
-  "theme_color": "#0A1931",
-  "background_color": "#0A1931",
-  "display": "standalone",
+  "name": "AtoZ",
+  "short_name": "AtoZ",
   "icons": [
     {
-      "src": "png/favicon-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "png/favicon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "src": "app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
     }
-  ]
+  ],
+  "theme_color": "#0A1931",
+  "background_color": "#0A1931",
+  "display": "standalone"
 }

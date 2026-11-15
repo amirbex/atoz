@@ -101,14 +101,14 @@ def main():
         "identical_file_groups": [sorted(names) for names in hashes.values() if len(names) > 1],
         "policy": {
             "approved_open_families": ["Vazirmatn", "Montserrat", "Lato"],
-            "expressive_candidate": "Dongol (metadata states SIL OFL 1.1; missing ZWNJ glyph; keep limited to short display treatments until visual review)",
-            "restricted_or_unverified": "All other user-supplied families remain in the source font folder, but are not embedded, outlined into production exports, or copied to deliverables until a valid license is confirmed.",
+            "expressive_candidate": None,
+            "restricted_or_unverified": "Unneeded, unlicensed, duplicate, and unverified supplied font files were removed after dependency and licensing review; only the three approved OFL families used by build outputs remain.",
         },
     }
     (OUT / "font-inventory.json").write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     lines = [
-        "# ممیزی فونت‌های هویت AtoZ.FnB",
+        "# ممیزی فونت‌های هویت AtoZ",
         "",
         f"تاریخ ثبت: {result['inventory_date']} · تعداد فایل فونت: {len(records)}",
         "",
@@ -121,25 +121,18 @@ def main():
         "| Vazirmatn | فارسی: متن و تیتر | SIL Open Font License 1.1؛ فایل‌های OFL در `tools/fonts/` |",
         "| Montserrat | تیتر و برچسب لاتین | SIL Open Font License 1.1؛ فایل‌های OFL در `tools/fonts/` |",
         "| Lato | متن لاتین | SIL Open Font License 1.1؛ فایل‌های OFL در `tools/fonts/` |",
-        "| Dongol | نامزد نمایشی/ادیتوریال کوتاه | متادیتا OFL 1.1 را اعلام می‌کند؛ نویسهٔ نیم‌فاصله را ندارد، بنابراین فقط نمونهٔ کوتاه و نیازمند بازبینی |",
         "",
-        "## فونت‌های ارسالی با حق استفادهٔ نیازمند تأیید",
+        "## دامنهٔ پاک‌سازی",
         "",
-        "در خانواده‌های DigiFonts، Shoko/Shokoh، DG Jory، Mj و Massir، متادیتا شامل `All rights reserved`، توافق‌نامهٔ محدود، یا فاقد متن مجوز قابل‌اتکا است. فایل‌ها حذف نشده‌اند؛ اما تا دریافت مجوز/فاکتور/اجازهٔ کتبی، از آن‌ها در SVG نهایی، PDF برندبوک، قالب‌های عمومی یا موشن استفاده نمی‌شود. وجود فایل در پوشه به‌تنهایی مجوز بازتوزیع یا outline کردن را ثابت نمی‌کند.",
-        "",
-        "فایل‌های TTF/OTF تکراری با هش یکسان در `font-inventory.json` ثبت شده‌اند؛ برای استفاده، نسخهٔ تکراری لازم نیست کپی شود.",
+        "پس از جست‌وجوی وابستگی‌ها، فایل‌های اضافی، تکراری یا دارای مجوز نامشخص حذف شدند. پوشهٔ فعال فقط وزن‌های موردنیاز از سه خانوادهٔ تأییدشده را نگه می‌دارد. گزارش قدیمی ۵۷ فایلی با inventory جاری جایگزین شده است؛ این ممیزی به‌تنهایی مدرک حقوق مالکیت نیست.",
         "",
         "## قرارداد تایپوگرافی",
         "",
         "- فارسی: `Vazirmatn ExtraBold/Bold` تیتر، `Vazirmatn Regular` متن؛ fallback: `Noto Sans Arabic, Tahoma, sans-serif`.",
         "- لاتین: `Montserrat Bold/SemiBold` تیتر، `Lato Regular` بدنه؛ fallback: `Arial, sans-serif`.",
-        "- `Dongol` تنها در نمونه‌های نمایشی کوتاه و جدا از متن بدنه؛ به علت نبود U+200C برای متن دارای نیم‌فاصله مناسب نیست.",
         "- ایران‌سنس دست‌نویس در این وابستگی نیست؛ تا دریافت فایل و مجوز، استفاده نمی‌شود.",
         "",
     ]
-    for row in records:
-        if row["license_status"].startswith("OFL") and row["family"].casefold() not in {"vazirmatn", "montserrat", "lato", "dongol"}:
-            lines.append(f"- **{row['file']}** — {row['family']} {row['subfamily']}: OFL metadata found; confirm license text/source before use.")
     (OUT / "font-inventory-fa.md").write_text("\n".join(lines), encoding="utf-8")
     print(f"Audited {len(records)} font files; wrote {OUT.relative_to(ROOT)}/font-inventory.json")
 

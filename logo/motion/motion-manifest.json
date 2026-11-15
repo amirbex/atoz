@@ -1,0 +1,81 @@
+{
+  "version": "3.0.0",
+  "master": "AtoZ",
+  "brands": [
+    {
+      "id": "atoz",
+      "name": "AtoZ"
+    },
+    {
+      "id": "blog",
+      "name": "Blog",
+      "display": "AtoZ Blog",
+      "content_pillars": [
+        "case-studies",
+        "leadership"
+      ],
+      "icon": "editorial"
+    },
+    {
+      "id": "tools",
+      "name": "Tools",
+      "display": "AtoZ Tools",
+      "content_pillars": [
+        "finance-market",
+        "education-sops"
+      ],
+      "icon": "toolkit"
+    },
+    {
+      "id": "book",
+      "name": "book",
+      "display": "AtoZ book",
+      "content_pillars": [
+        "education-sops",
+        "community-roadmaps"
+      ],
+      "icon": "book"
+    },
+    {
+      "id": "pb",
+      "name": "PB",
+      "display": "AtoZ PB",
+      "descriptor": "PROMPT BANK",
+      "content_pillars": [
+        "innovation-ai"
+      ],
+      "icon": "prompt-bank"
+    },
+    {
+      "id": "solicitor",
+      "name": "Solicitor",
+      "display": "AtoZ Solicitor",
+      "content_pillars": [
+        "leadership",
+        "finance-market"
+      ],
+      "icon": "advisory"
+    }
+  ],
+  "states": [
+    "intro",
+    "loader",
+    "waiting",
+    "outro"
+  ],
+  "orientations": [
+    {
+      "id": "horizontal",
+      "viewBox": "1920 1080"
+    },
+    {
+      "id": "vertical",
+      "viewBox": "1080 1920"
+    }
+  ],
+  "source_format": "SVG with CSS keyframes",
+  "gallery": "logo/motion/index.html",
+  "responsive_html": "logo/motion/index.html",
+  "reduced_motion": "prefers-reduced-motion disables animation",
+  "exports": "48 independent source SVGs; gallery adapts the selected lockup to the viewport."
+}
