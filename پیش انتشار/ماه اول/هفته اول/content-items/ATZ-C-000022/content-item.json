@@ -1,0 +1,26 @@
+{
+  "content_id": "ATZ-C-000022",
+  "title": "رشد یا سود؟ اولویت تصمیم‌گیری",
+  "pillar": {
+    "id": "finance-market",
+    "name": "اقتصاد F&B و تحلیل بازار",
+    "color": "#0F766E",
+    "dark": "#2DD4BF",
+    "hub": "آزمایشگاه ابزارها"
+  },
+  "series": "رشد و مالی",
+  "target_personas": [
+    "سینا",
+    "کیان"
+  ],
+  "core_thesis": "پیش از توسعه باید اقتصاد هر واحد و جریان نقد بررسی شود.",
+  "production_summary": "ریلز چالشی با یک چارچوب تصمیم.",
+  "asset_ids": [
+    "ATZ-A-000029"
+  ],
+  "linked_deliveries": [
+    "ATZ-D-000035",
+    "ATZ-D-000041"
+  ],
+  "status": "draft_for_review"
+}

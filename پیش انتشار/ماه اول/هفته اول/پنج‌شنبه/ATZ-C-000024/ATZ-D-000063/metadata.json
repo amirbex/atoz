@@ -1,0 +1,68 @@
+{
+  "delivery_id": "ATZ-D-000063",
+  "content_id": "ATZ-C-000024",
+  "schedule_key": "M01-W01-D06-IG-ANM-63",
+  "channel_id": "instagram",
+  "format_id": "animated_reel",
+  "planned_day_index": 6,
+  "day_name_fa": "پنج‌شنبه",
+  "planned_time_local": null,
+  "language": "fa-IR",
+  "hook": "صف کجا متوقف می‌شود؟ مراحل و زمان‌ها را اندازه بگیر.",
+  "caption": "صف کجا متوقف می‌شود؟ مراحل و زمان‌ها را اندازه بگیر.\n\nموشن‌گرافیک و کارت پرامپت.\n\nمحتوای مرتبط و منابع بیشتر: atozfnb.info\nپیوندهای برند: @atozfnb.info\n\nدادهٔ زمان انتظار و مراحل سرویس می‌تواند به شناسایی گلوگاه کمک کند؛ کیفیت داده و آزمون میدانی مهم است.",
+  "hashtags": [
+    "#AtoZFnB #مدیریت_FnB #کافه_رستوران"
+  ],
+  "primary_kpi_id": "shares_and_watch_time",
+  "secondary_kpi_ids": [
+    "profile_visits",
+    "resource_clicks"
+  ],
+  "creative_spec": {
+    "template_id": "animated_reel-innovation-ai-editorial",
+    "template_version": "0.1.0",
+    "aspect_ratio": "9:16",
+    "width_px": 1080,
+    "height_px": 1920,
+    "duration_seconds": 28,
+    "slides": null,
+    "language": "fa-IR",
+    "pillar_token": "innovation-ai",
+    "background_token": "neutral-surface",
+    "font_ids": [
+      "vazirmatn-extrabold",
+      "vazirmatn-regular",
+      "montserrat-semibold",
+      "lato-regular"
+    ],
+    "style_id": "editorial",
+    "brand_signature": true,
+    "website_url_visible": true,
+    "instagram_handle_visible": true
+  },
+  "asset_ids": [
+    "ATZ-A-000031",
+    "ATZ-A-000032"
+  ],
+  "platform_post_id": null,
+  "status": "produced",
+  "cta": {
+    "label": "منابع و ابزارهای مرتبط",
+    "target_id": "innovation-ai",
+    "target_url": "https://atozfnb.info/",
+    "link_status": "ready_owner_confirmed",
+    "utm_campaign": "M01-W01",
+    "utm_source": "instagram",
+    "utm_medium": "social"
+  },
+  "content_title": "پیداکردن گلوگاه صف با پرامپت #02",
+  "content_summary": "موشن‌گرافیک و کارت پرامپت.",
+  "content_pillar": {
+    "id": "innovation-ai",
+    "name": "نوآوری، هوش مصنوعی و اتوماسیون",
+    "color": "#5D5FEF",
+    "dark": "#8183FF",
+    "hub": "بانک پرامپت"
+  },
+  "platform_manual_action": "تولید فایل انجام شده؛ زمان‌بندی/آپلود دستی است."
+}

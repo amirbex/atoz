@@ -1,0 +1,60 @@
+{
+  "schema_version": "0.1.0",
+  "analytics_id": "ATZ-AN-000456-7D",
+  "delivery_id": "ATZ-D-000456",
+  "platform_post_id": null,
+  "platform": "instagram",
+  "captured_at": "2026-11-28T10:30:00+03:30",
+  "window": {
+    "start_at": "2026-11-21T10:30:00+03:30",
+    "end_at": "2026-11-28T10:30:00+03:30",
+    "age_hours": 168,
+    "label": "7d"
+  },
+  "collection": {
+    "method": "manual",
+    "source": "native_insights",
+    "completeness": "complete",
+    "collector_id": "editor-01"
+  },
+  "raw_metrics": {
+    "reach": 1200,
+    "impressions": 1640,
+    "views": 810,
+    "likes": 86,
+    "comments": 12,
+    "saves": 94,
+    "shares": 37,
+    "link_clicks": 29,
+    "profile_visits": 41,
+    "avg_watch_seconds": null,
+    "total_watch_seconds": null
+  },
+  "derived_metrics": {
+    "save_rate_by_reach": {
+      "numerator": 94,
+      "denominator": 1200,
+      "value": 0.0783,
+      "formula_version": "saves-div-reach-v1"
+    },
+    "share_rate_by_reach": {
+      "numerator": 37,
+      "denominator": 1200,
+      "value": 0.0308,
+      "formula_version": "shares-div-reach-v1"
+    },
+    "engagement_rate_by_reach": {
+      "numerator": 229,
+      "denominator": 1200,
+      "value": 0.1908,
+      "formula_version": "likes-plus-comments-saves-shares-div-reach-v1"
+    },
+    "link_ctr_by_reach": {
+      "numerator": 29,
+      "denominator": 1200,
+      "value": 0.0242,
+      "formula_version": "link-clicks-div-reach-v1"
+    }
+  },
+  "notes": ["اعداد صرفاً نمونه‌اند؛ قبل از استفاده با معیار و تعریف همان پلتفرم تطبیق داده شوند."]
+}

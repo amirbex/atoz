@@ -1,0 +1,25 @@
+{
+  "content_id": "ATZ-C-000021",
+  "title": "تنهایی تصمیم‌گیری و ارزش شبکه‌سازی صنفی",
+  "pillar": {
+    "id": "community-roadmaps",
+    "name": "جامعه‌سازی و نقشهٔ راه",
+    "color": "#0284C7",
+    "dark": "#38BDF8",
+    "hub": "آکادمی"
+  },
+  "series": "باشگاه شبانهٔ مدیران",
+  "target_personas": [
+    "سینا",
+    "مریم"
+  ],
+  "core_thesis": "شبکهٔ همتایان می‌تواند محل تبادل تجربه باشد، نه جایگزین مشاورهٔ تخصصی یا داده.",
+  "production_summary": "میکرو‌ریلز آرام و همدلانه.",
+  "asset_ids": [
+    "ATZ-A-000028"
+  ],
+  "linked_deliveries": [
+    "ATZ-D-000051"
+  ],
+  "status": "draft_for_review"
+}

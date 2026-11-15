@@ -1,0 +1,59 @@
+{
+  "delivery_id": "ATZ-D-000077",
+  "content_id": "ATZ-C-000027",
+  "schedule_key": "M01-W01-D07-IG-QUOT-77",
+  "channel_id": "instagram",
+  "format_id": "quote",
+  "planned_day_index": 7,
+  "day_name_fa": "جمعه",
+  "planned_time_local": null,
+  "language": "fa-IR",
+  "hook": "نقشهٔ هفتهٔ اول و آنچه در هفتهٔ بعد ادامه می‌یابد.",
+  "caption": "نقشهٔ هفتهٔ اول و آنچه در هفتهٔ بعد ادامه می‌یابد.\n\nکارت مرور و تیزر یوتیوب؛ بدون انتشار خودکار.\n\nمحتوای مرتبط و منابع بیشتر: atozfnb.info\nپیوندهای برند: @atozfnb.info\n\nجمع‌بندی، پیوندهای منابع و موضوع‌های بعدی را در یک نقطه ارائه می‌کند.",
+  "hashtags": [
+    "#AtoZFnB #مدیریت_FnB #کافه_رستوران"
+  ],
+  "primary_kpi_id": "shares_by_reach",
+  "secondary_kpi_ids": [
+    "profile_visits",
+    "resource_clicks"
+  ],
+  "creative_spec": {
+    "template_id": "quote-community-roadmaps-artwork",
+    "template_version": "0.1.0",
+    "aspect_ratio": "4:5",
+    "width_px": 1080,
+    "height_px": 1350,
+    "duration_seconds": null,
+    "slides": null,
+    "language": "fa-IR",
+    "pillar_token": "community-roadmaps",
+    "background_token": "neutral-surface",
+    "font_ids": [
+      "vazirmatn-extrabold",
+      "vazirmatn-regular",
+      "montserrat-semibold",
+      "lato-regular"
+    ],
+    "style_id": "artwork",
+    "brand_signature": true,
+    "website_url_visible": true,
+    "instagram_handle_visible": true
+  },
+  "asset_ids": [
+    "ATZ-A-000036",
+    "ATZ-A-000037"
+  ],
+  "platform_post_id": null,
+  "status": "produced",
+  "content_title": "مرور هفتهٔ اول و قلاب هفتهٔ دوم",
+  "content_summary": "کارت مرور و تیزر یوتیوب؛ بدون انتشار خودکار.",
+  "content_pillar": {
+    "id": "community-roadmaps",
+    "name": "جامعه‌سازی و نقشهٔ راه",
+    "color": "#0284C7",
+    "dark": "#38BDF8",
+    "hub": "آکادمی"
+  },
+  "platform_manual_action": "تولید فایل انجام شده؛ زمان‌بندی/آپلود دستی است."
+}

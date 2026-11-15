@@ -1,0 +1,26 @@
+{
+  "content_id": "ATZ-C-000014",
+  "title": "سنجش چالش‌های جامعهٔ F&B",
+  "pillar": {
+    "id": "community-roadmaps",
+    "name": "جامعه‌سازی و نقشهٔ راه",
+    "color": "#0284C7",
+    "dark": "#38BDF8",
+    "hub": "آکادمی"
+  },
+  "series": "اتاق گفت‌وگوی شبانه",
+  "target_personas": [
+    "عمومی"
+  ],
+  "core_thesis": "پرسش‌وپاسخ جامعه، اولویت‌های عملیاتی را برای موضوع‌های بعدی روشن می‌کند.",
+  "production_summary": "نظرسنجی چهارگزینه‌ای؛ پاسخ‌ها بعداً به موضوع‌های آموزشی تبدیل می‌شوند.",
+  "asset_ids": [
+    "ATZ-A-000021"
+  ],
+  "linked_deliveries": [
+    "ATZ-D-000006",
+    "ATZ-D-000016",
+    "ATZ-D-000070"
+  ],
+  "status": "draft_for_review"
+}

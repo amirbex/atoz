@@ -1,0 +1,24 @@
+{
+  "content_id": "ATZ-C-000025",
+  "title": "تحلیل جمعی تجربهٔ شکست پروژه‌های F&B",
+  "pillar": {
+    "id": "community-roadmaps",
+    "name": "جامعه‌سازی و نقشهٔ راه",
+    "color": "#0284C7",
+    "dark": "#38BDF8",
+    "hub": "آکادمی"
+  },
+  "series": "تعامل آخر هفته",
+  "target_personas": [
+    "عمومی"
+  ],
+  "core_thesis": "گفت‌وگوی ناشناس و محترمانه می‌تواند علت‌های سیستمی را از سرزنش افراد جدا کند.",
+  "production_summary": "کارت پرسش برای دریافت تجربهٔ میدانی.",
+  "asset_ids": [
+    "ATZ-A-000033"
+  ],
+  "linked_deliveries": [
+    "ATZ-D-000069"
+  ],
+  "status": "draft_for_review"
+}

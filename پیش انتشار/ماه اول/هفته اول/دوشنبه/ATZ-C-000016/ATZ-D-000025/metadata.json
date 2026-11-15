@@ -1,0 +1,67 @@
+{
+  "delivery_id": "ATZ-D-000025",
+  "content_id": "ATZ-C-000016",
+  "schedule_key": "M01-W01-D03-IG-MRL-25",
+  "channel_id": "instagram",
+  "format_id": "micro_reel",
+  "planned_day_index": 3,
+  "day_name_fa": "دوشنبه",
+  "planned_time_local": null,
+  "language": "fa-IR",
+  "hook": "بازخورد مشتری را به فهرست اقدام‌های قابل‌آزمون تبدیل کن.",
+  "caption": "بازخورد مشتری را به فهرست اقدام‌های قابل‌آزمون تبدیل کن.\n\nنمایش روند تحلیل با دادهٔ ساختگی/ناشناس.\n\nمحتوای مرتبط و منابع بیشتر: atozfnb.info\nپیوندهای برند: @atozfnb.info\n\nهوش مصنوعی می‌تواند بازخوردهای متنی را دسته‌بندی کند، اما نباید دادهٔ شخصی مشتری بدون مجوز وارد آن شود.",
+  "hashtags": [
+    "#AtoZFnB #مدیریت_FnB #کافه_رستوران"
+  ],
+  "primary_kpi_id": "avg_watch_ratio",
+  "secondary_kpi_ids": [
+    "profile_visits",
+    "resource_clicks"
+  ],
+  "creative_spec": {
+    "template_id": "micro_reel-innovation-ai-retro",
+    "template_version": "0.1.0",
+    "aspect_ratio": "9:16",
+    "width_px": 1080,
+    "height_px": 1920,
+    "duration_seconds": 8,
+    "slides": null,
+    "language": "fa-IR",
+    "pillar_token": "innovation-ai",
+    "background_token": "neutral-surface",
+    "font_ids": [
+      "vazirmatn-extrabold",
+      "vazirmatn-regular",
+      "montserrat-semibold",
+      "lato-regular"
+    ],
+    "style_id": "retro",
+    "brand_signature": true,
+    "website_url_visible": true,
+    "instagram_handle_visible": true
+  },
+  "asset_ids": [
+    "ATZ-A-000023"
+  ],
+  "platform_post_id": null,
+  "status": "produced",
+  "cta": {
+    "label": "منابع و ابزارهای مرتبط",
+    "target_id": "innovation-ai",
+    "target_url": "https://atozfnb.info/",
+    "link_status": "ready_owner_confirmed",
+    "utm_campaign": "M01-W01",
+    "utm_source": "instagram",
+    "utm_medium": "social"
+  },
+  "content_title": "خوشه‌بندی نظرهای مشتری با AI",
+  "content_summary": "نمایش روند تحلیل با دادهٔ ساختگی/ناشناس.",
+  "content_pillar": {
+    "id": "innovation-ai",
+    "name": "نوآوری، هوش مصنوعی و اتوماسیون",
+    "color": "#5D5FEF",
+    "dark": "#8183FF",
+    "hub": "بانک پرامپت"
+  },
+  "platform_manual_action": "تولید فایل انجام شده؛ زمان‌بندی/آپلود دستی است."
+}

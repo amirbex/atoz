@@ -1,0 +1,68 @@
+{
+  "delivery_id": "ATZ-D-000023",
+  "content_id": "ATZ-C-000003",
+  "schedule_key": "M01-W01-D03-IG-CAR-23",
+  "channel_id": "instagram",
+  "format_id": "carousel",
+  "planned_day_index": 3,
+  "day_name_fa": "دوشنبه",
+  "planned_time_local": null,
+  "language": "fa-IR",
+  "hook": "وقتی می‌گویید «مشتری ما همه‌اند»، هنوز مشتری را تعریف نکرده‌اید.",
+  "caption": "وقتی می‌گویید «مشتری ما همه‌اند»، هنوز مشتری را تعریف نکرده‌اید.\n\nیک تمرین بخش‌بندی مشتری برای کافه و رستوران.\n\nمحتوای مرتبط و منابع بیشتر: atozfnb.info\nپیوندهای برند: @atozfnb.info\n\nتعریف «همه» به‌عنوان مشتری، نیازها و پیشنهاد ارزش را مبهم می‌کند.",
+  "hashtags": [
+    "#AtoZFnB #مدیریت_FnB #کافه_رستوران"
+  ],
+  "primary_kpi_id": "save_rate_by_reach",
+  "secondary_kpi_ids": [
+    "profile_visits",
+    "resource_clicks"
+  ],
+  "creative_spec": {
+    "template_id": "carousel-education-sops-artwork",
+    "template_version": "0.1.0",
+    "aspect_ratio": "4:5",
+    "width_px": 1080,
+    "height_px": 1350,
+    "duration_seconds": null,
+    "slides": 8,
+    "language": "fa-IR",
+    "pillar_token": "education-sops",
+    "background_token": "neutral-surface",
+    "font_ids": [
+      "vazirmatn-extrabold",
+      "vazirmatn-regular",
+      "montserrat-semibold",
+      "lato-regular"
+    ],
+    "style_id": "artwork",
+    "brand_signature": true,
+    "website_url_visible": true,
+    "instagram_handle_visible": true
+  },
+  "asset_ids": [
+    "ATZ-A-000005",
+    "ATZ-A-000006"
+  ],
+  "platform_post_id": null,
+  "status": "produced",
+  "cta": {
+    "label": "منابع و ابزارهای مرتبط",
+    "target_id": "education-sops",
+    "target_url": "https://atozfnb.info/",
+    "link_status": "ready_owner_confirmed",
+    "utm_campaign": "M01-W01",
+    "utm_source": "instagram",
+    "utm_medium": "social"
+  },
+  "content_title": "بلوک اول بوم: بخش‌بندی مشتریان و طراحی پرسونا با AI",
+  "content_summary": "یک تمرین بخش‌بندی مشتری برای کافه و رستوران.",
+  "content_pillar": {
+    "id": "education-sops",
+    "name": "آموزش و استانداردسازی عملیاتی",
+    "color": "#3B5998",
+    "dark": "#6085D6",
+    "hub": "کتابخانه و SOPها"
+  },
+  "platform_manual_action": "تولید فایل انجام شده؛ زمان‌بندی/آپلود دستی است."
+}

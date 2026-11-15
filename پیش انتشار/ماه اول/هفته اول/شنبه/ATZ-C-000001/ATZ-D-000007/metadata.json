@@ -1,0 +1,68 @@
+{
+  "delivery_id": "ATZ-D-000007",
+  "content_id": "ATZ-C-000001",
+  "schedule_key": "M01-W01-D01-IG-STR-07",
+  "channel_id": "instagram",
+  "format_id": "story",
+  "planned_day_index": 1,
+  "day_name_fa": "شنبه",
+  "planned_time_local": null,
+  "language": "fa-IR",
+  "hook": "بازنشر کاروسل بوم و معرفی کاربرگ در Library.",
+  "caption": "بازنشر کاروسل بوم و معرفی کاربرگ در Library.\n\nمقایسهٔ بوم با طرح ایستا و معرفی تمرین بوم برای کافه.\n\nمحتوای مرتبط و منابع بیشتر: atozfnb.info\nپیوندهای برند: @atozfnb.info\n\nبوم مدل کسب‌وکار یک نقشهٔ زنده برای آزمودن فرض‌های ارزش، مشتری و درآمد است؛ جایگزین همهٔ تحلیل‌های مالی یا طرح اجرایی نیست.",
+  "hashtags": [
+    "#AtoZFnB #مدیریت_FnB #کافه_رستوران"
+  ],
+  "primary_kpi_id": "story_interaction_rate",
+  "secondary_kpi_ids": [
+    "profile_visits",
+    "resource_clicks"
+  ],
+  "creative_spec": {
+    "template_id": "story-education-sops-formal",
+    "template_version": "0.1.0",
+    "aspect_ratio": "9:16",
+    "width_px": 1080,
+    "height_px": 1920,
+    "duration_seconds": null,
+    "slides": null,
+    "language": "fa-IR",
+    "pillar_token": "education-sops",
+    "background_token": "neutral-surface",
+    "font_ids": [
+      "vazirmatn-extrabold",
+      "vazirmatn-regular",
+      "montserrat-semibold",
+      "lato-regular"
+    ],
+    "style_id": "formal",
+    "brand_signature": true,
+    "website_url_visible": true,
+    "instagram_handle_visible": true
+  },
+  "asset_ids": [
+    "ATZ-A-000001",
+    "ATZ-A-000002"
+  ],
+  "platform_post_id": null,
+  "status": "produced",
+  "cta": {
+    "label": "منابع و ابزارهای مرتبط",
+    "target_id": "education-sops",
+    "target_url": "https://atozfnb.info/",
+    "link_status": "ready_owner_confirmed",
+    "utm_campaign": "M01-W01",
+    "utm_source": "instagram",
+    "utm_medium": "social"
+  },
+  "content_title": "مدل کسب‌وکار استروالدر در برابر بیزنس‌پلن سنتی در صنعت F&B",
+  "content_summary": "مقایسهٔ بوم با طرح ایستا و معرفی تمرین بوم برای کافه.",
+  "content_pillar": {
+    "id": "education-sops",
+    "name": "آموزش و استانداردسازی عملیاتی",
+    "color": "#3B5998",
+    "dark": "#6085D6",
+    "hub": "کتابخانه و SOPها"
+  },
+  "platform_manual_action": "تولید فایل انجام شده؛ زمان‌بندی/آپلود دستی است."
+}

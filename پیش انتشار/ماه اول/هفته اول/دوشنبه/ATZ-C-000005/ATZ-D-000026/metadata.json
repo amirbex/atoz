@@ -1,0 +1,68 @@
+{
+  "delivery_id": "ATZ-D-000026",
+  "content_id": "ATZ-C-000005",
+  "schedule_key": "M01-W01-D03-IG-SING-26",
+  "channel_id": "instagram",
+  "format_id": "single_infographic",
+  "planned_day_index": 3,
+  "day_name_fa": "دوشنبه",
+  "planned_time_local": null,
+  "language": "fa-IR",
+  "hook": "سه SOP که می‌توانند آشفتگی شیفت را قابل‌کنترل‌تر کنند.",
+  "caption": "سه SOP که می‌توانند آشفتگی شیفت را قابل‌کنترل‌تر کنند.\n\nنمونهٔ چک‌لیست قابل‌ویرایش و مراحل ساخت SOP.\n\nمحتوای مرتبط و منابع بیشتر: atozfnb.info\nپیوندهای برند: @atozfnb.info\n\nفرآیند روشن و قابل‌آموزش، وابستگی عملیات به حافظه و حضور یک فرد را کم می‌کند.",
+  "hashtags": [
+    "#AtoZFnB #مدیریت_FnB #کافه_رستوران"
+  ],
+  "primary_kpi_id": "save_rate_by_reach",
+  "secondary_kpi_ids": [
+    "profile_visits",
+    "resource_clicks"
+  ],
+  "creative_spec": {
+    "template_id": "single_infographic-education-sops-handwritten-accent",
+    "template_version": "0.1.0",
+    "aspect_ratio": "4:5",
+    "width_px": 1080,
+    "height_px": 1350,
+    "duration_seconds": null,
+    "slides": null,
+    "language": "fa-IR",
+    "pillar_token": "education-sops",
+    "background_token": "neutral-surface",
+    "font_ids": [
+      "vazirmatn-extrabold",
+      "vazirmatn-regular",
+      "montserrat-semibold",
+      "lato-regular"
+    ],
+    "style_id": "handwritten-accent",
+    "brand_signature": true,
+    "website_url_visible": true,
+    "instagram_handle_visible": true
+  },
+  "asset_ids": [
+    "ATZ-A-000009",
+    "ATZ-A-000010"
+  ],
+  "platform_post_id": null,
+  "status": "produced",
+  "cta": {
+    "label": "منابع و ابزارهای مرتبط",
+    "target_id": "education-sops",
+    "target_url": "https://atozfnb.info/",
+    "link_status": "ready_owner_confirmed",
+    "utm_campaign": "M01-W01",
+    "utm_source": "instagram",
+    "utm_medium": "social"
+  },
+  "content_title": "SOP و چک‌لیست بازگشایی و بستن شیفت",
+  "content_summary": "نمونهٔ چک‌لیست قابل‌ویرایش و مراحل ساخت SOP.",
+  "content_pillar": {
+    "id": "education-sops",
+    "name": "آموزش و استانداردسازی عملیاتی",
+    "color": "#3B5998",
+    "dark": "#6085D6",
+    "hub": "کتابخانه و SOPها"
+  },
+  "platform_manual_action": "تولید فایل انجام شده؛ زمان‌بندی/آپلود دستی است."
+}

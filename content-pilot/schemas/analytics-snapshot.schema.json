@@ -1,0 +1,312 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atozfnb.info/schemas/analytics-snapshot-0.1.0.schema.json",
+  "title": "AtoZ.FnB Analytics Snapshot",
+  "description": "Timestamped raw platform metrics and transparent derived KPI calculations for one delivery.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "analytics_id",
+    "delivery_id",
+    "platform",
+    "captured_at",
+    "window",
+    "collection",
+    "raw_metrics"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "analytics_id": {
+      "type": "string",
+      "pattern": "^ATZ-AN-[A-Z0-9-]{4,40}$"
+    },
+    "delivery_id": {
+      "type": "string",
+      "pattern": "^ATZ-D-[0-9]{6}$"
+    },
+    "platform_post_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "platform": {
+      "type": "string",
+      "enum": [
+        "website",
+        "instagram",
+        "youtube",
+        "telegram"
+      ]
+    },
+    "captured_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "(?:Z|[+-][0-9]{2}:[0-9]{2})$"
+    },
+    "window": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "start_at",
+        "end_at",
+        "age_hours"
+      ],
+      "properties": {
+        "start_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "(?:Z|[+-][0-9]{2}:[0-9]{2})$"
+        },
+        "end_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "(?:Z|[+-][0-9]{2}:[0-9]{2})$"
+        },
+        "age_hours": {
+          "type": "number",
+          "minimum": 0
+        },
+        "label": {
+          "type": "string",
+          "enum": [
+            "24h",
+            "7d",
+            "30d",
+            "lifetime",
+            "custom"
+          ]
+        }
+      }
+    },
+    "collection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method",
+        "source",
+        "completeness"
+      ],
+      "properties": {
+        "method": {
+          "type": "string",
+          "enum": [
+            "manual",
+            "csv_import",
+            "api"
+          ]
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "completeness": {
+          "type": "string",
+          "enum": [
+            "complete",
+            "partial"
+          ]
+        },
+        "collector_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "raw_metrics": {
+      "type": "object",
+      "description": "Raw platform-reported values. Missing or unavailable values are omitted or null, never inferred as zero.",
+      "properties": {
+        "reach": {
+          "$ref": "#/$defs/nonNegativeNullable"
+        },
+        "impressions": {
+          "$ref": "#/$defs/nonNegativeNullable"
+        },
+        "views": {
+          "$ref": "#/$defs/nonNegativeNullable"
+        },
+        "plays": {
+          "$ref": "#/$defs/nonNegativeNullable"
+        },
+        "likes": {
+          "$ref": "#/$defs/nonNegativeNullable"
+        },
+        "comments": {
+          "$ref": "#/$defs/nonNegativeNullable"
+        },
+        "saves": {
+          "$ref": "#/$defs/nonNegativeNullable"
+        },
+        "shares": {
+          "$ref": "#/$defs/nonNegativeNullable"
+        },
+        "forwards": {
+          "$ref": "#/$defs/nonNegativeNullable"
+        },
+        "replies": {
+          "$ref": "#/$defs/nonNegativeNullable"
+        },
+        "link_clicks": {
+          "$ref": "#/$defs/nonNegativeNullable"
+        },
+        "profile_visits": {
+          "$ref": "#/$defs/nonNegativeNullable"
+        },
+        "completed_views": {
+          "$ref": "#/$defs/nonNegativeNullable"
+        },
+        "avg_watch_seconds": {
+          "$ref": "#/$defs/nonNegativeNullable"
+        },
+        "total_watch_seconds": {
+          "$ref": "#/$defs/nonNegativeNullable"
+        },
+        "engaged_sessions": {
+          "$ref": "#/$defs/nonNegativeNullable"
+        },
+        "downloads": {
+          "$ref": "#/$defs/nonNegativeNullable"
+        }
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/nonNegativeNullable"
+      }
+    },
+    "derived_metrics": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/derivedMetric"
+      },
+      "default": {}
+    },
+    "quality_review": {
+      "$ref": "#/$defs/qualityReview"
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    }
+  },
+  "$defs": {
+    "nonNegativeNullable": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "derivedMetric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "numerator",
+        "denominator",
+        "value",
+        "formula_version"
+      ],
+      "properties": {
+        "numerator": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "denominator": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "value": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "formula_version": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "qualityReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reviewer_id",
+        "reviewed_at",
+        "decision",
+        "scores"
+      ],
+      "properties": {
+        "reviewer_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewed_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "(?:Z|[+-][0-9]{2}:[0-9]{2})$"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "keep",
+            "revise",
+            "retire"
+          ]
+        },
+        "scores": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "accuracy": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5
+            },
+            "brand_fit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5
+            },
+            "clarity": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5
+            },
+            "usefulness": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5
+            },
+            "platform_fit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5
+            }
+          }
+        },
+        "reason_tags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

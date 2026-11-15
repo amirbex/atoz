@@ -1,0 +1,27 @@
+{
+  "content_id": "ATZ-C-000019",
+  "title": "بلوک دوم بوم: ارزش پیشنهادی",
+  "pillar": {
+    "id": "education-sops",
+    "name": "آموزش و استانداردسازی عملیاتی",
+    "color": "#3B5998",
+    "dark": "#6085D6",
+    "hub": "کتابخانه و SOPها"
+  },
+  "series": "آموزش ۹ بلوک بوم",
+  "target_personas": [
+    "مریم",
+    "سینا"
+  ],
+  "core_thesis": "ارزش پیشنهادی باید دلیل انتخاب مشتری و مسئله‌ای را که حل می‌کند روشن سازد.",
+  "production_summary": "کاروسل با تمرین یک‌خطی و مثال فرضی.",
+  "asset_ids": [
+    "ATZ-A-000026"
+  ],
+  "linked_deliveries": [
+    "ATZ-D-000047",
+    "ATZ-D-000054",
+    "ATZ-D-000055"
+  ],
+  "status": "draft_for_review"
+}

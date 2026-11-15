@@ -1,0 +1,26 @@
+{
+  "content_id": "ATZ-C-000028",
+  "title": "Prime Cost به‌عنوان پیش‌درآمد هفتهٔ دوم",
+  "pillar": {
+    "id": "finance-market",
+    "name": "اقتصاد F&B و تحلیل بازار",
+    "color": "#0F766E",
+    "dark": "#2DD4BF",
+    "hub": "آزمایشگاه ابزارها"
+  },
+  "series": "آماده‌سازی مالی",
+  "target_personas": [
+    "سینا",
+    "کیان"
+  ],
+  "core_thesis": "Prime Cost معمولاً از بهای مواد و نیروی کار تشکیل می‌شود؛ هر آستانه باید به تعریف و زمینهٔ بازار متصل باشد.",
+  "production_summary": "میکرو‌ریلز فرمول و دعوت به بررسی دادهٔ خود.",
+  "asset_ids": [
+    "ATZ-A-000038"
+  ],
+  "linked_deliveries": [
+    "ATZ-D-000076",
+    "ATZ-D-000084"
+  ],
+  "status": "draft_for_review"
+}

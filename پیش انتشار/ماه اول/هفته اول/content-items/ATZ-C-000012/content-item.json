@@ -1,0 +1,25 @@
+{
+  "content_id": "ATZ-C-000012",
+  "title": "باور غلط: ایده و دکور خاص برای موفقیت کافی است",
+  "pillar": {
+    "id": "education-sops",
+    "name": "آموزش و استانداردسازی عملیاتی",
+    "color": "#3B5998",
+    "dark": "#6085D6",
+    "hub": "کتابخانه و SOPها"
+  },
+  "series": "باورهای غلط مدیریتی",
+  "target_personas": [
+    "مریم"
+  ],
+  "core_thesis": "ایده باید در کنار مدل درآمد، عملیات و تقاضای واقعی آزموده شود.",
+  "production_summary": "ریلز موشن‌گرافیک با صداهای افکت و بدون نریشن.",
+  "asset_ids": [
+    "ATZ-A-000019"
+  ],
+  "linked_deliveries": [
+    "ATZ-D-000014",
+    "ATZ-D-000018"
+  ],
+  "status": "draft_for_review"
+}

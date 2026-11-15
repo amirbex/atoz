@@ -1,0 +1,13 @@
+{
+  "name": "atoz-brand-tools",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Build tools for AtoZfnb.info visual identity (Phase 1: logo)",
+  "scripts": {
+    "render-png": "node render_png.mjs"
+  },
+  "dependencies": {
+    "sharp": "^0.34.0"
+  }
+}

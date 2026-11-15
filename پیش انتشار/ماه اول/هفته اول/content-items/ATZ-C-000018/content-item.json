@@ -1,0 +1,25 @@
+{
+  "content_id": "ATZ-C-000018",
+  "title": "استراتژی مقدم بر تقلید دکور",
+  "pillar": {
+    "id": "leadership",
+    "name": "الهام‌بخشی، رهبری و ذهنیت",
+    "color": "#0A1931",
+    "dark": "#FFB400",
+    "hub": "Solutions"
+  },
+  "series": "بیانیه‌های استراتژیک",
+  "target_personas": [
+    "عمومی"
+  ],
+  "core_thesis": "تقلید ظاهر رقبا بدون شناخت مشتری، جایگزین انتخاب استراتژیک نیست.",
+  "production_summary": "کارت تک‌جمله‌ای سرمه‌ای/طلایی.",
+  "asset_ids": [
+    "ATZ-A-000025"
+  ],
+  "linked_deliveries": [
+    "ATZ-D-000038",
+    "ATZ-D-000078"
+  ],
+  "status": "draft_for_review"
+}

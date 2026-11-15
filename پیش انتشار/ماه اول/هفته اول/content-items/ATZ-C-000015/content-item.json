@@ -1,0 +1,26 @@
+{
+  "content_id": "ATZ-C-000015",
+  "title": "سه درس گذار از باریستا/سرآشپز به مدیر",
+  "pillar": {
+    "id": "leadership",
+    "name": "الهام‌بخشی، رهبری و ذهنیت",
+    "color": "#0A1931",
+    "dark": "#FFB400",
+    "hub": "Solutions"
+  },
+  "series": "درس‌های مسیر رهبری",
+  "target_personas": [
+    "سینا",
+    "مریم"
+  ],
+  "core_thesis": "تفویض، مدیریت سیستم و استفاده از داده از مهارت فنی متمایزند.",
+  "production_summary": "کاروسل روایی از تجربهٔ بنیان‌گذار؛ ادعاها به تجربهٔ شخصی منتسب شوند.",
+  "asset_ids": [
+    "ATZ-A-000022"
+  ],
+  "linked_deliveries": [
+    "ATZ-D-000024",
+    "ATZ-D-000027"
+  ],
+  "status": "draft_for_review"
+}

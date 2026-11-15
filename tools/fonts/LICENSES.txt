@@ -1,0 +1,4 @@
+Fonts bundled for logo text outlining (all SIL Open Font License 1.1):
+- Vazirmatn (Rastikerdar) — https://github.com/rastikerdar/vazirmatn
+- Montserrat (Julieta Ulanovsky) — https://github.com/JulietaUla/Montserrat
+- Lato (Łukasz Dziedzic) — https://www.latofonts.com/
