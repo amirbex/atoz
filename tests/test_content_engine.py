@@ -18,6 +18,8 @@ from tools.run_content_engine import (
     enrich,
     schema_errors,
     validate_source,
+    write_daily_catalog,
+    preserve_local_workspace,
 )
 from tools.serve_content_studio import Handler
 
@@ -46,6 +48,29 @@ class ContentEngineTests(unittest.TestCase):
         self.assertEqual(len(generated["deliveries"]), 84)
         self.assertTrue(any("اختلاف" in note for note in generated["notes"]))
 
+    def test_week_output_is_day_first_and_grouped_by_format(self):
+        generated, deliveries = enrich(self.source)
+        with TemporaryDirectory() as temporary:
+            output = Path(temporary)
+            write_daily_catalog(output, generated, deliveries)
+            week_index = json.loads((output / "daily-index.json").read_text(encoding="utf-8"))
+            self.assertEqual(week_index["delivery_count"], 84)
+            self.assertEqual(len(week_index["days"]), 7)
+            self.assertTrue((output / "index.html").is_file())
+            self.assertIn("کاروسل‌ها", (output / "index.html").read_text(encoding="utf-8"))
+            for day in ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه"]:
+                root = output / day
+                self.assertTrue((root / "index.html").is_file())
+                self.assertTrue((root / "daily-manifest.json").is_file())
+                for category in ["01-reels", "02-carousels", "03-posts", "04-stories", "05-web-telegram"]:
+                    self.assertTrue((root / category / "index.html").is_file())
+            manifest = json.loads((output / "شنبه" / "daily-manifest.json").read_text(encoding="utf-8"))
+            self.assertEqual(sum(manifest["categories"].values()), manifest["delivery_count"])
+            reel = next(output.glob("شنبه/01-reels/ATZ-D-*.html"))
+            self.assertIn("<video controls", reel.read_text(encoding="utf-8"))
+            carousel = next(output.glob("شنبه/02-carousels/ATZ-D-*.html"))
+            self.assertEqual(carousel.read_text(encoding="utf-8").count("<img loading=\"lazy\""), 8)
+
     def test_copy_outline_has_complete_carousel_and_reel_structures(self):
         generated, deliveries = enrich(self.source)
         carousels = [d for d in deliveries if d["format_id"] == "carousel"]
@@ -55,6 +80,20 @@ class ContentEngineTests(unittest.TestCase):
         self.assertTrue(all(len(d["_slide_copy"]) == 8 for d in carousels))
         self.assertTrue(all(len(d["_scene_copy"]) == 3 for d in reels))
         self.assertTrue(all(d["_copy_outline"]["claim_policy"] == "no-new-claims; owner-review-required" for d in deliveries))
+
+    def test_safe_rebuild_preserves_local_review_and_intake_state(self):
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            previous, stage = root / "previous", root / "stage"
+            previous.mkdir(); stage.mkdir()
+            (previous / "review-state.json").write_text('{"ATZ-C-000001":{"status":"approved"}}', encoding="utf-8")
+            (previous / "intake-drafts.json").write_text('[{"id":"ATZ-I-000001"}]', encoding="utf-8")
+            (previous / "intake").mkdir()
+            (previous / "intake" / "ATZ-I-000001.md").write_text("kept", encoding="utf-8")
+            preserve_local_workspace(previous, stage)
+            self.assertIn("approved", (stage / "review-state.json").read_text(encoding="utf-8"))
+            self.assertIn("ATZ-I-000001", (stage / "intake-drafts.json").read_text(encoding="utf-8"))
+            self.assertEqual((stage / "intake" / "ATZ-I-000001.md").read_text(encoding="utf-8"), "kept")
 
     def test_local_review_and_draft_api(self):
         with TemporaryDirectory() as temporary:
