@@ -9,12 +9,20 @@
            │  اعتبارسنجی برنامه و روابط
            ▼
 tools/run_content_engine.py
-           ├── content-output/week-01/plan.json
-           ├── content-output/week-01/content-items/ATZ-C-…/
-           ├── content-output/week-01/{روز}/ATZ-C-…/ATZ-D-…/
-           ├── content-output/week-01/motion-lab/
-           ├── content-output/week-01/content-engine-manifest.json
-           └── content-output/week-01/generated-file-index.json
+           └── content-output/week-01/
+               ├── index.html                  تابلوی کل هفته
+               ├── plan.json + assets/
+               ├── content-items/ATZ-C-…/
+               ├── {روز}/
+               │   ├── index.html              تابلوی آن روز
+               │   ├── 01-reels/               صفحهٔ هر ریل + لینک ویدئو
+               │   ├── 02-carousels/           صفحهٔ هر کاروسل + گالری اسلایدها
+               │   ├── 03-posts/               پست‌های تکی و گرافیک‌ها
+               │   ├── 04-stories/             استوری‌ها
+               │   ├── 05-web-telegram/        پیش‌نویس متن/مقاله
+               │   └── ATZ-C-…/ATZ-D-…/        رسانه و فایل‌های canonical
+               ├── motion-lab/
+               └── content-engine-manifest.json + generated-file-index.json
 ```
 
 - برنامهٔ منبع، برنامهٔ ۲۸ محتوای مادر و ۸۴ تحویل است؛ عددها از فهرست تحویل‌ها محاسبه می‌شوند، نه از سهمیهٔ روزانهٔ ثابت.

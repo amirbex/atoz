@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build a new, review-only package from the existing week-one plan."""
 from __future__ import annotations
-import argparse, copy, hashlib, json, os, re, shutil, subprocess, sys, tempfile
+import argparse, copy, hashlib, html, json, os, re, shutil, subprocess, sys, tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -20,6 +20,14 @@ OWNER_HANDLE="[[OWNER_APPROVED_SOCIAL_HANDLE]]"
 
 
 def sha(path:Path)->str:return hashlib.sha256(path.read_bytes()).hexdigest()
+
+def preserve_local_workspace(previous:Path,stage:Path)->None:
+    """Carry dashboard decisions and intake drafts across safe engine rebuilds."""
+    for name in ("review-state.json","intake-drafts.json"):
+        source=previous/name
+        if source.is_file():shutil.copy2(source,stage/name)
+    intake=previous/"intake"
+    if intake.is_dir():shutil.copytree(intake,stage/"intake",dirs_exist_ok=True)
 
 def engine_fingerprint()->str:
     digest=hashlib.sha256()
@@ -94,6 +102,95 @@ def enrich(plan:dict)->tuple[dict,list[dict]]:
     safe["notes"].append("موتور تولید، فهرست تحویل‌های منبع را همان‌طور که هست نگه می‌دارد؛ اختلاف شمارندهٔ ۶۴ با ۸۴ تحویل باید پیش از تأیید مالک تطبیق داده شود.")
     return safe,deliveries
 
+CATEGORY_INFO={
+    "01-reels":{"label":"ریلز","description":"ویدیو، استوری‌بورد سه‌صحنه‌ای و افکت صوتی"},
+    "02-carousels":{"label":"کاروسل‌ها","description":"اسلایدهای شماره‌گذاری‌شده و متن هر اسلاید"},
+    "03-posts":{"label":"پست‌های تکی","description":"پست، نقل‌قول، نقشه، اینفوگرافیک و محتوای تصویری"},
+    "04-stories":{"label":"استوری‌ها","description":"استوری و محتوای تعاملی برای آماده‌سازی دستی"},
+    "05-web-telegram":{"label":"وب‌سایت و تلگرام","description":"پیش‌نویس مقاله و متن‌های قابل‌کپی"},
+}
+
+def category_for(delivery:dict)->str:
+    if delivery.get("channel_id")=="instagram":
+        if delivery.get("_kind")=="reel":return "01-reels"
+        if delivery.get("format_id")=="carousel":return "02-carousels"
+        if delivery.get("format_id") in {"story","story_carousel"}:return "04-stories"
+        return "03-posts"
+    return "05-web-telegram"
+
+def write_daily_catalog(out:Path,plan:dict,deliveries:list[dict])->None:
+    """Add a day-first, type-grouped navigation layer without duplicating large media files."""
+    by_day={day:[] for day in renderer.DAY_NAMES}
+    for delivery in deliveries:by_day[delivery["day_name_fa"]].append(delivery)
+    content={item["content_id"]:item for item in plan["content_items"]}
+    day_summaries=[]
+    for day_index,day in enumerate(renderer.DAY_NAMES,1):
+        folder=out/day;folder.mkdir(parents=True,exist_ok=True);rows=by_day[day]
+        groups={name:[] for name in CATEGORY_INFO}
+        for delivery in rows:groups[category_for(delivery)].append(delivery)
+        counts={name:len(items) for name,items in groups.items()}
+        day_summaries.append({"day_index":day_index,"day_name_fa":day,"delivery_count":len(rows),"categories":counts})
+        page_cards=[]
+        for category,info in CATEGORY_INFO.items():
+            category_dir=folder/category;category_dir.mkdir(parents=True,exist_ok=True)
+            items=groups[category]
+            catalog=[]
+            for delivery in items:
+                item=content[delivery["content_id"]]
+                relative=f"../{delivery['content_id']}/{delivery['delivery_id']}"
+                entry={"delivery_id":delivery["delivery_id"],"content_id":delivery["content_id"],"title":item["topic"],"channel_id":delivery["channel_id"],"format_id":delivery["format_id"],"asset_folder":relative,"review_status":"owner_review_required","publishing_enabled":False}
+                catalog.append(entry)
+                media=""
+                if delivery["_kind"]=="reel":
+                    media=f'<video controls playsinline preload="metadata" poster="{html.escape(relative)}/reel-source/scene-01.png"><source src="{html.escape(relative)}/reel.mp4" type="video/mp4"></video>'
+                elif delivery["format_id"]=="carousel":
+                    slides=[]
+                    for n,slide in enumerate(delivery.get("_slide_copy",[]),1):
+                        src=f"{relative}/slides/slide-{n:02d}.png"
+                        slides.append(f'<a href="{html.escape(src)}"><img loading="lazy" src="{html.escape(src)}" alt="اسلاید {n}: {html.escape(slide["title"])}"><span>{n:02d} · {html.escape(slide["title"])}</span></a>')
+                    media=f'<div class="gallery">{"".join(slides)}</div>'
+                else:
+                    media=f'<a class="still" href="{html.escape(relative)}/creative.png"><img loading="lazy" src="{html.escape(relative)}/creative.png" alt="پیش‌نمایش {html.escape(item["topic"])}"></a>'
+                caption=html.escape(delivery.get("caption", ""))
+                hashtags=html.escape(" ".join(delivery.get("hashtags",[])))
+                action_links=[f'<a href="{html.escape(relative)}/metadata.json">مشخصات JSON</a>',f'<a href="{html.escape(relative)}/copy-outline.json">طرح کپی</a>',f'<a href="{html.escape(relative)}/caption.txt">متن کپشن</a>']
+                if delivery["_kind"]=="reel":action_links.append(f'<a href="{html.escape(relative)}/reel.mp4" download>دریافت MP4</a>')
+                if delivery["format_id"]=="carousel":action_links.append(f'<a href="{html.escape(relative)}/slides/">فایل‌های اسلاید</a>')
+                card=f'''<article class="delivery" id="{html.escape(delivery['delivery_id'])}"><div class="media">{media}</div><div class="copy"><div class="meta"><span>{html.escape(delivery['delivery_id'])}</span><span>{html.escape(delivery['channel_id'])} · {html.escape(delivery['format_id'])}</span></div><h2>{html.escape(item['topic'])}</h2><p class="hook">{html.escape(delivery.get('hook',''))}</p><details><summary>کپشن و متن آماده</summary><div class="caption">{caption}</div><small>{hashtags}</small></details><nav>{' · '.join(action_links)}</nav><small class="review">پیش‌نویس · بازبینی مالک لازم است · انتشار خودکار خاموش</small></div></article>'''
+                (category_dir/f"{delivery['delivery_id']}.html").write_text(f'''<!doctype html><html lang="fa" dir="rtl"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(item['topic'])} · {day}</title><link rel="stylesheet" href="../day-board.css"><body><header><a href="../index.html">← {day} · بازگشت به روز</a><span>AtoZ CONTENT STUDIO · {CATEGORY_INFO[category]['label']}</span></header>{card}</body></html>''',encoding="utf-8")
+            index_rows=[]
+            for delivery,entry in zip(items,catalog):
+                item=content[delivery["content_id"]]
+                index_rows.append(f'<li><a href="{delivery["delivery_id"]}.html"><b>{html.escape(item["topic"])}</b><small>{delivery["delivery_id"]} · {html.escape(delivery["format_id"])}</small></a></li>')
+            category_html=f'''<!doctype html><html lang="fa" dir="rtl"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{CATEGORY_INFO[category]['label']} · {day}</title><link rel="stylesheet" href="../day-board.css"><body><header><a href="../index.html">← {day} · بازگشت به روز</a><span>{day_index:02d} / 07</span></header><main class="catalog"><p class="eyebrow">ATOZ · {day.upper()}</p><h1>{CATEGORY_INFO[category]['label']}</h1><p>{CATEGORY_INFO[category]['description']}</p><ul>{''.join(index_rows) if index_rows else '<li class="empty">برای این روز تحویلی در این دسته ثبت نشده است.</li>'}</ul></main></body></html>'''
+            (category_dir/"index.html").write_text(category_html,encoding="utf-8")
+            (category_dir/"index.json").write_text(json.dumps({"day":day,"category":category,"label_fa":info["label"],"count":len(items),"items":catalog},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+            (category_dir/"README.fa.md").write_text(f"# {day} · {info['label']}\n\n**تعداد:** {len(items)}\n\n{info['description']}\n\n"+"\n".join(f"- [{content[d['content_id']]['topic']}]({d['delivery_id']}.html) · `{d['delivery_id']}`" for d in items)+("\n" if items else "\nاین دسته در برنامهٔ این روز تحویل ندارد.\n"),encoding="utf-8")
+            page_cards.append(f'<a class="category" href="{category}/index.html"><span>{html.escape(info["label"])}</span><b>{len(items):02d}</b><small>{html.escape(info["description"])}</small></a>')
+        css='''@font-face{font-family:V;src:url(../../../tools/fonts/Vazirmatn-Regular.ttf)}@font-face{font-family:V;src:url(../../../tools/fonts/Vazirmatn-Bold.ttf);font-weight:700}*{box-sizing:border-box}body{margin:0;background:#F3F6FA;color:#0A1931;font:16px/1.85 V,Tahoma,sans-serif}header{display:flex;justify-content:space-between;align-items:center;padding:18px max(22px,calc((100vw - 1180px)/2));background:#0A1931;color:#fff}header a{color:#FFB400;text-decoration:none}main{max-width:1180px;margin:40px auto;padding:0 24px}.eyebrow{color:#A56E00;font:700 12px Arial,sans-serif;letter-spacing:1px}h1{font-size:clamp(30px,5vw,54px);margin:4px 0}.intro{color:#52627A}.summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:25px 0}.category{display:flex;flex-direction:column;gap:2px;padding:18px;border:1px solid #DDE4ED;border-radius:16px;background:#fff;color:inherit;text-decoration:none;box-shadow:0 8px 24px #0A19310A}.category b{font:700 30px Arial;color:#A56E00}.category small{color:#66758A}.delivery-link{display:flex;flex-direction:column;gap:4px;padding:14px;border:1px solid #DDE4ED;border-radius:12px;background:#fff;color:#203B60;text-decoration:none}.delivery-link small{color:#738097}.section-title{margin:35px 0 12px}.delivery{display:grid;grid-template-columns:minmax(240px,42%) 1fr;gap:24px;padding:22px;margin:14px 0;background:#fff;border:1px solid #DFE6EF;border-radius:18px}.media img,.media video{width:100%;max-height:620px;object-fit:contain;border-radius:12px;background:#0A1931}.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.gallery a{position:relative}.gallery img{display:block}.gallery span{font-size:12px;color:#51627A}.meta{display:flex;justify-content:space-between;color:#6B7890;font-size:12px}.copy h2{font-size:22px;line-height:1.5}.hook{color:#475569;font-weight:700}.caption{white-space:pre-wrap;background:#F5F7FA;padding:16px;border-radius:12px;margin:10px 0}.copy nav{display:flex;flex-wrap:wrap;gap:12px;margin:14px 0}.copy nav a,.catalog a{color:#294E82}.review{color:#8A5A00}.catalog{max-width:900px}.catalog ul{list-style:none;padding:0}.catalog li{margin:10px 0;padding:14px;background:#fff;border:1px solid #DFE6EF;border-radius:12px}.catalog li a{display:flex;justify-content:space-between;gap:16px;text-decoration:none}.catalog li small{color:#65748A}.empty{color:#6B7890}@media(max-width:760px){header{padding:14px 18px}.delivery{grid-template-columns:1fr;gap:12px}main{margin:24px auto}.catalog li a{flex-direction:column}}'''
+        (folder/"day-board.css").write_text(css,encoding="utf-8")
+        summary_cards=''.join(page_cards)
+        board_items=[]
+        for category,items in groups.items():
+            for delivery in items:
+                item=content[delivery["content_id"]];link=f"{category}/{delivery['delivery_id']}.html"
+                board_items.append(f'<a class="delivery-link" href="{link}"><span>{html.escape(item["topic"])}</span><small>{html.escape(CATEGORY_INFO[category]["label"])} · {delivery["delivery_id"]}</small></a>')
+        board=f'''<!doctype html><html lang="fa" dir="rtl"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>برنامهٔ تولید {day} · هفتهٔ اول AtoZ</title><link rel="stylesheet" href="day-board.css"><body><header><a href="../README.md">AtoZ CONTENT ENGINE</a><span>ماه ۱ · هفتهٔ ۱</span></header><main><p class="eyebrow">WEEK 01 · DAY {day_index:02d}</p><h1>{day}</h1><p class="intro">تابلوی تولید روزانه · {len(rows)} تحویل برای آماده‌سازی، کنترل و بازبینی دستی</p><section class="summary">{summary_cards}</section><h2 class="section-title">فهرست تحویل‌های امروز</h2><section class="summary">{''.join(board_items)}</section><p class="review">همهٔ خروجی‌ها پیش‌نویس‌اند. منبع‌ها، اعداد، مقصدها و مجوزها را پیش از استفاده بررسی کنید؛ هیچ زمان‌بندی یا انتشار خودکار انجام نمی‌شود.</p></main></body></html>'''
+        (folder/"index.html").write_text(board,encoding="utf-8")
+        (folder/"daily-manifest.json").write_text(json.dumps({"day_index":day_index,"day_name_fa":day,"delivery_count":len(rows),"categories":counts,"deliveries":[{"delivery_id":d["delivery_id"],"content_id":d["content_id"],"category":category_for(d),"format_id":d["format_id"]} for d in rows],"review_required":True,"publishing_enabled":False},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+        (folder/"README.md").write_text(f"# {day} · روز {day_index:02d}\n\n**{len(rows)} تحویل** · [بازکردن تابلوی روزانه](index.html)\n\n## دسته‌بندی سریع\n\n"+"\n".join(f"- [{CATEGORY_INFO[name]['label']} — {counts[name]}](./{name}/index.html)" for name in CATEGORY_INFO)+"\n\n## جزئیات منبع\n\n"+"\n".join(f"- `{d['content_id']}/{d['delivery_id']}` · {d['channel_id']} · {d['format_id']}" for d in rows)+"\n\n> پیش‌نویس برای بازبینی مالک؛ انتشار و زمان‌بندی خودکار وجود ندارد.\n",encoding="utf-8")
+    mismatch=count_reference_mismatch(plan.get("notes",[]))
+    daily_index={"week_index":1,"day_count":7,"content_items":len(plan["content_items"]),"delivery_count":len(deliveries),"reported_reference_count":mismatch.get("reference_count"),"delivery_count_discrepancy":mismatch.get("difference"),"days":day_summaries,"publishing_enabled":False}
+    (out/"daily-index.json").write_text(json.dumps(daily_index,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    cards=[]
+    for summary in day_summaries:
+        day=summary["day_name_fa"];counts=summary["categories"]
+        cats=" · ".join(f"{html.escape(CATEGORY_INFO[key]['label'])} {counts[key]}" for key in CATEGORY_INFO if counts[key])
+        cards.append(f'<a class="day" href="{html.escape(day)}/index.html"><span>روز {summary["day_index"]:02d}</span><h2>{html.escape(day)}</h2><b>{summary["delivery_count"]} تحویل</b><small>{cats}</small></a>')
+    alert=f'<aside>نیازمند تطبیق مالک: ۸۴ تحویل در برنامه در برابر {mismatch.get("reference_count",64)} در جمع ردیف‌ها؛ اختلاف {mismatch.get("difference",20)} مورد.</aside>'
+    week_html=f'''<!doctype html><html lang="fa" dir="rtl"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AtoZ · بستهٔ تولید هفتهٔ اول</title><style>@font-face{{font-family:V;src:url(../../tools/fonts/Vazirmatn-Regular.ttf)}}@font-face{{font-family:V;src:url(../../tools/fonts/Vazirmatn-Bold.ttf);font-weight:700}}*{{box-sizing:border-box}}body{{margin:0;background:#F3F6FA;color:#0A1931;font:16px/1.9 V,Tahoma,sans-serif}}header{{background:#0A1931;color:#fff;padding:24px max(22px,calc((100vw - 1180px)/2))}}header img{{width:155px;height:42px;object-fit:contain}}main{{max-width:1180px;margin:38px auto;padding:0 24px}}.eyebrow{{color:#B88400;font:700 12px Arial,sans-serif;letter-spacing:1.4px}}h1{{font-size:clamp(32px,5vw,58px);margin:5px 0}}.lead{{color:#52627A}}.days{{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:15px;margin:28px 0}}.day{{display:flex;flex-direction:column;gap:4px;padding:22px;border:1px solid #DCE4ED;background:#fff;border-radius:18px;color:inherit;text-decoration:none;box-shadow:0 12px 28px #0A19310A}}.day span{{color:#8A6500;font-size:12px}}.day h2{{margin:0;font-size:24px}}.day b{{font-size:20px;color:#0F766E}}.day small{{color:#5B6A7F;line-height:1.7}}aside{{padding:16px 18px;border-right:4px solid #D99A00;background:#FFF6D9;border-radius:10px;color:#665018}}footer{{margin:30px 0;color:#6A778A;font-size:13px}}@media(max-width:640px){{main{{margin:24px auto}}}}</style><body><header><img src="../../logo/primary/white/horizontal.svg" alt="AtoZ"><div>CONTENT ENGINE · OWNER REVIEW ONLY</div></header><main><p class="eyebrow">WEEK 01 · PRODUCTION PACKAGE</p><h1>برنامهٔ تولید هفتهٔ اول</h1><p class="lead">{len(plan['content_items'])} محتوای مادر · {len(deliveries)} تحویل · مرتب‌شده بر اساس روز و نوع خروجی</p>{alert}<section class="days">{''.join(cards)}</section><footer>همهٔ فایل‌ها پیش‌نویس بازبینی‌اند. انتشار و زمان‌بندی خودکار خاموش است؛ نشانی‌ها و شواهد را مالک تأیید کند.</footer></main></body></html>'''
+    (out/"index.html").write_text(week_html,encoding="utf-8")
+
 def build(source:Path,out:Path,skip_video:bool=False,allow_replace:bool=False)->dict:
     raw=source.read_bytes();original=json.loads(raw.decode("utf-8"));summary=validate_source(original)
     plan,deliveries=enrich(original)
@@ -111,6 +208,7 @@ def build(source:Path,out:Path,skip_video:bool=False,allow_replace:bool=False)->
         renderer.write_plan(plan,deliveries)
         renderer.write_delivery_files(plan,deliveries)
         renderer.write_package_guide(plan)
+        write_daily_catalog(stage,plan,deliveries)
         (stage/"README.md").write_text("""# AtoZ Content Engine · هفتهٔ اول
 
 **وضعیت بسته: پیش‌نویس برای بازبینی مالک.** این خروجی نسخه‌ای مستقل است و فایل‌های منبع یا بستهٔ قدیمی را تغییر نمی‌دهد.
@@ -119,7 +217,7 @@ def build(source:Path,out:Path,skip_video:bool=False,allow_replace:bool=False)->
 
 - `plan.json` و `assets/`: برنامه و رجیستری منبع؛ شناسه‌ها همان شناسه‌های ورودی‌اند.
 - `content-items/`: brief هر یک از ۲۸ ایدهٔ مادر.
-- پوشه‌های روزهای هفته: تحویل‌ها به‌شکل `روز/شناسهٔ محتوا/شناسهٔ تحویل/`.
+- `index.html`: نمای هفته؛ هر روز تابلو و پوشه‌های نوع‌محور `01-reels/`, `02-carousels/`, `03-posts/`, `04-stories/`, `05-web-telegram/` دارد.\n- منبع هر تحویل در `روز/شناسهٔ محتوا/شناسهٔ تحویل/` نگه‌داری می‌شود؛ صفحه‌های دسته‌بندی به فایل‌های اصلی پیوند می‌دهند و رسانه را بی‌دلیل کپی نمی‌کنند.
 - هر تحویل شامل متن، `copy-outline.json`، `metadata.json` و SVG/PNG است؛ کاروسل‌ها پوشهٔ `slides/` و ریل‌ها `reel-source/` و `reel.mp4` دارند.
 - `motion-lab/`: دمو HTML داده‌محور، storyboard، فریم‌ها، poster و MP4 فرضی.
 - `review-state.json` و `intake-drafts.json`: داده‌های محلی داشبورد؛ هیچ درخواست بیرونی یا انتشاری انجام نمی‌شود.
@@ -149,6 +247,7 @@ def build(source:Path,out:Path,skip_video:bool=False,allow_replace:bool=False)->
         video_count=sum(1 for d in deliveries if d["_kind"]=="reel") if not skip_video else 0
         manifest["rendered_video_count"]=video_count
         manifest["motion_demo_video"]=(stage/"motion-lab/break-even-anatomy.mp4").exists()
+        if allow_replace:preserve_local_workspace(out,stage)
         indexed=[]
         for asset_path in sorted(p for p in stage.rglob("*") if p.is_file() and p.name not in {"generated-file-index.json","content-engine-manifest.json"}):
             indexed.append({"path":asset_path.relative_to(stage).as_posix(),"bytes":asset_path.stat().st_size,"sha256":sha(asset_path)})
