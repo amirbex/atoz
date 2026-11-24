@@ -8,6 +8,7 @@
     "render-png": "node render_brand_assets.mjs",
     "render-identity": "node render_brand_assets.mjs",
     "render-brand": "node render_brand_assets.mjs && (if [ -x ../.venv/bin/python ]; then ../.venv/bin/python build_brand_book_pdf.py; else python3 build_brand_book_pdf.py; fi)",
+    "render-presentation": "node render_brand_presentation.mjs && (if [ -x ../.venv/bin/python ]; then ../.venv/bin/python build_brand_presentation.py --package; else python3 build_brand_presentation.py --package; fi)",
     "audit": "npm audit --omit=dev"
   },
   "dependencies": {

@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0",
+  "license": "AtoZ original recipes",
+  "source_policy": "Original AtoZ recipes. Inspired by public design and motion workflows; no code, templates, or assets copied.",
+  "recipes": [
+    {"id":"kinetic-headline","label_fa":"متن جنبشی","category":"type","engine":"svg-timeline","duration_seconds":6,"easing":"cubic-out","parameters":["headline","accent_words","direction","safe_area"],"best_for":["quote","hook","reel"]},
+    {"id":"staggered-chapters","label_fa":"ورود مرحله‌ای فصل‌ها","category":"transition","engine":"svg-timeline","duration_seconds":8,"easing":"stagger-120ms","parameters":["chapter_labels","active_index","hold_seconds"],"best_for":["carousel","explainer"]},
+    {"id":"metric-count-up","label_fa":"شمارندهٔ شاخص","category":"data","engine":"data-svg","duration_seconds":5,"easing":"ease-out","parameters":["value","unit","precision","source_label"],"best_for":["kpi","finance","market"]},
+    {"id":"bar-chart-build","label_fa":"ساخت نمودار ستونی","category":"data","engine":"data-svg","duration_seconds":7,"easing":"cubic-out","parameters":["series","labels","max_value","source_label"],"best_for":["analytics","comparison","reel"]},
+    {"id":"anatomy-explode","label_fa":"کالبدشکافی قطعه‌به‌قطعه","category":"anatomy","engine":"html-seekable","duration_seconds":10,"easing":"spring-soft","parameters":["system_parts","part_order","relations","current_step"],"best_for":["workflow","product","formula"]},
+    {"id":"flow-map","label_fa":"مسیر جریان","category":"diagram","engine":"svg-timeline","duration_seconds":7,"easing":"draw-path","parameters":["nodes","edges","active_node","node_labels"],"best_for":["sop","process","customer_journey"]},
+    {"id":"brand-route","label_fa":"ورود مسیر نشان","category":"brand-motion","engine":"svg-timeline","duration_seconds":3.5,"easing":"cubic-out","parameters":["brand_mark_asset","dot_color","reduced_motion"],"best_for":["intro","outro","watermark"]},
+    {"id":"before-after-wipe","label_fa":"گذار قبل / بعد","category":"transition","engine":"html-seekable","duration_seconds":5,"easing":"linear-wipe","parameters":["before_asset","after_asset","divider_position","labels"],"best_for":["audit","case_study","workflow"]},
+    {"id":"proof-callout","label_fa":"نمایش منبع و نکته","category":"editorial","engine":"svg-timeline","duration_seconds":5,"easing":"fade-rise","parameters":["claim","evidence_label","source_id","caveat"],"best_for":["research","case_study","finance"]},
+    {"id":"cta-handoff","label_fa":"پایان‌بندی و اقدام بعدی","category":"cta","engine":"svg-timeline","duration_seconds":4,"easing":"pulse-once","parameters":["action_label","destination_status","brand_lockup"],"best_for":["reel","carousel","story"]}
+  ]
+}

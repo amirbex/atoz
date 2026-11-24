@@ -1,10 +1,10 @@
 {
   "version": "3.0.0",
   "status": "owner_review",
-  "mark_concept": "Original geometric A/Z monogram; shared baseline expresses complete A-to-Z scope, the gold endpoint is an anchor point rather than a growth chart. Not traced from previous AtoZ or reference-brand art.",
+  "mark_concept": "Recovered AZ emblem from the supplied approved reference: the A joins an ascending Z-shaped route and arrow, finished by the gold node. The surrounding lockups and naming are updated for the current AtoZ system.",
   "master": {
     "name": "AtoZ",
-    "alternate_founder_lockup": "AtoZ.fnb",
+    "alternate_founder_lockup": "AtoZfnb.info",
     "persian_wordmark": false,
     "founder": "Amir Zamani",
     "founder_fa": "امیر زمانی",
@@ -16,6 +16,7 @@
       "id": "blog",
       "name": "Blog",
       "display": "AtoZ Blog",
+      "purpose_fa": "مقاله، رهبری و مطالعهٔ موردی",
       "content_pillars": [
         "case-studies",
         "leadership"
@@ -26,9 +27,9 @@
       "id": "tools",
       "name": "Tools",
       "display": "AtoZ Tools",
+      "purpose_fa": "ابزارهای محاسبه و کاربرد عملیاتی",
       "content_pillars": [
-        "finance-market",
-        "education-sops"
+        "finance-market"
       ],
       "icon": "toolkit"
     },
@@ -36,6 +37,7 @@
       "id": "book",
       "name": "book",
       "display": "AtoZ book",
+      "purpose_fa": "آموزش، مسیر یادگیری و SOP",
       "content_pillars": [
         "education-sops",
         "community-roadmaps"
@@ -47,6 +49,7 @@
       "name": "PB",
       "display": "AtoZ PB",
       "descriptor": "PROMPT BANK",
+      "purpose_fa": "بانک پرامپت و استفادهٔ مسئولانه از AI",
       "content_pillars": [
         "innovation-ai"
       ],
@@ -56,11 +59,10 @@
       "id": "solicitor",
       "name": "Solicitor",
       "display": "AtoZ Solicitor",
-      "content_pillars": [
-        "leadership",
-        "finance-market"
-      ],
-      "icon": "advisory"
+      "purpose_fa": "حوزهٔ دقیق این نام نیازمند تعریف مالک است",
+      "content_pillars": [],
+      "scope_status": "pending_owner_definition",
+      "icon": "structured-document"
     }
   ],
   "content_pillars": [
@@ -68,37 +70,49 @@
       "id": "education-sops",
       "title": "F&B education & operating systems",
       "fa": "آموزش F&B و سیستم‌های عملیاتی",
-      "destination": "AtoZ book"
+      "purpose_fa": "یادگیری مرحله‌ای، SOP و چک‌لیست‌های قابل اجرا برای تیم‌ها و مدیران عملیات.",
+      "destination": "AtoZ book",
+      "color_id": "book"
     },
     {
       "id": "leadership",
       "title": "Leadership and owner growth",
       "fa": "رهبری و رشد مالکان",
-      "destination": "AtoZ Blog"
+      "purpose_fa": "تصمیم‌گیری، مدیریت تیم و رشد بنیان‌گذار؛ تجربه از ادعای عمومی تفکیک شود.",
+      "destination": "AtoZ Blog",
+      "color_id": "blog"
     },
     {
       "id": "innovation-ai",
       "title": "AI, innovation and automation",
       "fa": "هوش مصنوعی، نوآوری و اتوماسیون",
-      "destination": "AtoZ PB"
+      "purpose_fa": "کاربردهای عملی AI و اتوماسیون؛ حریم خصوصی و نیاز به بازبینی انسانی رعایت شود.",
+      "destination": "AtoZ PB",
+      "color_id": "pb"
     },
     {
       "id": "finance-market",
       "title": "F&B finance and market analysis",
       "fa": "مالی و تحلیل بازار F&B",
-      "destination": "AtoZ Tools"
+      "purpose_fa": "هزینه، قیمت‌گذاری، اقتصاد واحد و بازار؛ عدد و ادعا فقط با منبع معتبر.",
+      "destination": "AtoZ Tools",
+      "color_id": "tools"
     },
     {
       "id": "case-studies",
       "title": "Case studies and field analysis",
       "fa": "مطالعهٔ موردی و تحلیل میدانی",
-      "destination": "AtoZ Blog"
+      "purpose_fa": "زمینه، روش، نتیجه و محدودیت مطالعهٔ موردی به‌صورت شفاف روایت شود.",
+      "destination": "AtoZ Blog",
+      "color_id": "blog"
     },
     {
       "id": "community-roadmaps",
       "title": "Learning paths and community",
       "fa": "مسیر یادگیری و جامعه",
-      "destination": "AtoZ book"
+      "purpose_fa": "نقشه‌راه‌های پیوسته، منابع و یادگیری همتا‌به‌همتا؛ بدون وعدهٔ نتیجهٔ قطعی.",
+      "destination": "AtoZ book",
+      "color_id": "book"
     }
   ],
   "colors": {

@@ -223,7 +223,7 @@ def make_card(title,subtitle,pillar,kind="feed",slide=1,total=1,style="editorial
     # Footer signature and site/handle, readable at the intended social size.
     footer_y=H-95
     parts.append(f'<line x1="70" y1="{footer_y-48}" x2="{W-70}" y2="{footer_y-48}" stroke="{accent}" stroke-opacity=".35" stroke-width="2"/>')
-    footer="[[APPROVED_URL]]  ·  [[APPROVED_SOCIAL_HANDLE]]"
+    footer=f"{BRAND_SITE}  ·  {INSTAGRAM}"
     parts.append(shaped_text(footer,W-78,footer_y,24,fg,"Montserrat-SemiBold.ttf",max_width=W-240)[0])
     if num: parts.append(shaped_text(num,90,footer_y,22,accent,"Montserrat-Bold.ttf",max_width=140,align="right")[0])
     # Keep the CTA concise and editable in the companion text file.
@@ -376,6 +376,8 @@ def write_delivery_files(plan, deliveries):
         tags=" ".join(d["hashtags"])
         (day_root/"caption.txt").write_text(caption+"\n\n"+tags+"\n",encoding="utf-8")
         (day_root/"hashtags.txt").write_text(tags+"\n",encoding="utf-8")
+        if d.get("_copy_outline"):
+            (day_root/"copy-outline.json").write_text(json.dumps(d["_copy_outline"],ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
         body=d["_story_text"] or d["_idea_summary"]
         extra=""
         if d["channel_id"]=="website":
@@ -405,16 +407,16 @@ def write_delivery_files(plan, deliveries):
             (day_root/"copy.html").write_text(make_document_html(d["_idea_title"],d["_idea_summary"],caption,tags,"<p>برای استوری، Poll/Quiz/Question/Link sticker باید داخل اپ اینستاگرام دستی اضافه شود.</p>" if d["format_id"]=="story" else ""),encoding="utf-8")
         if d["format_id"]=="carousel":
             slides=day_root/"slides";slides.mkdir(exist_ok=True)
-            slide_lines=[d["_idea_title"],d["_idea_summary"],"تعریف مسئله برای یک کسب‌وکار F&B","یک مثال فرضی؛ اعداد را با دادهٔ واقعی خود جایگزین کنید.","سه پرسش برای بررسی مشتری و ارزش","یک گام اجرایی برای همین هفته","منابع/فرض‌ها را پیش از تصمیم‌گیری بررسی کنید.",f"اقدام بعدی و منابع: {BRAND_SITE} · {INSTAGRAM}"]
-            for i,text in enumerate(slide_lines,1):
-                svg=make_card(text,d["_idea_summary"] if i in [2,6] else "یک ایده در هر اسلاید؛ کوتاه، روشن و قابل‌اقدام.",d["_pillar_num"],kind="feed",slide=i,total=8,style=d["_style"])
+            slide_copy=d.get("_slide_copy") or [{"title":d["_idea_title"],"body":d["_idea_summary"]} for _ in range(8)]
+            if len(slide_copy)!=8: raise ValueError(f"{d['delivery_id']}: carousel needs exactly 8 generated slides")
+            for i,item_copy in enumerate(slide_copy,1):
+                svg=make_card(item_copy["title"],item_copy["body"],d["_pillar_num"],kind="feed",slide=i,total=8,style=d["_style"])
                 (slides/f"slide-{i:02d}.svg").write_text(svg,encoding="utf-8")
         if d["_kind"]=="reel":
             reel=day_root/"reel-source";reel.mkdir(exist_ok=True)
-            for i,phase in enumerate(["قلاب","یک نکتهٔ اجرایی","جمع‌بندی و CTA"],1):
-                scene_title=[d["_idea_title"],phase,d["_idea_title"]][i-1]
-                scene_sub=[d["hook"],d["_idea_summary"],f"ادامه و منابع مرتبط: {BRAND_SITE} · {INSTAGRAM}"][i-1]
-                svg=make_card(scene_title,scene_sub,d["_pillar_num"],kind="reel",style=d["_style"])
+            scene_copy=d.get("_scene_copy") or [{"title":d["_idea_title"],"body":d["_idea_summary"]} for _ in range(3)]
+            for i,scene in enumerate(scene_copy,1):
+                svg=make_card(scene["title"],scene["body"],d["_pillar_num"],kind="reel",style=d["_style"])
                 (reel/f"scene-{i:02d}.svg").write_text(svg,encoding="utf-8")
             (day_root/"audio").mkdir(exist_ok=True)
             duration=float(d["creative_spec"].get("duration_seconds") or 12)

@@ -10,6 +10,7 @@
       "id": "blog",
       "name": "Blog",
       "display": "AtoZ Blog",
+      "purpose_fa": "مقاله، رهبری و مطالعهٔ موردی",
       "content_pillars": [
         "case-studies",
         "leadership"
@@ -20,9 +21,9 @@
       "id": "tools",
       "name": "Tools",
       "display": "AtoZ Tools",
+      "purpose_fa": "ابزارهای محاسبه و کاربرد عملیاتی",
       "content_pillars": [
-        "finance-market",
-        "education-sops"
+        "finance-market"
       ],
       "icon": "toolkit"
     },
@@ -30,6 +31,7 @@
       "id": "book",
       "name": "book",
       "display": "AtoZ book",
+      "purpose_fa": "آموزش، مسیر یادگیری و SOP",
       "content_pillars": [
         "education-sops",
         "community-roadmaps"
@@ -41,6 +43,7 @@
       "name": "PB",
       "display": "AtoZ PB",
       "descriptor": "PROMPT BANK",
+      "purpose_fa": "بانک پرامپت و استفادهٔ مسئولانه از AI",
       "content_pillars": [
         "innovation-ai"
       ],
@@ -50,11 +53,10 @@
       "id": "solicitor",
       "name": "Solicitor",
       "display": "AtoZ Solicitor",
-      "content_pillars": [
-        "leadership",
-        "finance-market"
-      ],
-      "icon": "advisory"
+      "purpose_fa": "حوزهٔ دقیق این نام نیازمند تعریف مالک است",
+      "content_pillars": [],
+      "scope_status": "pending_owner_definition",
+      "icon": "structured-document"
     }
   ],
   "states": [

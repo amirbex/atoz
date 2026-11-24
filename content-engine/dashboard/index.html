@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0A1931">
+  <title>AtoZ Content Studio — استودیوی تولید محتوا</title>
+  <link rel="stylesheet" href="/content-engine/dashboard/dashboard.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand-lockup" href="#overview" aria-label="AtoZ Content Studio">
+        <img src="/logo/primary/color/horizontal.svg" alt="AtoZ">
+        <span class="studio-label">CONTENT STUDIO <i>LOCAL</i></span>
+      </a>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="side-nav" aria-label="ناوبری اصلی">
+        <button class="nav-item active" data-view="overview"><span class="nav-icon">◫</span><span>نمای کلی</span><b class="nav-count">01</b></button>
+        <button class="nav-item" data-view="calendar"><span class="nav-icon">▦</span><span>تقویم هفته</span><b class="nav-count">02</b></button>
+        <button class="nav-item" data-view="library"><span class="nav-icon">▤</span><span>مخزن محتوا</span><b class="nav-count">03</b></button>
+        <button class="nav-item" data-view="motion"><span class="nav-icon">▷</span><span>آزمایشگاه موشن</span><b class="nav-count">04</b></button>
+        <button class="nav-item" data-view="brand"><span class="nav-icon">◈</span><span>مخزن هویت برند</span><b class="nav-count">05</b></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="local-note"><span class="live-dot"></span><div><strong>محلی و امن</strong><small>هیچ انتشار خودکاری فعال نیست</small></div></div>
+        <div class="sidebar-user"><div class="avatar">AZ</div><div><strong>بازبینی مالک</strong><small>حالت پیش‌نویس</small></div><span class="more">•••</span></div>
+      </div>
+    </aside>
+
+    <main class="main-shell">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="بازکردن ناوبری">☰</button>
+        <div class="breadcrumbs"><span>استودیوی محتوا</span><span class="crumb-sep">/</span><b id="currentViewName">نمای کلی</b></div>
+        <div class="top-actions">
+          <span class="build-status"><span class="live-dot"></span> محلی · بدون اتصال انتشار</span>
+          <button class="icon-button" id="refreshBtn" title="بارگذاری دوباره" aria-label="بارگذاری دوباره">↻</button>
+          <button class="primary-button" id="newDraftBtn"><span>＋</span> ایدهٔ تازه</button>
+        </div>
+      </header>
+
+      <section class="view active" id="view-overview">
+        <div class="hero-row">
+          <div>
+            <div class="eyebrow"><span class="gold-rule"></span> برنامهٔ پیش‌انتشار <span class="week-tag">ماه ۱ · هفتهٔ ۱</span></div>
+            <h1>فونداسیون کسب‌وکار <em>F&amp;B</em></h1>
+            <p class="hero-copy">از برنامهٔ واقعی هفتهٔ اول تا محتوای چندکاناله، با یک منبع داده و خروجی‌های قابل‌بازبینی.</p>
+          </div>
+          <div class="hero-actions"><a class="secondary-button" href="/content-output/week-01/README.md" target="_blank">بازکردن بستهٔ خروجی <span>↗</span></a><span class="draft-pill"><span class="live-dot warning"></span> پیش‌نویس · نیازمند تأیید</span></div>
+        </div>
+
+        <div class="alert-strip" id="validationAlert" hidden><span class="alert-icon">!</span><div><strong>نیاز به تطبیق شمارش تحویل‌ها</strong><span id="validationText">درحال بررسی برنامهٔ هفته…</span></div><a href="#library" data-view-link="library">بازبینی برنامه <b>←</b></a></div>
+
+        <div class="metric-grid" id="metrics">
+          <article class="metric-card"><div class="metric-top"><span>محتوای مادر</span><span class="metric-icon navy">C</span></div><strong id="metricContents">—</strong><small>ایده‌های اصلی هفته</small><div class="metric-line"><i style="width:82%"></i></div></article>
+          <article class="metric-card"><div class="metric-top"><span>تحویل‌های چندکاناله</span><span class="metric-icon gold">↗</span></div><strong id="metricDeliveries">—</strong><small id="metricChannels">وب، اینستاگرام و تلگرام</small><div class="metric-line gold-line"><i style="width:72%"></i></div></article>
+          <article class="metric-card"><div class="metric-top"><span>پروندهٔ دارایی</span><span class="metric-icon teal">◈</span></div><strong id="metricAssets">—</strong><small>منابع، پیش‌نمایش‌ها و خروجی‌ها</small><div class="metric-line teal-line"><i style="width:64%"></i></div></article>
+          <article class="metric-card"><div class="metric-top"><span>تأیید مالک</span><span class="metric-icon violet">✓</span></div><strong id="metricApproved">۰٪</strong><small>تأیید انسانی پیش از انتشار</small><div class="metric-line violet-line"><i id="approvalProgress" style="width:0%"></i></div></article>
+        </div>
+
+        <div class="section-heading"><div><span class="eyebrow small">WORKFLOW</span><h2>مسیر تولید این هفته</h2></div><button class="text-button" data-view-link="calendar">مشاهدهٔ تقویم کامل <b>←</b></button></div>
+        <div class="workflow-grid">
+          <article class="workflow-card"><span class="workflow-index">۰۱</span><div class="workflow-icon idea-icon">✳</div><div><strong>برنامه و ایده‌ها</strong><small>۲۸ محتوای مادر، شش ستون</small></div><span class="status-dot complete"></span></article>
+          <article class="workflow-card"><span class="workflow-index">۰۲</span><div class="workflow-icon assets-icon">▧</div><div><strong>رندر و دارایی‌ها</strong><small>SVG، PNG و موشن‌های خروجی</small></div><span class="status-dot complete"></span></article>
+          <article class="workflow-card"><span class="workflow-index">۰۳</span><div class="workflow-icon review-icon">◷</div><div><strong>بازبینی انسانی</strong><small id="reviewCountLabel">منتظر انتخاب مالک</small></div><span class="status-dot pending"></span></article>
+          <article class="workflow-card"><span class="workflow-index">۰۴</span><div class="workflow-icon publish-icon">↗</div><div><strong>انتشار دستی</strong><small>زمان و مقصد را مالک تعیین می‌کند</small></div><span class="status-dot blocked"></span></article>
+        </div>
+
+        <div class="section-heading compact"><div><span class="eyebrow small">UP NEXT</span><h2>نزدیک‌ترین خروجی‌ها</h2></div><div class="inline-controls"><select id="channelFilter" aria-label="فیلتر کانال"><option value="all">همهٔ کانال‌ها</option><option value="instagram">Instagram</option><option value="telegram">Telegram</option><option value="website">وب‌سایت</option></select><button class="view-toggle" id="viewToggle" aria-label="تغییر حالت نمایش">▦</button></div></div>
+        <div class="day-strip" id="dayStrip" aria-label="فیلتر بر اساس روز"></div>
+        <div class="delivery-list" id="deliveryList"><div class="loading-state">درحال دریافت برنامهٔ هفته…</div></div>
+      </section>
+
+      <section class="view" id="view-calendar">
+        <div class="page-title"><div><span class="eyebrow small">WEEK PLANNER</span><h1>تقویم تولید <em>هفتهٔ اول</em></h1><p>روزهای واقعی برنامه؛ ساعت انتشار عمداً تعیین نشده است.</p></div><div class="calendar-summary" id="calendarSummary">—</div></div>
+        <div class="calendar-toolbar"><div class="day-strip wide" id="calendarDayStrip"></div><div class="inline-controls"><select id="calendarChannelFilter" aria-label="فیلتر کانال"><option value="all">همهٔ کانال‌ها</option><option value="instagram">Instagram</option><option value="telegram">Telegram</option><option value="website">وب‌سایت</option></select></div></div>
+        <div class="calendar-board" id="calendarBoard"></div>
+      </section>
+
+      <section class="view" id="view-library">
+        <div class="page-title"><div><span class="eyebrow small">CONTENT LIBRARY</span><h1>مخزن <em>محتوا</em></h1><p>جست‌وجو بر اساس عنوان، ستون، روز و شناسه؛ انتخاب هر ایده، تحویل‌های وابسته‌اش را باز می‌کند.</p></div><div class="search-wrap"><span>⌕</span><input id="searchInput" type="search" placeholder="جست‌وجوی ایده، ستون یا شناسه…"></div></div>
+        <div class="library-filters"><div class="day-strip wide" id="libraryDayStrip"></div><div class="inline-controls"><select id="pillarFilter"><option value="all">همهٔ ستون‌ها</option></select><select id="libraryChannelFilter"><option value="all">همهٔ کانال‌ها</option><option value="instagram">Instagram</option><option value="telegram">Telegram</option><option value="website">وب‌سایت</option></select><select id="reviewFilter"><option value="all">همهٔ وضعیت‌ها</option><option value="pending">در انتظار بازبینی</option><option value="approved">تأیید مالک</option><option value="revise">نیازمند اصلاح</option></select></div></div>
+        <div class="library-grid" id="libraryGrid"></div>
+      </section>
+
+      <section class="view" id="view-motion">
+        <div class="page-title"><div><span class="eyebrow small">MOTION LAB · DATA → FRAMES</span><h1>آزمایشگاه <em>موشن</em></h1><p>رسپی‌های پارامتری AtoZ؛ از دادهٔ ساختاریافته تا فریم‌های قابل‌ردیابی.</p></div><span class="engine-badge"><span class="live-dot"></span> SVG + HTML + FFmpeg</span></div>
+        <div class="motion-feature" id="motionFeature"><div class="motion-player"><div class="player-placeholder">درحال بارگذاری دمو…</div></div><div class="motion-description"><span class="recipe-label">ANATOMY · ۰۱</span><h2>کالبدشکافی نقطهٔ سربه‌سر</h2><p>فرمول از اجزای واقعی خودش ساخته می‌شود: هزینهٔ ثابت، حاشیهٔ مشارکت و تعداد واحد. جابه‌جایی بین مراحل، مدل داده را تغییر می‌دهد و پیش‌نمایش را seek می‌کند.</p><div class="motion-tags"><span>data-bound</span><span>seekable</span><span>brand-safe</span></div><a class="secondary-button" id="motionSourceLink" href="/content-engine/motion-lab/break-even-anatomy.html" target="_blank">بازکردن صحنهٔ تعاملی <span>↗</span></a></div></div>
+        <div class="section-heading"><div><span class="eyebrow small">RECIPE CATALOG</span><h2>کتابخانهٔ رسپی‌های حرکتی</h2></div><span class="count-label" id="recipeCount">—</span></div>
+        <div class="recipe-grid" id="recipeGrid"></div>
+        <div class="integration-note"><span class="note-mark">i</span><div><strong>adapter-ready، نه وابسته به سرویس ابری</strong><p>خروجی‌های فعلی محلی و تکرارپذیرند. Remotion و HyperFrames به‌عنوان مسیرهای ادغام اختیاری ثبت شده‌اند؛ در این نسخه بسته‌هایشان اجرا نمی‌شوند و انتشار خودکار نداریم.</p></div><a href="/content-engine/references.json" target="_blank">مراجع <span>↗</span></a></div>
+      </section>
+
+      <section class="view" id="view-brand">
+        <div class="page-title"><div><span class="eyebrow small">BRAND VAULT</span><h1>مخزن هویت <em>AtoZ</em></h1><p>دارایی‌های ثابت از منبع برند فعلی بارگذاری می‌شوند؛ لوگو جزئی از موتور قالب نیست که بازطراحی شود.</p></div><a class="secondary-button" href="/logo/logo-library.html" target="_blank">کتابخانهٔ رسمی لوگو <span>↗</span></a></div>
+        <div class="brand-overview" id="brandOverview"></div>
+        <div class="section-heading"><div><span class="eyebrow small">ASSET PATHS</span><h2>دارایی‌های مصرف‌شده توسط موتور</h2></div></div>
+        <div class="asset-path-grid"><a href="/brand/tokens.json"><b>01</b><strong>توکن‌های برند</strong><small>رنگ، تایپوگرافی و لوگو</small></a><a href="/brand/design-system.json"><b>02</b><strong>سیستم طراحی</strong><small>ستون‌ها و قواعد کاربرد</small></a><a href="/logo/primary/color/horizontal.svg"><b>03</b><strong>لوگوی مادر</strong><small>SVG منبع رسمی</small></a><a href="/logo/motion/motion-manifest.json"><b>04</b><strong>موشن برند</strong><small>Intro، Loader، Waiting، Outro</small></a><a href="/tools/fonts/LICENSES.txt"><b>05</b><strong>مجوز فونت‌ها</strong><small>Vazirmatn، Montserrat، Lato</small></a></div>
+      </section>
+
+      <footer class="page-footer"><span>ATOZ CONTENT ENGINE <b>·</b> OWNER REVIEW BUILD</span><span>محلی، بازتولیدپذیر، بدون انتشار خودکار</span></footer>
+    </main>
+  </div>
+
+  <dialog id="detailDialog" class="detail-dialog"><form method="dialog"><button class="dialog-close" aria-label="بستن">×</button></form><div id="detailContent"></div></dialog>
+  <dialog id="draftDialog" class="draft-dialog"><form id="draftForm"><button type="button" class="dialog-close" id="closeDraft" aria-label="بستن">×</button><span class="eyebrow small">IDEA INTAKE · LOCAL DRAFT</span><h2>ایده را به یک brief قابل‌تولید تبدیل کن</h2><p class="dialog-help">موتور با داده‌های شما draft ساختاریافته می‌سازد؛ هیچ ادعای جدید، منبع یا URL را حدس نمی‌زند.</p>
+    <label>عنوان ایده<input name="title" required maxlength="140" placeholder="مثلاً: بررسی خطای ثبت موجودی در تحویل کالا"></label>
+    <div class="form-row"><label>ستون محتوا<select name="pillar_id" id="draftPillar" required></select></label><label>مخاطب اصلی<input name="persona" required maxlength="80" placeholder="مثلاً: مدیر کافه"></label></div>
+    <label>مسئلهٔ مخاطب<textarea name="problem" required rows="3" maxlength="500" placeholder="مخاطب با چه مسئلهٔ واقعی روبه‌روست؟"></textarea></label>
+    <label>پیام محوری / فرض اولیه<textarea name="thesis" required rows="3" maxlength="500" placeholder="چه نکته‌ای را می‌خواهی روشن کنی؟"></textarea></label>
+    <div class="form-row"><label>قالب اولیه<select name="format_id"><option value="carousel">کاروسل</option><option value="reel">ریلز</option><option value="post">پست تکی</option><option value="article">مقالهٔ وب</option></select></label><label>سطح شواهد<select name="evidence_level"><option value="hypothesis">فرضیه — نیازمند آزمون</option><option value="experience">تجربه — نیازمند انتساب</option><option value="verified">راستی‌آزمایی‌شده — منبع لازم</option><option value="fictional_example">مثال فرضی</option></select></label></div>
+    <div class="generated-preview" id="generatedPreview" hidden></div><div class="dialog-actions"><button type="button" class="secondary-button" id="previewDraft">پیش‌نمایش draft</button><button type="submit" class="primary-button">ذخیره در صف ایده‌ها <span>←</span></button></div>
+  </form></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="/content-engine/dashboard/app.js" defer></script>
+</body>
+</html>
