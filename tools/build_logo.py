@@ -31,7 +31,7 @@ _font_cache={}
 def symbol_group(variant,dot_override=None):
  """Return the shared vector A/Z growth mark, with an optional dot color."""
  v=VARIANTS[variant];cx,cy,r=DOT;dot=dot_override or v["dot"]
- return f'<path d="{MARK_PATH}" transform="{MARK_TRANSFORM}" fill="{v["mark"]}" fill-rule="evenodd"/><circle cx="{cx}" cy="{cy}" r="{r}" fill="{dot}"/>'
+ return f'<path d="{MARK_PATH}" transform="{MARK_TRANSFORM}" fill="{v["mark"]}"/><circle cx="{cx}" cy="{cy}" r="{r}" fill="{dot}"/>'
 
 def _load_font(font_file):
  if font_file not in _font_cache:

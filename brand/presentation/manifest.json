@@ -1,0 +1,9 @@
+{
+  "version": "3.1.0",
+  "slide_count": 10,
+  "status": "owner_review",
+  "pptx": "brand/presentation/AtoZ-brand-presentation.pptx",
+  "pdf": "brand/presentation/AtoZ-brand-presentation.pdf",
+  "source_slides": "brand/presentation/slides/",
+  "format": "16:9 executive overview; the PowerPoint deck uses high-resolution slide artwork and paired editable SVG sources."
+}

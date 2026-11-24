@@ -1,0 +1,17 @@
+{
+  "reference_policy": "Patterns only; AtoZ implementation, copy recipes, visuals and motion data are original. No remote API or publishing integration is enabled.",
+  "references": [
+    {"name":"AtoZ CMS","url":"https://github.com/amirbex/atozcms","used_for":"Workspace separation and a production queue / creative-studio mental model.","integration":"Visual and workflow reference; this repo's code is not imported."},
+    {"name":"OpenDesign","url":"https://github.com/nexu-io/open-design","used_for":"Local-first project workflow, design-system binding, reusable workspace artifacts and review loops.","integration":"Architecture inspiration only; the desktop/web app is not a dependency."},
+    {"name":"Remotion skills","url":"https://github.com/remotion-dev/remotion/tree/main/packages/skills","used_for":"Frame-based, data-driven React composition and explicit motion timing.","integration":"Optional source adapter at content-engine/motion-lab/BreakEvenAnatomy.tsx; Remotion is not installed or required for local SVG/FFmpeg output."},
+    {"name":"HyperFrames","url":"https://github.com/heygen-com/hyperframes","used_for":"Seekable HTML/SVG compositions and deterministic rendering from a timeline.","integration":"Portable HTML scene and timeline manifest are produced; the HyperFrames runtime/CLI is optional and not installed."},
+    {"name":"Anatomy","url":"https://github.com/wheresryan22/anatomy","used_for":"Explaining a system by spatially separating its real components, then revealing their relationships from one source model.","integration":"AtoZ-authored finance example; no Anatomy skill, code or illustration is copied."}
+  ],
+  "engine_status": {
+    "local_svg_renderer": "active",
+    "ffmpeg_video_renderer": "active",
+    "remotion_adapter": "optional source; not executed",
+    "hyperframes_adapter": "portable manifest; runtime not installed",
+    "anatomy_recipe": "active AtoZ original composition"
+  }
+}

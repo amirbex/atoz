@@ -1,13 +1,13 @@
 # AtoZ — هویت بصری و دارایی‌های برند
 
-مخزن بازتولیدپذیر هویت مادر AtoZ و پنج زیر‌برند آن است. نسخهٔ جاری، کتابچهٔ ۱۶صفحه‌ای، سامانهٔ لوگو، آیکون‌ها، گالری موشن و قالب‌های بصری خالی را در بر می‌گیرد. خروجی‌ها از `brand/tokens.json` و ابزارهای `tools/` ساخته می‌شوند.
+مخزن بازتولیدپذیر هویت مادر AtoZ و پنج زیر‌برند آن است. نسخهٔ جاری، کتابچهٔ ۱۶صفحه‌ای، ارائهٔ مستقل ۱۰اسلایدی، سامانهٔ لوگو، آیکون‌ها، گالری موشن و قالب‌های بصری خالی را در بر می‌گیرد. خروجی‌ها از `brand/tokens.json` و ابزارهای `tools/` ساخته می‌شوند.
 
 ## نام و کاربرد
 
 - نام برند همیشه با حروف لاتین و دقیقاً به‌شکل `AtoZ` نوشته می‌شود؛ شکل فارسی نام برند در لوگو یا متن هویتی به‌کار نمی‌رود.
-- امضای جایگزین بنیان‌گذار `AtoZ.fnb` است؛ نام «امیر زمانی» و زیرعنوان او در آن فارسی‌اند. زیرعنوان «استراتژیست رشد F&B» از مقدار قبلی توکن آمده و **هنوز برای انتشار نهایی تأیید نشده**.
+- امضای جایگزین بنیان‌گذار `AtoZfnb.info` است؛ نام «امیر زمانی» و زیرعنوان او در آن فارسی‌اند. زیرعنوان «استراتژیست رشد F&B» از مقدار قبلی توکن آمده و **هنوز برای انتشار نهایی تأیید نشده**.
 - زیر‌برندهای مصوب: `AtoZ Blog`، `AtoZ Tools`، `AtoZ book`، `AtoZ PB (Prompt Bank)` و `AtoZ Solicitor`.
-- نشان اصلی از نو با ساختار هندسی A/Z و محور مشترک بازطراحی شده؛ مسیر/پیکان قبلی مبنا نیست. رنگ مادر سرمه‌ای/طلایی حفظ شده؛ رنگ‌های فرعی فقط برای تمایز دسته‌های محتوا هستند.
+- نشان AZ مرجع حفظ شده است: مسیر از A به Z می‌پیوندد و به پیکان صعودی/نقطهٔ طلایی می‌رسد؛ جایگزین‌کردن آن با حروف جداگانهٔ AZ درست نیست. در حالت سفید، مسیر سفید و گرهٔ شاخص طلایی می‌ماند. رنگ مادر سرمه‌ای/طلایی حفظ شده؛ رنگ‌های فرعی فقط برای تمایز دسته‌های محتوا هستند.
 - عنوان `Solicitor` نام یک زیر‌برند است و به‌تنهایی ادعای مجوز یا ارائهٔ خدمات حقوقی نیست.
 
 ## ساختار
@@ -25,7 +25,8 @@ logo/
 │   └── icons/                  # آیکون مستقل هر زیر‌برند
 ├── icons/                      # نشان برنامه و فاوآیکن SVG
 ├── motion/                     # 48 منبع SVG و گالری واکنش‌گرای HTML
-└── brand-book/                 # 16 صفحه: SVG، PNG، HTML و PDF
+├── brand-book/                 # 16 صفحه: SVG، PNG، HTML و PDF
+└── presentation/                # ارائهٔ 10 اسلایدی: PPTX، PDF و منابع SVG/PNG
 
 content-templates/
 ├── social/                     # 4 قالب خالی
@@ -36,6 +37,8 @@ tools/
 ├── build_brand_assets.py        # سازندهٔ canonical خروجی‌ها
 ├── render_brand_assets.mjs      # پیش‌نمایش‌های PNG از منابع SVG
 ├── build_brand_book_pdf.py      # ساخت PDF از صفحات برندبوک
+├── build_brand_presentation.py  # تولید و بسته‌بندی ارائه
+├── render_brand_presentation.mjs # رندر منابع SVG ارائه به PNG
 └── fonts/                       # فقط وزن‌های لازم از سه خانوادهٔ دارای OFL
 ```
 
@@ -49,9 +52,11 @@ python3 -m venv .venv
 npm --prefix tools install
 .venv/bin/python tools/build_brand_assets.py
 npm --prefix tools run render-brand
+.venv/bin/python tools/build_brand_presentation.py
+npm --prefix tools run render-presentation
 ```
 
-`render-brand` همهٔ لوگوها، آیکون‌ها، قالب‌ها و اسلایدها را به PNG تبدیل و `logo/brand-book/brand-book.pdf` را تولید می‌کند. برای مرور لوگوها `logo/logo-library.html` و برای مرور موشن `logo/motion/index.html` را باز کنید. موشن‌های مستقل در `logo/motion/{brand}/{intro|loader|waiting|outro}-{horizontal|vertical}.svg` هستند؛ هر منبع تنظیم `prefers-reduced-motion` دارد.
+`render-brand` لوگوها، آیکون‌ها و قالب‌ها را به PNG تبدیل و `logo/brand-book/brand-book.pdf` را تولید می‌کند. ارائهٔ مستقل در `brand/presentation/` بستهٔ PDF و PPTX ده‌اسلایدی به‌علاوهٔ منابع SVG/PNG را می‌سازد؛ اسلایدهای منبع SVG برای ویرایش گرافیکی و فایل PPTX برای ارائهٔ فوری است. هر دو خروجی در وضعیت بازبینی مالک هستند. برای مرور لوگوها `logo/logo-library.html` و برای مرور موشن `logo/motion/index.html` را باز کنید. موشن‌های مستقل در `logo/motion/{brand}/{intro|loader|waiting|outro}-{horizontal|vertical}.svg` هستند؛ هر منبع تنظیم `prefers-reduced-motion` دارد.
 
 ## تایپوگرافی و حقوق استفاده
 

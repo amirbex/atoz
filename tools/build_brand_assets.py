@@ -36,19 +36,19 @@ PALETTE={
  "solicitor":TOKENS["color"]["solutions"]["hex"],
 }
 SUBBRANDS=[
- {"id":"blog","name":"Blog","display":"AtoZ Blog","content_pillars":["case-studies","leadership"],"icon":"editorial"},
- {"id":"tools","name":"Tools","display":"AtoZ Tools","content_pillars":["finance-market","education-sops"],"icon":"toolkit"},
- {"id":"book","name":"book","display":"AtoZ book","content_pillars":["education-sops","community-roadmaps"],"icon":"book"},
- {"id":"pb","name":"PB","display":"AtoZ PB","descriptor":"PROMPT BANK","content_pillars":["innovation-ai"],"icon":"prompt-bank"},
- {"id":"solicitor","name":"Solicitor","display":"AtoZ Solicitor","content_pillars":["leadership","finance-market"],"icon":"advisory"},
+ {"id":"blog","name":"Blog","display":"AtoZ Blog","purpose_fa":"مقاله، رهبری و مطالعهٔ موردی","content_pillars":["case-studies","leadership"],"icon":"editorial"},
+ {"id":"tools","name":"Tools","display":"AtoZ Tools","purpose_fa":"ابزارهای محاسبه و کاربرد عملیاتی","content_pillars":["finance-market"],"icon":"toolkit"},
+ {"id":"book","name":"book","display":"AtoZ book","purpose_fa":"آموزش، مسیر یادگیری و SOP","content_pillars":["education-sops","community-roadmaps"],"icon":"book"},
+ {"id":"pb","name":"PB","display":"AtoZ PB","descriptor":"PROMPT BANK","purpose_fa":"بانک پرامپت و استفادهٔ مسئولانه از AI","content_pillars":["innovation-ai"],"icon":"prompt-bank"},
+ {"id":"solicitor","name":"Solicitor","display":"AtoZ Solicitor","purpose_fa":"حوزهٔ دقیق این نام نیازمند تعریف مالک است","content_pillars":[],"scope_status":"pending_owner_definition","icon":"structured-document"},
 ]
 PILLARS=[
- {"id":"education-sops","title":"F&B education & operating systems","fa":"آموزش F&B و سیستم‌های عملیاتی","destination":"AtoZ book"},
- {"id":"leadership","title":"Leadership and owner growth","fa":"رهبری و رشد مالکان","destination":"AtoZ Blog"},
- {"id":"innovation-ai","title":"AI, innovation and automation","fa":"هوش مصنوعی، نوآوری و اتوماسیون","destination":"AtoZ PB"},
- {"id":"finance-market","title":"F&B finance and market analysis","fa":"مالی و تحلیل بازار F&B","destination":"AtoZ Tools"},
- {"id":"case-studies","title":"Case studies and field analysis","fa":"مطالعهٔ موردی و تحلیل میدانی","destination":"AtoZ Blog"},
- {"id":"community-roadmaps","title":"Learning paths and community","fa":"مسیر یادگیری و جامعه","destination":"AtoZ book"},
+ {"id":"education-sops","title":"F&B education & operating systems","fa":"آموزش F&B و سیستم‌های عملیاتی","purpose_fa":"یادگیری مرحله‌ای، SOP و چک‌لیست‌های قابل اجرا برای تیم‌ها و مدیران عملیات.","destination":"AtoZ book","color_id":"book"},
+ {"id":"leadership","title":"Leadership and owner growth","fa":"رهبری و رشد مالکان","purpose_fa":"تصمیم‌گیری، مدیریت تیم و رشد بنیان‌گذار؛ تجربه از ادعای عمومی تفکیک شود.","destination":"AtoZ Blog","color_id":"blog"},
+ {"id":"innovation-ai","title":"AI, innovation and automation","fa":"هوش مصنوعی، نوآوری و اتوماسیون","purpose_fa":"کاربردهای عملی AI و اتوماسیون؛ حریم خصوصی و نیاز به بازبینی انسانی رعایت شود.","destination":"AtoZ PB","color_id":"pb"},
+ {"id":"finance-market","title":"F&B finance and market analysis","fa":"مالی و تحلیل بازار F&B","purpose_fa":"هزینه، قیمت‌گذاری، اقتصاد واحد و بازار؛ عدد و ادعا فقط با منبع معتبر.","destination":"AtoZ Tools","color_id":"tools"},
+ {"id":"case-studies","title":"Case studies and field analysis","fa":"مطالعهٔ موردی و تحلیل میدانی","purpose_fa":"زمینه، روش، نتیجه و محدودیت مطالعهٔ موردی به‌صورت شفاف روایت شود.","destination":"AtoZ Blog","color_id":"blog"},
+ {"id":"community-roadmaps","title":"Learning paths and community","fa":"مسیر یادگیری و جامعه","purpose_fa":"نقشه‌راه‌های پیوسته، منابع و یادگیری همتا‌به‌همتا؛ بدون وعدهٔ نتیجهٔ قطعی.","destination":"AtoZ book","color_id":"book"},
 ]
 
 FA_BOLD="Vazirmatn-Bold.ttf"
@@ -113,6 +113,7 @@ def svg_doc(w,h,body,title,desc=""):
 
 def place_mark(x,y,width,variant="color",dot=None):
  s=width/core.SYM_W
+ if variant=="white" and dot is None:dot=GOLD
  fragment=core.symbol_group(variant,dot_override=dot)
  return f'<g transform="translate({x-core.SYM_X0*s:.3f} {y-core.SYM_Y0*s:.3f}) scale({s:.7f})">{fragment}</g>',core.SYM_H*s
 
@@ -139,29 +140,29 @@ def primary_lockup(layout,variant):
  accent=core.VARIANTS[variant]["accent"]
  is_white=variant=="white"
  if layout=="symbol":
-  mark,_=place_mark(28,165,544,variant,dot=WHITE if is_white else None)
-  return svg_doc(600,600,mark,f"AtoZ primary symbol — {variant}","Original geometric A/Z monogram with a gold endpoint")
+  mark,_=place_mark(28,165,544,variant,dot=None)
+  return svg_doc(600,600,mark,f"AtoZ primary symbol — {variant}","Reference AZ emblem: the A flows into an ascending Z arrow, finished by the gold node")
  if layout=="wordmark":
   frag,w,h=run_fragment([name_run("AtoZ",260,text_color)],24,26)
   return svg_doc(max(640,int(w+48)),330,frag,f"AtoZ wordmark — {variant}","Latin AtoZ wordmark only")
  if layout=="square":
-  mark,_=place_mark(240,100,544,variant,dot=WHITE if is_white else None)
+  mark,_=place_mark(240,100,544,variant,dot=None)
   word,ww,wh=run_fragment([name_run("AtoZ",156,text_color)],512,755,align="center")
   return svg_doc(1024,1024,mark+word,f"AtoZ square lockup — {variant}","Symbol centered above the AtoZ wordmark")
  if layout=="horizontal":
-  mark,mh=place_mark(42,38,520,variant,dot=WHITE if is_white else None)
+  mark,mh=place_mark(42,38,520,variant,dot=None)
   word,ww,wh=run_fragment([name_run("AtoZ",225,text_color)],635,122)
   return svg_doc(1170,335,mark+word,f"AtoZ horizontal lockup — {variant}","Symbol on the left, AtoZ on the right")
  if layout=="vertical":
-  mark,_=place_mark(263,55,498,variant,dot=WHITE if is_white else None)
+  mark,_=place_mark(263,55,498,variant,dot=None)
   word,ww,wh=run_fragment([name_run("AtoZ",155,text_color)],512,660,align="center")
   return svg_doc(1024,850,mark+word,f"AtoZ vertical lockup — {variant}","Symbol above the AtoZ wordmark")
  if layout=="founder":
-  mark,_=place_mark(36,57,395,variant,dot=WHITE if is_white else None)
-  top,_,_=run_fragment([name_run("AtoZ.fnb",91,text_color,LATIN_XBOLD)],492,61)
+  mark,_=place_mark(36,57,395,variant,dot=None)
+  top,_,_=run_fragment([name_run("AtoZfnb.info",91,text_color,LATIN_XBOLD)],492,61)
   founder,_,_=run_fragment([fa_run("امیر زمانی",47,text_color,FA_BOLD)],1075,174,"right",rtl=True)
   title,_,_=run_fragment([fa_run(TOKENS["brand"]["title_fa"],29,text_color,FA_REG)],1075,236,"right",rtl=True)
-  return svg_doc(1120,340,mark+top+founder+title,f"AtoZ.fnb founder signature — {variant}","AtoZ.fnb with Persian founder name and provisional title awaiting owner confirmation")
+  return svg_doc(1120,340,mark+top+founder+title,f"AtoZfnb.info founder signature — {variant}","AtoZfnb.info with Persian founder name and provisional title awaiting owner confirmation")
  raise KeyError(layout)
 
 
@@ -170,7 +171,7 @@ def subbrand_lockup(sub,layout,variant):
  accent=PALETTE[sub]
  txt=core.VARIANTS[variant]["main"]
  desc_color=WHITE if variant=="white" else (NAVY if variant=="mono" else accent)
- dot=WHITE if variant=="white" else None
+ dot=None
  if layout=="icon":
   return subbrand_icon_svg(sub,variant)
  mark,_=place_mark(34,30,335,variant,dot=dot)
@@ -195,7 +196,7 @@ def subbrand_icon_elements(sub,stroke,accent):
   return f'<path {common} d="M3.5 5.5c3.6-.9 6.5-.2 8.5 1.8v12c-2-2-4.9-2.7-8.5-1.8zM20.5 5.5c-3.6-.9-6.5-.2-8.5 1.8v12c2-2 4.9-2.7 8.5-1.8z"/><path d="M6 9h3M15 9h3" {accent_style}/>'
  if sub=="pb":
   return f'<path {common} d="M4 5.5h16v11H11l-5 3v-3H4z"/><path d="m12 7 1.1 2.6L16 10.5l-2.5 1.3-.8 2.7-1.4-2.4-2.7-.5 2.2-1.7z" {accent_style}/>'
- return f'<path {common} d="M12 4v15M5 7h14M7 7l-3 7h6zM17 7l-3 7h6zM8 20h8M9 17h6"/><circle cx="12" cy="4" r="1.7" fill="{a}" stroke="none"/>'
+ return f'<path {common} d="M6 3.5h8l4 4V20H6zM14 3.5V8h4"/><path {accent_style} d="M9 12h6M9 15.5h6M9 19h4"/><circle cx="18" cy="18" r="1.7" fill="{a}" stroke="none"/>'
 
 def subbrand_icon_svg(sub,variant="color"):
  accent=PALETTE[sub]
@@ -226,7 +227,7 @@ def color_variant_svg():
   body.append(rect(x,225,460,355,bg,BORDER if bg==WHITE else NAVY,18,2))
   logo_svg=primary_lockup("horizontal",variant)
   # Use wordmarks at native vector scale; one SVG per variant is also in the asset tree.
-  inner=core.symbol_group(variant,dot_override=WHITE if variant=="white" else None)
+  inner=core.symbol_group(variant,dot_override=GOLD if variant=="white" else None)
   body.append(f'<g transform="translate({x+45} 350) scale(.24)">{inner}</g>')
   body.append(en("AtoZ",x+185,370,95,WHITE if variant=="white" else NAVY,LATIN_XBOLD,width=210))
   body.append(fa(label,x+425,510,21,WHITE if variant=="white" else NAVY,FA_BOLD,width=310))
@@ -247,7 +248,7 @@ def build_tokens_and_system():
  TOKENS["brand"]["domain"]=None
  TOKENS.pop("contact_placeholder",None)
  TOKENS["brand"]["name_fa_parts"]=[]
- TOKENS["brand"]["site_name_variants"]=["AtoZ","AtoZ.fnb"]
+ TOKENS["brand"]["site_name_variants"]=["AtoZ","AtoZfnb.info"]
  TOKENS["typography"]["logo_wordmark_latin"]="Montserrat ExtraBold"
  TOKENS["typography"]["logo_wordmark_fa"]="not_used — Persian AtoZ wordmark prohibited"
  TOKENS["typography"]["logo_full_name_fa"]="Vazirmatn Bold — founder only"
@@ -260,7 +261,7 @@ def build_tokens_and_system():
  TOKENS["logo"]["variants"]["color"]["wordmark_accent"]=GOLD
  TOKENS["identity_system"]={"version":"3.0.0","design_system":"brand/design-system.json","logo_root":"logo/","motion_gallery":"logo/motion/index.html","brand_book":"logo/brand-book/brand-book.pdf","scope":"AtoZ master + five sub-brands"}
  TOKENS_PATH.write_text(json.dumps(TOKENS,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
- system={"version":"3.0.0","status":"owner_review","mark_concept":"Original geometric A/Z monogram; shared baseline expresses complete A-to-Z scope, the gold endpoint is an anchor point rather than a growth chart. Not traced from previous AtoZ or reference-brand art.","master":{"name":"AtoZ","alternate_founder_lockup":"AtoZ.fnb","persian_wordmark":False,"founder":"Amir Zamani","founder_fa":"امیر زمانی","founder_title_fa":TOKENS["brand"]["title_fa"],"founder_title_status":"provisional; confirm the wording with the owner before public release"},"subbrands":SUBBRANDS,"content_pillars":PILLARS,"colors":{"navy":NAVY,"gold":GOLD,"surface":SURFACE,"white":WHITE,"section_accents":PALETTE},"logo_variants":["color","mono","white"],"logo_layouts":["symbol","wordmark","square","horizontal","vertical","horizontal-founder"],"motion_states":["intro","loader","waiting","outro"],"motion_orientations":["horizontal","vertical"],"font_families":{"persian":"Vazirmatn","latin_logo":"Montserrat","latin_support":"Lato"},"logo_rules":{"a_to_z_script":"Latin AtoZ only","allowed_persian_in_logo":["امیر زمانی",TOKENS["brand"]["title_fa"]],"founder_title_status":"provisional; confirmation required before public release","clearspace":"1× gold-dot diameter minimum","minimum_symbol_px":24,"min_horizontal_lockup_px":120,"backgrounds":{"color":"white or light surface","mono":"white or light surface","white":"strategic navy or approved dark background"},"misuse":["Do not translate AtoZ into Persian script","Do not alter letter case or spacing in AtoZ","Do not stretch, rotate, skew, outline, shadow, or add gradient","Do not place the gold variant on a white background for small text","Do not use the white variant on a light background","Do not combine the master icon with an unapproved wordmark"]},"motion_system":{"duration":{"intro_ms":900,"loader_loop_ms":1400,"waiting_loop_ms":2400,"outro_ms":650},"easing":"cubic-bezier(0.22,1,0.36,1)","reduced_motion":"Static mark; disable continuous loops when prefers-reduced-motion is set.","policy":"Motion is a progressive enhancement; the logo remains visible without animation or JavaScript."}}
+ system={"version":"3.0.0","status":"owner_review","mark_concept":"Recovered AZ emblem from the supplied approved reference: the A joins an ascending Z-shaped route and arrow, finished by the gold node. The surrounding lockups and naming are updated for the current AtoZ system.","master":{"name":"AtoZ","alternate_founder_lockup":"AtoZfnb.info","persian_wordmark":False,"founder":"Amir Zamani","founder_fa":"امیر زمانی","founder_title_fa":TOKENS["brand"]["title_fa"],"founder_title_status":"provisional; confirm the wording with the owner before public release"},"subbrands":SUBBRANDS,"content_pillars":PILLARS,"colors":{"navy":NAVY,"gold":GOLD,"surface":SURFACE,"white":WHITE,"section_accents":PALETTE},"logo_variants":["color","mono","white"],"logo_layouts":["symbol","wordmark","square","horizontal","vertical","horizontal-founder"],"motion_states":["intro","loader","waiting","outro"],"motion_orientations":["horizontal","vertical"],"font_families":{"persian":"Vazirmatn","latin_logo":"Montserrat","latin_support":"Lato"},"logo_rules":{"a_to_z_script":"Latin AtoZ only","allowed_persian_in_logo":["امیر زمانی",TOKENS["brand"]["title_fa"]],"founder_title_status":"provisional; confirmation required before public release","clearspace":"1× gold-dot diameter minimum","minimum_symbol_px":24,"min_horizontal_lockup_px":120,"backgrounds":{"color":"white or light surface","mono":"white or light surface","white":"strategic navy or approved dark background"},"misuse":["Do not translate AtoZ into Persian script","Do not alter letter case or spacing in AtoZ","Do not stretch, rotate, skew, outline, shadow, or add gradient","Do not place the gold variant on a white background for small text","Do not use the white variant on a light background","Do not combine the master icon with an unapproved wordmark"]},"motion_system":{"duration":{"intro_ms":900,"loader_loop_ms":1400,"waiting_loop_ms":2400,"outro_ms":650},"easing":"cubic-bezier(0.22,1,0.36,1)","reduced_motion":"Static mark; disable continuous loops when prefers-reduced-motion is set.","policy":"Motion is a progressive enhancement; the logo remains visible without animation or JavaScript."}}
  (ROOT/"brand/design-system.json").write_text(json.dumps(system,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
  return system
 
@@ -295,7 +296,7 @@ def build_logo_files():
 
 def subbrand_square(sub,variant):
  bg=rect(0,0,512,512,NAVY,r=72) if variant=="white" else ""
- dot=WHITE if variant=="white" else None
+ dot=None
  mark,_=place_mark(156,70,200,variant,dot=dot)
  word,_,_=run_fragment([name_run("AtoZ",60,WHITE if variant=="white" else NAVY,LATIN_XBOLD),name_run(" "+next(s["name"] for s in SUBBRANDS if s["id"]==sub),45,WHITE if variant=="white" else (PALETTE[sub] if variant=="color" else NAVY),LATIN_SEMI)],256,333,align="center")
  descriptor=""
@@ -453,8 +454,8 @@ def write_brand_book_sources():
   return p
  # 2. brand system
  b=page(2,"Brand architecture","AtoZ یک برند مادر است؛ نام‌ها همیشه لاتین‌اند","نوشتار فارسی برای AtoZ ساخته یا استفاده نمی‌شود؛ فقط نام بنیان‌گذار و عنوان فارسی او مجاز است.")
- b += [rect(115,330,780,520,NAVY,r=24),en("MASTER WORDMARK",165,385,17,GOLD,LATIN_SEMI,width=360),en("AtoZ",170,520,132,WHITE,LATIN_XBOLD,width=550),en("AtoZ.fnb",170,680,50,WHITE,LATIN_SEMI,width=500),fa("امیر زمانی",825,735,30,WHITE,FA_BOLD,width=500),fa(TOKENS["brand"]["title_fa"],825,785,21,"#CBD5E1",FA_REG,width=500)]
- b += [fa("حروف لاتین A و Z و نسبت حروف ثابت می‌ماند.",1760,390,25,NAVY,FA_BOLD,width=780),fa("نام زیر‌برند بعد از AtoZ می‌آید و با وزن/رنگ ثانویه خوانده می‌شود.",1760,480,22,INK,FA_REG,width=780),fa("نسخهٔ امضای بنیان‌گذار: AtoZ.fnb کوچک‌تر؛ سپس «امیر زمانی» و زیرعنوان فارسی.",1760,595,22,INK,FA_REG,width=780),fa("هیچ متن یا ترجمهٔ فارسی برای خود نام AtoZ در لوگو وجود ندارد.",1760,735,22,NAVY,FA_BOLD,width=780)]
+ b += [rect(115,330,780,520,NAVY,r=24),en("MASTER WORDMARK",165,385,17,GOLD,LATIN_SEMI,width=360),en("AtoZ",170,520,132,WHITE,LATIN_XBOLD,width=550),en("AtoZfnb.info",170,680,50,WHITE,LATIN_SEMI,width=500),fa("امیر زمانی",825,735,30,WHITE,FA_BOLD,width=500),fa(TOKENS["brand"]["title_fa"],825,785,21,"#CBD5E1",FA_REG,width=500)]
+ b += [fa("حروف لاتین A و Z و نسبت حروف ثابت می‌ماند.",1760,390,25,NAVY,FA_BOLD,width=780),fa("نام زیر‌برند بعد از AtoZ می‌آید و با وزن/رنگ ثانویه خوانده می‌شود.",1760,480,22,INK,FA_REG,width=780),fa("نسخهٔ امضای بنیان‌گذار: AtoZfnb.info کوچک‌تر؛ سپس «امیر زمانی» و زیرعنوان فارسی.",1760,595,22,INK,FA_REG,width=780),fa("هیچ متن یا ترجمهٔ فارسی برای خود نام AtoZ در لوگو وجود ندارد.",1760,735,22,NAVY,FA_BOLD,width=780)]
  pages.append(svg_doc(1920,1080,"".join(b),"AtoZ master identity"))
  # 3 logo family
  b=page(3,"Primary logo family","خانوادهٔ اصلی لوگو","هر ترکیب فقط برای جایگاه مشخص طراحی شده؛ هیچ‌کدام با تغییر دستی نسبت‌ها ساخته نمی‌شود.")
@@ -472,7 +473,7 @@ def write_brand_book_sources():
   b.append(f'<g transform="translate({tx:.1f} {ty:.1f}) scale({scale})">{svg_inner(body)}</g>')
   b.append(fa(label,x+495,y+230,19,NAVY,FA_BOLD,width=460))
  b.append(rect(110,915,1700,76,"#FFF4D5",r=14))
- b.append(fa("A و Z دو سرِ دامنهٔ برند را نشان می‌دهند؛ دو فرم هندسیِ هم‌تراز، یکپارچگی از ابتدا تا انتها را بازنمایی می‌کنند. نقطهٔ طلایی لنگر بصری است، نه نمودار رشد.",1770,927,19,NAVY,FA_REG,width=1600,leading=1.3))
+ b.append(fa("نشان مرجع، حرف A را به مسیر صعودیِ Z و پیکان متصل می‌کند؛ نقطهٔ طلایی پایان مسیر را مشخص می‌کند. سیلوئت نشان اصلی حفظ شده و نام‌گذاری و چیدمان‌ها برای AtoZ به‌روزرسانی شده‌اند.",1770,927,19,NAVY,FA_REG,width=1600,leading=1.3))
  pages.append(svg_doc(1920,1080,"".join(b),"Primary logo family and design idea"))
  # 4 orientation rules
  b=page(4,"Logo lockups","چیدمان‌ها و ترتیب خواندن","علامت در سمت چپ وردمارک می‌آید؛ در چیدمان عمودی، نشان بالای AtoZ قرار می‌گیرد.")
@@ -483,13 +484,13 @@ def write_brand_book_sources():
  # 5 founder
  b=page(5,"Founder signature","امضای بنیان‌گذار","نسخهٔ تخصصی و تنها محل مجاز برای فارسیِ نام و عنوان در خود لوگو.")
  b.append(rect(140,330,1640,420,SURFACE,BORDER,22,2)); founder=primary_lockup("founder","color");b.append(f'<g transform="translate(330 385) scale(1.10)">{svg_inner(founder)}</g>')
- b += [fa("ترتیب ثابت",1740,820,23,NAVY,FA_BOLD,width=300),fa("نشان + AtoZ.fnb + امیر زمانی + زیرعنوان فارسی.",1740,865,22,INK,FA_REG,width=1450),fa("عنوان فعلی فقط پیش‌نویس برگرفته از توکن قبلی است؛ عبارت نهایی را مالک تأیید کند.",1740,918,19,MUTED,FA_REG,width=1450)]
+ b += [fa("ترتیب ثابت",1740,820,23,NAVY,FA_BOLD,width=300),fa("نشان + AtoZfnb.info + امیر زمانی + زیرعنوان فارسی.",1740,865,22,INK,FA_REG,width=1450),fa("عنوان فعلی فقط پیش‌نویس برگرفته از توکن قبلی است؛ عبارت نهایی را مالک تأیید کند.",1740,918,19,MUTED,FA_REG,width=1450)]
  pages.append(svg_doc(1920,1080,"".join(b),"Founder logo signature"))
  # 6 colors
  b=page(6,"Logo color modes","رنگ و زمینهٔ لوگو","رنگی، تک‌رنگ و معکوس سفید؛ انتخاب زمینه باید کنتراست را حفظ کند.")
  for i,(var,bg,label) in enumerate([("color",WHITE,"رنگی"),("mono",WHITE,"تک‌رنگ"),("white",NAVY,"سفید روی تیره")]):
   x=120+i*565;b.append(rect(x,330,520,260,bg,BORDER if bg==WHITE else NAVY,16,2))
-  mark,_=place_mark(x+40,380,170,var,dot=WHITE if var=="white" else None);b.append(mark)
+  mark,_=place_mark(x+40,380,170,var,dot=None);b.append(mark)
   b.append(en("AtoZ",x+250,422,62,WHITE if var=="white" else NAVY,LATIN_XBOLD,width=220))
   b.append(fa(label,x+480,545,21,WHITE if var=="white" else NAVY,FA_BOLD,width=220))
  b += [fa("سرمه‌ای روی سفید: ۱۷٫۵۵:۱ · سرمه‌ای روی طلایی: ۹٫۸۵:۱ · سفید روی سرمه‌ای: ۱۷٫۵۵:۱",1780,720,23,NAVY,FA_BOLD,width=1520),fa("طلایی روی سفید فقط تأکید گرافیکی است؛ نسبت ۱٫۷۸:۱ برای نوشتهٔ ریز و لوگوی کوچک کافی نیست.",1780,790,21,INK,FA_REG,width=1520)]
@@ -515,7 +516,8 @@ def write_brand_book_sources():
   b += [rect(x,350,300,410,WHITE,BORDER,18,2),rect(x,350,300,9,c,r=4)]
   b.append(en(s["display"],x+28,430,30,NAVY,LATIN_XBOLD,width=244))
   b.append(en(s.get("descriptor",""),x+28,475,16,c,LATIN_SEMI,width=244))
-  b.append(circle(x+40,555,9,c));b.append(en(s["icon"].upper(),x+65,546,14,MUTED,LATIN_SEMI,width=200))
+  b.append(fa(s["purpose_fa"],x+270,523,16,INK,FA_REG,width=244,leading=1.25))
+  b.append(circle(x+40,650,9,c));b.append(en(s["icon"].upper(),x+65,641,14,MUTED,LATIN_SEMI,width=200))
  b += [fa("AtoZ Blog",1740,830,22,NAVY,FA_BOLD,width=250),fa("AtoZ Tools · AtoZ book · AtoZ PB / PROMPT BANK · AtoZ Solicitor",1740,875,21,INK,FA_REG,width=1540)]
  pages.append(svg_doc(1920,1080,"".join(b),"AtoZ five subbrands"))
  # 9 subbrand lockups
@@ -552,8 +554,8 @@ def write_brand_book_sources():
  # 13 pillars
  b=page(13,"Content pillars","شش ستون محتوایی","ستون‌ها موضوع‌اند، نه لوگو؛ هر مورد یک مقصد اصلی و یک رنگ راهنما دارد.")
  for i,item in enumerate(PILLARS):
-  col=i%3;row=i//3;x=110+col*575;y=320+row*300;c=[PALETTE["book"],PALETTE["blog"],PALETTE["pb"],PALETTE["tools"],PALETTE["blog"],PALETTE["book"]][i]
-  b += [rect(x,y,530,250,WHITE,BORDER,18,2),rect(x,y,8,250,c,r=4),en(item["id"].upper(),x+30,y+28,14,c,LATIN_SEMI,width=400),fa(item["fa"],x+480,y+85,25,NAVY,FA_BOLD,width=445),en(item["destination"].upper(),x+30,y+210,14,MUTED,LATIN_SEMI,width=440)]
+  col=i%3;row=i//3;x=110+col*575;y=320+row*300;c=PALETTE[item["color_id"]]
+  b += [rect(x,y,530,250,WHITE,BORDER,18,2),rect(x,y,8,250,c,r=4),en(item["id"].upper(),x+30,y+28,14,c,LATIN_SEMI,width=400),fa(item["fa"],x+480,y+83,23,NAVY,FA_BOLD,width=445),fa(item["purpose_fa"],x+480,y+127,16,INK,FA_REG,width=445,leading=1.3),en(item["destination"].upper(),x+30,y+220,13,MUTED,LATIN_SEMI,width=440)]
  pages.append(svg_doc(1920,1080,"".join(b),"Content pillar system"))
  # 14 site map
  b=page(14,"Sub-brands × content pillars","مسیریابی محتوا به زیر‌برند","مالک هر محتوا را از روی وظیفه‌اش انتخاب کنید؛ یک ستون می‌تواند با چند زیر‌برند هم‌پوشانی داشته باشد.")
@@ -561,7 +563,8 @@ def write_brand_book_sources():
   x=110+(i%3)*575;y=330+(i//3)*260;c=PALETTE[s["id"]]
   b.append(rect(x,y,530,200,WHITE,BORDER,18,2));b.append(rect(x,y,530,7,c,r=4));b.append(en(s["display"],x+26,y+35,27,NAVY,LATIN_XBOLD,width=460))
   related=[p["fa"] for p in PILLARS if p["id"] in s["content_pillars"]]
-  b.append(fa(" · ".join(related),x+485,y+98,18,INK,FA_REG,width=445,leading=1.65))
+  summary=(" · ".join(related) if related else s["purpose_fa"])
+  b.append(fa(summary,x+485,y+98,18,INK,FA_REG,width=445,leading=1.65))
  pages.append(svg_doc(1920,1080,"".join(b),"Content pillars and subbrands"))
  # 15 motions
  b=page(15,"Logo motion","چهار حرکت، دو جهت، یک منطق","اینترو · لودینگ · ویتینگ · اوترو؛ SVGهای مستقل و گالری HTML واکنش‌گرا.")
@@ -614,9 +617,10 @@ The Latin AtoZ spelling is invariant. Persian is reserved for the dedicated foun
 ## چیدمان و نام‌گذاری
 - شکل نام برند در همه‌جا `AtoZ` است؛ ترجمه یا نوشتار فارسیِ آن ممنوع است.
 - نسخهٔ افقی: نشان در چپ، `AtoZ` در سمت راست. نسخه‌های مربع و عمودی در `primary/` موجودند.
-- امضای بنیان‌گذار: `AtoZ.fnb` کوچک‌تر از نشان/نام مادر؛ سپس «امیر زمانی» و زیرعنوان فارسی در سطرهای جدا.
+- امضای بنیان‌گذار: `AtoZfnb.info` کوچک‌تر از نشان/نام مادر؛ سپس «امیر زمانی» و زیرعنوان فارسی در سطرهای جدا.
 - متن فعلی زیرعنوان از توکن قدیمی آمده و تا تأیید مالک، موقت است.
 - برای زمینهٔ روشن نسخهٔ color یا mono؛ برای زمینهٔ سرمه‌ای/تیره نسخهٔ white.
+- در نسخهٔ white، حروف و مسیر سفید می‌مانند و نقطهٔ شاخصِ نشان طلایی است.
 
 ## حریم امن و حداقل اندازه
 - حریم امن پیرامون نشان یا لاک‌آپ: دست‌کم یک قطر نقطهٔ طلایی (`x`) در هر طرف.
