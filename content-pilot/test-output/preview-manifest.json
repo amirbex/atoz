@@ -1,0 +1,852 @@
+{
+  "title": "AtoZ · نمونه‌های خروجی تست هفتهٔ اول",
+  "source": "tools/run_content_engine.py",
+  "count": 84,
+  "publishing_enabled": false,
+  "owner_review_required": true,
+  "reported_reference_count": 64,
+  "generated_delivery_count": 84,
+  "unresolved_difference": 20,
+  "items": [
+    {
+      "delivery_id": "ATZ-D-000001",
+      "content_id": "ATZ-C-000001",
+      "day": "شنبه",
+      "day_index": 1,
+      "format": "web_resource",
+      "channel": "website",
+      "title": "مدل کسب‌وکار استروالدر در برابر بیزنس‌پلن سنتی در صنعت F&B",
+      "preview": "creatives/ATZ-D-000001.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000002",
+      "content_id": "ATZ-C-000001",
+      "day": "شنبه",
+      "day_index": 1,
+      "format": "telegram_file",
+      "channel": "telegram",
+      "title": "مدل کسب‌وکار استروالدر در برابر بیزنس‌پلن سنتی در صنعت F&B",
+      "preview": "creatives/ATZ-D-000002.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000003",
+      "content_id": "ATZ-C-000001",
+      "day": "شنبه",
+      "day_index": 1,
+      "format": "carousel",
+      "channel": "instagram",
+      "title": "مدل کسب‌وکار استروالدر در برابر بیزنس‌پلن سنتی در صنعت F&B",
+      "preview": "creatives/ATZ-D-000003.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000004",
+      "content_id": "ATZ-C-000008",
+      "day": "شنبه",
+      "day_index": 1,
+      "format": "micro_reel",
+      "channel": "instagram",
+      "title": "تلهٔ اپراتور بودن به‌جای مالک کسب‌وکار بودن",
+      "preview": "creatives/ATZ-D-000004.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000005",
+      "content_id": "ATZ-C-000009",
+      "day": "شنبه",
+      "day_index": 1,
+      "format": "mini_reel",
+      "channel": "instagram",
+      "title": "پیش‌نویس بوم کسب‌وکار با پرامپت AI",
+      "preview": "creatives/ATZ-D-000005.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000006",
+      "content_id": "ATZ-C-000014",
+      "day": "شنبه",
+      "day_index": 1,
+      "format": "story",
+      "channel": "instagram",
+      "title": "سنجش چالش‌های جامعهٔ F&B",
+      "preview": "creatives/ATZ-D-000006.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000007",
+      "content_id": "ATZ-C-000001",
+      "day": "شنبه",
+      "day_index": 1,
+      "format": "story",
+      "channel": "instagram",
+      "title": "مدل کسب‌وکار استروالدر در برابر بیزنس‌پلن سنتی در صنعت F&B",
+      "preview": "creatives/ATZ-D-000007.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000008",
+      "content_id": "ATZ-C-000004",
+      "day": "شنبه",
+      "day_index": 1,
+      "format": "story",
+      "channel": "instagram",
+      "title": "اقتصاد کافه و نقطهٔ سربه‌سر",
+      "preview": "creatives/ATZ-D-000008.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000009",
+      "content_id": "ATZ-C-000009",
+      "day": "شنبه",
+      "day_index": 1,
+      "format": "story",
+      "channel": "instagram",
+      "title": "پیش‌نویس بوم کسب‌وکار با پرامپت AI",
+      "preview": "creatives/ATZ-D-000009.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000010",
+      "content_id": "ATZ-C-000002",
+      "day": "یکشنبه",
+      "day_index": 2,
+      "format": "web_article",
+      "channel": "website",
+      "title": "از پشت دستگاه اسپرسو تا اتاق استراتژی F&B",
+      "preview": "creatives/ATZ-D-000010.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000011",
+      "content_id": "ATZ-C-000002",
+      "day": "یکشنبه",
+      "day_index": 2,
+      "format": "telegram_post",
+      "channel": "telegram",
+      "title": "از پشت دستگاه اسپرسو تا اتاق استراتژی F&B",
+      "preview": "creatives/ATZ-D-000011.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000012",
+      "content_id": "ATZ-C-000011",
+      "day": "یکشنبه",
+      "day_index": 2,
+      "format": "single_map",
+      "channel": "instagram",
+      "title": "نمای کلی ۹ بلوک بوم کسب‌وکار",
+      "preview": "creatives/ATZ-D-000012.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000013",
+      "content_id": "ATZ-C-000002",
+      "day": "یکشنبه",
+      "day_index": 2,
+      "format": "main_reel",
+      "channel": "instagram",
+      "title": "از پشت دستگاه اسپرسو تا اتاق استراتژی F&B",
+      "preview": "creatives/ATZ-D-000013.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000014",
+      "content_id": "ATZ-C-000012",
+      "day": "یکشنبه",
+      "day_index": 2,
+      "format": "animated_reel",
+      "channel": "instagram",
+      "title": "باور غلط: ایده و دکور خاص برای موفقیت کافی است",
+      "preview": "creatives/ATZ-D-000014.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000015",
+      "content_id": "ATZ-C-000013",
+      "day": "یکشنبه",
+      "day_index": 2,
+      "format": "mini_reel",
+      "channel": "instagram",
+      "title": "مقایسهٔ دو کافه با تعداد مشتری و اقتصاد متفاوت",
+      "preview": "creatives/ATZ-D-000015.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000016",
+      "content_id": "ATZ-C-000014",
+      "day": "یکشنبه",
+      "day_index": 2,
+      "format": "community_post",
+      "channel": "instagram",
+      "title": "سنجش چالش‌های جامعهٔ F&B",
+      "preview": "creatives/ATZ-D-000016.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000017",
+      "content_id": "ATZ-C-000010",
+      "day": "یکشنبه",
+      "day_index": 2,
+      "format": "quote",
+      "channel": "instagram",
+      "title": "بیانیهٔ آغاز مسیر AtoZ.FnB",
+      "preview": "creatives/ATZ-D-000017.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000018",
+      "content_id": "ATZ-C-000012",
+      "day": "یکشنبه",
+      "day_index": 2,
+      "format": "story",
+      "channel": "instagram",
+      "title": "باور غلط: ایده و دکور خاص برای موفقیت کافی است",
+      "preview": "creatives/ATZ-D-000018.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000019",
+      "content_id": "ATZ-C-000002",
+      "day": "یکشنبه",
+      "day_index": 2,
+      "format": "story",
+      "channel": "instagram",
+      "title": "از پشت دستگاه اسپرسو تا اتاق استراتژی F&B",
+      "preview": "creatives/ATZ-D-000019.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000020",
+      "content_id": "ATZ-C-000013",
+      "day": "یکشنبه",
+      "day_index": 2,
+      "format": "story",
+      "channel": "instagram",
+      "title": "مقایسهٔ دو کافه با تعداد مشتری و اقتصاد متفاوت",
+      "preview": "creatives/ATZ-D-000020.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000021",
+      "content_id": "ATZ-C-000003",
+      "day": "دوشنبه",
+      "day_index": 3,
+      "format": "prompt_card",
+      "channel": "website",
+      "title": "بلوک اول بوم: بخش‌بندی مشتریان و طراحی پرسونا با AI",
+      "preview": "creatives/ATZ-D-000021.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000022",
+      "content_id": "ATZ-C-000003",
+      "day": "دوشنبه",
+      "day_index": 3,
+      "format": "telegram_prompt",
+      "channel": "telegram",
+      "title": "بلوک اول بوم: بخش‌بندی مشتریان و طراحی پرسونا با AI",
+      "preview": "creatives/ATZ-D-000022.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000023",
+      "content_id": "ATZ-C-000003",
+      "day": "دوشنبه",
+      "day_index": 3,
+      "format": "carousel",
+      "channel": "instagram",
+      "title": "بلوک اول بوم: بخش‌بندی مشتریان و طراحی پرسونا با AI",
+      "preview": "creatives/ATZ-D-000023.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000024",
+      "content_id": "ATZ-C-000015",
+      "day": "دوشنبه",
+      "day_index": 3,
+      "format": "story_carousel",
+      "channel": "instagram",
+      "title": "سه درس گذار از باریستا/سرآشپز به مدیر",
+      "preview": "creatives/ATZ-D-000024.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000025",
+      "content_id": "ATZ-C-000016",
+      "day": "دوشنبه",
+      "day_index": 3,
+      "format": "micro_reel",
+      "channel": "instagram",
+      "title": "خوشه‌بندی نظرهای مشتری با AI",
+      "preview": "creatives/ATZ-D-000025.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000026",
+      "content_id": "ATZ-C-000005",
+      "day": "دوشنبه",
+      "day_index": 3,
+      "format": "single_infographic",
+      "channel": "instagram",
+      "title": "SOP و چک‌لیست بازگشایی و بستن شیفت",
+      "preview": "creatives/ATZ-D-000026.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000027",
+      "content_id": "ATZ-C-000015",
+      "day": "دوشنبه",
+      "day_index": 3,
+      "format": "story",
+      "channel": "instagram",
+      "title": "سه درس گذار از باریستا/سرآشپز به مدیر",
+      "preview": "creatives/ATZ-D-000027.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000028",
+      "content_id": "ATZ-C-000003",
+      "day": "دوشنبه",
+      "day_index": 3,
+      "format": "story",
+      "channel": "instagram",
+      "title": "بلوک اول بوم: بخش‌بندی مشتریان و طراحی پرسونا با AI",
+      "preview": "creatives/ATZ-D-000028.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000029",
+      "content_id": "ATZ-C-000002",
+      "day": "دوشنبه",
+      "day_index": 3,
+      "format": "story",
+      "channel": "instagram",
+      "title": "از پشت دستگاه اسپرسو تا اتاق استراتژی F&B",
+      "preview": "creatives/ATZ-D-000029.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000030",
+      "content_id": "ATZ-C-000005",
+      "day": "دوشنبه",
+      "day_index": 3,
+      "format": "story",
+      "channel": "instagram",
+      "title": "SOP و چک‌لیست بازگشایی و بستن شیفت",
+      "preview": "creatives/ATZ-D-000030.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000031",
+      "content_id": "ATZ-C-000004",
+      "day": "دوشنبه",
+      "day_index": 3,
+      "format": "story",
+      "channel": "instagram",
+      "title": "اقتصاد کافه و نقطهٔ سربه‌سر",
+      "preview": "creatives/ATZ-D-000031.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000032",
+      "content_id": "ATZ-C-000004",
+      "day": "سه‌شنبه",
+      "day_index": 4,
+      "format": "calculator_guide",
+      "channel": "website",
+      "title": "اقتصاد کافه و نقطهٔ سربه‌سر",
+      "preview": "creatives/ATZ-D-000032.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000033",
+      "content_id": "ATZ-C-000004",
+      "day": "سه‌شنبه",
+      "day_index": 4,
+      "format": "telegram_guide",
+      "channel": "telegram",
+      "title": "اقتصاد کافه و نقطهٔ سربه‌سر",
+      "preview": "creatives/ATZ-D-000033.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000034",
+      "content_id": "ATZ-C-000005",
+      "day": "سه‌شنبه",
+      "day_index": 4,
+      "format": "carousel",
+      "channel": "instagram",
+      "title": "SOP و چک‌لیست بازگشایی و بستن شیفت",
+      "preview": "creatives/ATZ-D-000034.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000035",
+      "content_id": "ATZ-C-000022",
+      "day": "سه‌شنبه",
+      "day_index": 4,
+      "format": "main_reel",
+      "channel": "instagram",
+      "title": "رشد یا سود؟ اولویت تصمیم‌گیری",
+      "preview": "creatives/ATZ-D-000035.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000036",
+      "content_id": "ATZ-C-000017",
+      "day": "سه‌شنبه",
+      "day_index": 4,
+      "format": "animated_reel",
+      "channel": "instagram",
+      "title": "کالبدشکافی منوی شلوغ و پیچیدگی عملیات",
+      "preview": "creatives/ATZ-D-000036.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000037",
+      "content_id": "ATZ-C-000004",
+      "day": "سه‌شنبه",
+      "day_index": 4,
+      "format": "micro_reel",
+      "channel": "instagram",
+      "title": "اقتصاد کافه و نقطهٔ سربه‌سر",
+      "preview": "creatives/ATZ-D-000037.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000038",
+      "content_id": "ATZ-C-000018",
+      "day": "سه‌شنبه",
+      "day_index": 4,
+      "format": "quote",
+      "channel": "instagram",
+      "title": "استراتژی مقدم بر تقلید دکور",
+      "preview": "creatives/ATZ-D-000038.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000039",
+      "content_id": "ATZ-C-000005",
+      "day": "سه‌شنبه",
+      "day_index": 4,
+      "format": "story",
+      "channel": "instagram",
+      "title": "SOP و چک‌لیست بازگشایی و بستن شیفت",
+      "preview": "creatives/ATZ-D-000039.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000040",
+      "content_id": "ATZ-C-000005",
+      "day": "سه‌شنبه",
+      "day_index": 4,
+      "format": "story",
+      "channel": "instagram",
+      "title": "SOP و چک‌لیست بازگشایی و بستن شیفت",
+      "preview": "creatives/ATZ-D-000040.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000041",
+      "content_id": "ATZ-C-000022",
+      "day": "سه‌شنبه",
+      "day_index": 4,
+      "format": "story",
+      "channel": "instagram",
+      "title": "رشد یا سود؟ اولویت تصمیم‌گیری",
+      "preview": "creatives/ATZ-D-000041.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000042",
+      "content_id": "ATZ-C-000004",
+      "day": "سه‌شنبه",
+      "day_index": 4,
+      "format": "story",
+      "channel": "instagram",
+      "title": "اقتصاد کافه و نقطهٔ سربه‌سر",
+      "preview": "creatives/ATZ-D-000042.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000043",
+      "content_id": "ATZ-C-000005",
+      "day": "سه‌شنبه",
+      "day_index": 4,
+      "format": "story",
+      "channel": "instagram",
+      "title": "SOP و چک‌لیست بازگشایی و بستن شیفت",
+      "preview": "creatives/ATZ-D-000043.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000044",
+      "content_id": "ATZ-C-000007",
+      "day": "سه‌شنبه",
+      "day_index": 4,
+      "format": "story",
+      "channel": "instagram",
+      "title": "ماتریس رشد آنسوف و نفوذ در بازار",
+      "preview": "creatives/ATZ-D-000044.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000045",
+      "content_id": "ATZ-C-000005",
+      "day": "چهارشنبه",
+      "day_index": 5,
+      "format": "sop_resource",
+      "channel": "website",
+      "title": "SOP و چک‌لیست بازگشایی و بستن شیفت",
+      "preview": "creatives/ATZ-D-000045.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000046",
+      "content_id": "ATZ-C-000006",
+      "day": "چهارشنبه",
+      "day_index": 5,
+      "format": "telegram_file",
+      "channel": "telegram",
+      "title": "۵ خطای رایج کسب‌وکارهای F&B و تلهٔ نقدینگی",
+      "preview": "creatives/ATZ-D-000046.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000047",
+      "content_id": "ATZ-C-000019",
+      "day": "چهارشنبه",
+      "day_index": 5,
+      "format": "carousel",
+      "channel": "instagram",
+      "title": "بلوک دوم بوم: ارزش پیشنهادی",
+      "preview": "creatives/ATZ-D-000047.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000048",
+      "content_id": "ATZ-C-000007",
+      "day": "چهارشنبه",
+      "day_index": 5,
+      "format": "single_infographic",
+      "channel": "instagram",
+      "title": "ماتریس رشد آنسوف و نفوذ در بازار",
+      "preview": "creatives/ATZ-D-000048.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000049",
+      "content_id": "ATZ-C-000006",
+      "day": "چهارشنبه",
+      "day_index": 5,
+      "format": "main_reel",
+      "channel": "instagram",
+      "title": "۵ خطای رایج کسب‌وکارهای F&B و تلهٔ نقدینگی",
+      "preview": "creatives/ATZ-D-000049.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000050",
+      "content_id": "ATZ-C-000020",
+      "day": "چهارشنبه",
+      "day_index": 5,
+      "format": "mini_reel",
+      "channel": "instagram",
+      "title": "ساخت پیش‌نویس Opening SOP با AI",
+      "preview": "creatives/ATZ-D-000050.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000051",
+      "content_id": "ATZ-C-000021",
+      "day": "چهارشنبه",
+      "day_index": 5,
+      "format": "micro_reel",
+      "channel": "instagram",
+      "title": "تنهایی تصمیم‌گیری و ارزش شبکه‌سازی صنفی",
+      "preview": "creatives/ATZ-D-000051.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000052",
+      "content_id": "ATZ-C-000026",
+      "day": "چهارشنبه",
+      "day_index": 5,
+      "format": "carousel",
+      "channel": "instagram",
+      "title": "سه مدل کسب‌وکار نوآورانه در F&B",
+      "preview": "creatives/ATZ-D-000052.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000053",
+      "content_id": "ATZ-C-000004",
+      "day": "چهارشنبه",
+      "day_index": 5,
+      "format": "quote",
+      "channel": "instagram",
+      "title": "اقتصاد کافه و نقطهٔ سربه‌سر",
+      "preview": "creatives/ATZ-D-000053.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000054",
+      "content_id": "ATZ-C-000019",
+      "day": "چهارشنبه",
+      "day_index": 5,
+      "format": "story",
+      "channel": "instagram",
+      "title": "بلوک دوم بوم: ارزش پیشنهادی",
+      "preview": "creatives/ATZ-D-000054.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000055",
+      "content_id": "ATZ-C-000019",
+      "day": "چهارشنبه",
+      "day_index": 5,
+      "format": "story",
+      "channel": "instagram",
+      "title": "بلوک دوم بوم: ارزش پیشنهادی",
+      "preview": "creatives/ATZ-D-000055.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000056",
+      "content_id": "ATZ-C-000006",
+      "day": "چهارشنبه",
+      "day_index": 5,
+      "format": "story",
+      "channel": "instagram",
+      "title": "۵ خطای رایج کسب‌وکارهای F&B و تلهٔ نقدینگی",
+      "preview": "creatives/ATZ-D-000056.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000057",
+      "content_id": "ATZ-C-000007",
+      "day": "چهارشنبه",
+      "day_index": 5,
+      "format": "story",
+      "channel": "instagram",
+      "title": "ماتریس رشد آنسوف و نفوذ در بازار",
+      "preview": "creatives/ATZ-D-000057.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000058",
+      "content_id": "ATZ-C-000024",
+      "day": "پنج‌شنبه",
+      "day_index": 6,
+      "format": "prompt_card",
+      "channel": "website",
+      "title": "پیداکردن گلوگاه صف با پرامپت #02",
+      "preview": "creatives/ATZ-D-000058.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000059",
+      "content_id": "ATZ-C-000024",
+      "day": "پنج‌شنبه",
+      "day_index": 6,
+      "format": "telegram_prompt",
+      "channel": "telegram",
+      "title": "پیداکردن گلوگاه صف با پرامپت #02",
+      "preview": "creatives/ATZ-D-000059.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000060",
+      "content_id": "ATZ-C-000007",
+      "day": "پنج‌شنبه",
+      "day_index": 6,
+      "format": "carousel",
+      "channel": "instagram",
+      "title": "ماتریس رشد آنسوف و نفوذ در بازار",
+      "preview": "creatives/ATZ-D-000060.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000061",
+      "content_id": "ATZ-C-000006",
+      "day": "پنج‌شنبه",
+      "day_index": 6,
+      "format": "carousel",
+      "channel": "instagram",
+      "title": "۵ خطای رایج کسب‌وکارهای F&B و تلهٔ نقدینگی",
+      "preview": "creatives/ATZ-D-000061.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000062",
+      "content_id": "ATZ-C-000023",
+      "day": "پنج‌شنبه",
+      "day_index": 6,
+      "format": "main_reel",
+      "channel": "instagram",
+      "title": "نشتی مالی در دریافت کالا و انبار",
+      "preview": "creatives/ATZ-D-000062.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000063",
+      "content_id": "ATZ-C-000024",
+      "day": "پنج‌شنبه",
+      "day_index": 6,
+      "format": "animated_reel",
+      "channel": "instagram",
+      "title": "پیداکردن گلوگاه صف با پرامپت #02",
+      "preview": "creatives/ATZ-D-000063.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000064",
+      "content_id": "ATZ-C-000007",
+      "day": "پنج‌شنبه",
+      "day_index": 6,
+      "format": "story",
+      "channel": "instagram",
+      "title": "ماتریس رشد آنسوف و نفوذ در بازار",
+      "preview": "creatives/ATZ-D-000064.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000065",
+      "content_id": "ATZ-C-000006",
+      "day": "پنج‌شنبه",
+      "day_index": 6,
+      "format": "story",
+      "channel": "instagram",
+      "title": "۵ خطای رایج کسب‌وکارهای F&B و تلهٔ نقدینگی",
+      "preview": "creatives/ATZ-D-000065.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000066",
+      "content_id": "ATZ-C-000024",
+      "day": "پنج‌شنبه",
+      "day_index": 6,
+      "format": "story",
+      "channel": "instagram",
+      "title": "پیداکردن گلوگاه صف با پرامپت #02",
+      "preview": "creatives/ATZ-D-000066.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000067",
+      "content_id": "ATZ-C-000027",
+      "day": "پنج‌شنبه",
+      "day_index": 6,
+      "format": "story",
+      "channel": "instagram",
+      "title": "مرور هفتهٔ اول و قلاب هفتهٔ دوم",
+      "preview": "creatives/ATZ-D-000067.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000068",
+      "content_id": "ATZ-C-000023",
+      "day": "پنج‌شنبه",
+      "day_index": 6,
+      "format": "story",
+      "channel": "instagram",
+      "title": "نشتی مالی در دریافت کالا و انبار",
+      "preview": "creatives/ATZ-D-000068.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000069",
+      "content_id": "ATZ-C-000025",
+      "day": "پنج‌شنبه",
+      "day_index": 6,
+      "format": "story",
+      "channel": "instagram",
+      "title": "تحلیل جمعی تجربهٔ شکست پروژه‌های F&B",
+      "preview": "creatives/ATZ-D-000069.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000070",
+      "content_id": "ATZ-C-000014",
+      "day": "پنج‌شنبه",
+      "day_index": 6,
+      "format": "story",
+      "channel": "instagram",
+      "title": "سنجش چالش‌های جامعهٔ F&B",
+      "preview": "creatives/ATZ-D-000070.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000071",
+      "content_id": "ATZ-C-000026",
+      "day": "جمعه",
+      "day_index": 7,
+      "format": "case_article",
+      "channel": "website",
+      "title": "سه مدل کسب‌وکار نوآورانه در F&B",
+      "preview": "creatives/ATZ-D-000071.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000072",
+      "content_id": "ATZ-C-000027",
+      "day": "جمعه",
+      "day_index": 7,
+      "format": "telegram_digest",
+      "channel": "telegram",
+      "title": "مرور هفتهٔ اول و قلاب هفتهٔ دوم",
+      "preview": "creatives/ATZ-D-000072.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000073",
+      "content_id": "ATZ-C-000026",
+      "day": "جمعه",
+      "day_index": 7,
+      "format": "carousel",
+      "channel": "instagram",
+      "title": "سه مدل کسب‌وکار نوآورانه در F&B",
+      "preview": "creatives/ATZ-D-000073.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000074",
+      "content_id": "ATZ-C-000027",
+      "day": "جمعه",
+      "day_index": 7,
+      "format": "recap_post",
+      "channel": "instagram",
+      "title": "مرور هفتهٔ اول و قلاب هفتهٔ دوم",
+      "preview": "creatives/ATZ-D-000074.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000075",
+      "content_id": "ATZ-C-000027",
+      "day": "جمعه",
+      "day_index": 7,
+      "format": "mini_reel",
+      "channel": "instagram",
+      "title": "مرور هفتهٔ اول و قلاب هفتهٔ دوم",
+      "preview": "creatives/ATZ-D-000075.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000076",
+      "content_id": "ATZ-C-000028",
+      "day": "جمعه",
+      "day_index": 7,
+      "format": "micro_reel",
+      "channel": "instagram",
+      "title": "Prime Cost به‌عنوان پیش‌درآمد هفتهٔ دوم",
+      "preview": "creatives/ATZ-D-000076.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000077",
+      "content_id": "ATZ-C-000027",
+      "day": "جمعه",
+      "day_index": 7,
+      "format": "quote",
+      "channel": "instagram",
+      "title": "مرور هفتهٔ اول و قلاب هفتهٔ دوم",
+      "preview": "creatives/ATZ-D-000077.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000078",
+      "content_id": "ATZ-C-000018",
+      "day": "جمعه",
+      "day_index": 7,
+      "format": "community_post",
+      "channel": "instagram",
+      "title": "استراتژی مقدم بر تقلید دکور",
+      "preview": "creatives/ATZ-D-000078.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000079",
+      "content_id": "ATZ-C-000027",
+      "day": "جمعه",
+      "day_index": 7,
+      "format": "story",
+      "channel": "instagram",
+      "title": "مرور هفتهٔ اول و قلاب هفتهٔ دوم",
+      "preview": "creatives/ATZ-D-000079.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000080",
+      "content_id": "ATZ-C-000026",
+      "day": "جمعه",
+      "day_index": 7,
+      "format": "story",
+      "channel": "instagram",
+      "title": "سه مدل کسب‌وکار نوآورانه در F&B",
+      "preview": "creatives/ATZ-D-000080.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000081",
+      "content_id": "ATZ-C-000027",
+      "day": "جمعه",
+      "day_index": 7,
+      "format": "story",
+      "channel": "instagram",
+      "title": "مرور هفتهٔ اول و قلاب هفتهٔ دوم",
+      "preview": "creatives/ATZ-D-000081.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000082",
+      "content_id": "ATZ-C-000027",
+      "day": "جمعه",
+      "day_index": 7,
+      "format": "story",
+      "channel": "instagram",
+      "title": "مرور هفتهٔ اول و قلاب هفتهٔ دوم",
+      "preview": "creatives/ATZ-D-000082.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000083",
+      "content_id": "ATZ-C-000027",
+      "day": "جمعه",
+      "day_index": 7,
+      "format": "story",
+      "channel": "instagram",
+      "title": "مرور هفتهٔ اول و قلاب هفتهٔ دوم",
+      "preview": "creatives/ATZ-D-000083.png"
+    },
+    {
+      "delivery_id": "ATZ-D-000084",
+      "content_id": "ATZ-C-000028",
+      "day": "جمعه",
+      "day_index": 7,
+      "format": "story",
+      "channel": "instagram",
+      "title": "Prime Cost به‌عنوان پیش‌درآمد هفتهٔ دوم",
+      "preview": "creatives/ATZ-D-000084.png"
+    }
+  ]
+}
