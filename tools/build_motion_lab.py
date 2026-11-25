@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build a deterministic data-driven anatomy motion sample from AtoZ vectors."""
 from __future__ import annotations
-import argparse, json, subprocess, sys
+import argparse, json, os, subprocess, sys
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -16,8 +16,8 @@ SOURCE_HTML=ROOT/"content-engine/motion-lab/break-even-anatomy.html"
 def frame_svg(data:dict, step:int)->str:
     W,H=1080,1920;navy="#0A1931";gold="#FFB400";white="#FFFFFF";muted="#B7C4D5";line="#354C68"
     pieces=[f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',f'<rect width="{W}" height="{H}" fill="{navy}"/>',f'<rect x="0" y="0" width="{W}" height="20" fill="{gold}"/>']
-    pieces.append(brand.mark_svg(70,68,.23,"white"))
-    pieces.append(brand.shaped_text("AtoZ MOTION RECIPE  /  DATA-BOUND",1000,102,18,gold,"Montserrat-SemiBold.ttf",max_width=750)[0])
+    pieces.append(brand.brand_lockup_svg(70,52,270,"white"))
+    pieces.append(brand.shaped_text("MOTION RECIPE · DATA-BOUND",1000,102,18,gold,"Montserrat-SemiBold.ttf",max_width=600)[0])
     pieces.append(brand.shaped_text(data["title_fa"],1000,210,45,white,"Vazirmatn-ExtraBold.ttf",max_width=890)[0])
     pieces.append(brand.shaped_text("مثال آموزشی فرضی؛ نه پیش‌بینی بازار",1000,285,24,muted,"Vazirmatn-Regular.ttf",max_width=870)[0])
     values=data["values"]
@@ -38,7 +38,7 @@ def frame_svg(data:dict, step:int)->str:
         pieces.append(brand.shaped_text("۳۰۰٬۰۰۰٬۰۰۰ ÷ ۱۵۰٬۰۰۰ = ۲٬۰۰۰",960,1610,24,gold,"Vazirmatn-Bold.ttf",max_width=850)[0])
         pieces.append(brand.shaped_text("تمام اعداد نمونه‌اند؛ هزینه‌ها، ترکیب فروش و ظرفیت را با دادهٔ خود بسنجید.",960,1680,18,muted,"Vazirmatn-Regular.ttf",max_width=850)[0])
     pieces.append(f'<line x1="80" y1="1810" x2="1000" y2="1810" stroke="{line}" stroke-width="2"/>')
-    pieces.append(brand.shaped_text("ATOZ  ·  FINANCE & MARKET  ·  REVIEW DRAFT",1000,1860,14,muted,"Montserrat-SemiBold.ttf",max_width=850)[0])
+    pieces.append(brand.shaped_text("AtoZ  ·  FINANCE & MARKET  ·  REVIEW DRAFT",1000,1860,14,muted,"Montserrat-SemiBold.ttf",max_width=850)[0])
     pieces.append("</svg>")
     return "".join(pieces)
 
@@ -49,6 +49,11 @@ def main():
     args=parser.parse_args();out=args.out.resolve();out.mkdir(parents=True,exist_ok=True)
     data=json.loads(DATA_PATH.read_text(encoding="utf-8"))
     html=SOURCE_HTML.read_text(encoding="utf-8")
+    package_logo=Path(os.path.relpath(out.parent/"brand-assets/primary/white/horizontal.svg",out)).as_posix()
+    html=html.replace("/logo/primary/white/horizontal.svg",package_logo)
+    html=html.replace("/tools/fonts/Vazirmatn-Regular.ttf","../brand-assets/fonts/Vazirmatn-Regular.ttf")
+    html=html.replace("/tools/fonts/Vazirmatn-Bold.ttf","../brand-assets/fonts/Vazirmatn-Bold.ttf")
+    html=html.replace("/content-engine/dashboard/","../index.html")
     (out/"break-even-anatomy.html").write_text(html,encoding="utf-8")
     (out/"break-even-data.json").write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     frames=out/"frames";frames.mkdir(exist_ok=True)

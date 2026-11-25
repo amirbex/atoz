@@ -1,5 +1,6 @@
 import copy
 import json
+import re
 import threading
 import unittest
 from functools import partial
@@ -20,6 +21,7 @@ from tools.run_content_engine import (
     validate_source,
     write_daily_catalog,
     preserve_local_workspace,
+    renderer,
 )
 from tools.serve_content_studio import Handler
 
@@ -36,10 +38,25 @@ class ContentEngineTests(unittest.TestCase):
         self.assertEqual(summary["deliveries"], 84)
         self.assertEqual(len(deliveries), 84)
         self.assertEqual(schema_errors(generated, PLAN_SCHEMA, "generated plan"), [])
+        self.assertIn("AtoZ horizontal lockup — color", deliveries[0]["_visual_svg"])
+        self.assertNotIn("APPROVAL-REQUIRED.invalid", deliveries[0]["_visual_svg"])
+        self.assertNotIn("APPROVED_SOCIAL_HANDLE", deliveries[0]["_visual_svg"])
+        self.assertTrue(any("AtoZ horizontal lockup — white" in d["_visual_svg"] for d in deliveries))
         self.assertEqual(self.source, original)
         self.assertTrue(all(d.get("cta", {}).get("target_url") == OWNER_SITE for d in generated["deliveries"] if d.get("cta")))
         self.assertTrue(all(OWNER_HANDLE in d.get("caption", "") for d in generated["deliveries"] if d.get("caption")))
         self.assertTrue(all("atozfnb.info" not in d.get("caption", "") for d in generated["deliveries"]))
+
+    def test_test_creatives_use_only_approved_brand_palette_and_lockups(self):
+        allowed = {token["hex"].upper() for token in renderer.BRAND_COLORS.values() if isinstance(token, dict) and "hex" in token}
+        allowed.add("#FFFFFF")
+        for pillar in renderer.PILLARS:
+            for style in ("editorial", "formal", "minimal", "artwork", "retro", "handwritten-accent"):
+                with self.subTest(pillar=pillar, style=style):
+                    svg = renderer.make_card("نمونهٔ آزمون", "متن نمونه برای بازبینی هویت AtoZ", pillar, style=style)
+                    self.assertLessEqual({color.upper() for color in re.findall(r"#[0-9A-Fa-f]{3,8}\b", svg)}, allowed)
+                    self.assertIn("AtoZ horizontal lockup", svg)
+                    self.assertNotIn("ATOZ", svg)
 
     def test_unresolved_count_discrepancy_is_parsed_without_rewriting(self):
         mismatch = count_reference_mismatch(self.source["notes"])
@@ -57,10 +74,16 @@ class ContentEngineTests(unittest.TestCase):
             self.assertEqual(week_index["delivery_count"], 84)
             self.assertEqual(len(week_index["days"]), 7)
             self.assertTrue((output / "index.html").is_file())
-            self.assertIn("کاروسل‌ها", (output / "index.html").read_text(encoding="utf-8"))
+            week_html = (output / "index.html").read_text(encoding="utf-8")
+            self.assertIn("کاروسل‌ها", week_html)
+            self.assertIn("brand-assets/primary/white/horizontal.svg", week_html)
+            self.assertEqual((output / "brand-assets/primary/white/horizontal.svg").read_bytes(), (Path(__file__).resolve().parents[1] / "logo/primary/white/horizontal.svg").read_bytes())
+            self.assertEqual((output / "brand-assets/primary/color/horizontal.svg").read_bytes(), (Path(__file__).resolve().parents[1] / "logo/primary/color/horizontal.svg").read_bytes())
+            self.assertEqual((output / "brand-assets/fonts/Vazirmatn-Regular.ttf").read_bytes(), (Path(__file__).resolve().parents[1] / "tools/fonts/Vazirmatn-Regular.ttf").read_bytes())
             for day in ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه"]:
                 root = output / day
                 self.assertTrue((root / "index.html").is_file())
+                self.assertIn("brand-assets/primary/white/horizontal.svg", (root / "index.html").read_text(encoding="utf-8"))
                 self.assertTrue((root / "daily-manifest.json").is_file())
                 for category in ["01-reels", "02-carousels", "03-posts", "04-stories", "05-web-telegram"]:
                     self.assertTrue((root / category / "index.html").is_file())
