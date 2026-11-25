@@ -58,6 +58,15 @@ class ContentEngineTests(unittest.TestCase):
                     self.assertIn("AtoZ horizontal lockup", svg)
                     self.assertNotIn("ATOZ", svg)
 
+    def test_repository_preview_exposes_all_week_one_creatives(self):
+        preview = Path(__file__).resolve().parents[1] / "content-pilot/test-output"
+        manifest = json.loads((preview / "preview-manifest.json").read_text(encoding="utf-8"))
+        expected_ids = {delivery["delivery_id"] for delivery in self.source["deliveries"]}
+        self.assertEqual({item["delivery_id"] for item in manifest["items"]}, expected_ids)
+        self.assertEqual(manifest["count"], 84)
+        self.assertTrue(all((preview / item["preview"]).is_file() for item in manifest["items"]))
+        self.assertTrue((preview / "index.html").is_file())
+
     def test_unresolved_count_discrepancy_is_parsed_without_rewriting(self):
         mismatch = count_reference_mismatch(self.source["notes"])
         self.assertEqual(mismatch, {"reference_count": 64, "difference": 20})
