@@ -30,7 +30,7 @@ export const BreakEvenAnatomy: React.FC<{data: BreakEvenData}> = ({data}) => {
     {title: 'نقطهٔ سربه‌سر', value: format(data.values.break_even_orders), unit: `سفارش · ${data.values.period}`},
   ];
   return <AbsoluteFill style={{background: NAVY, color: 'white', fontFamily: 'Vazirmatn, sans-serif', padding: 92}}>
-    <div style={{color: GOLD, fontSize: 28, letterSpacing: 3}}>ATOZ MOTION RECIPE · DATA-BOUND</div>
+    <div style={{color: GOLD, fontSize: 28, letterSpacing: 3}}>AtoZ MOTION RECIPE · DATA-BOUND</div>
     <h1 style={{fontSize: 72, marginTop: 34, marginBottom: 16}}>{data.title_fa}</h1>
     <p style={{fontSize: 30, color: '#B8C5D5'}}>{data.evidence_label_fa}</p>
     <div style={{position: 'relative', flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 20}}>

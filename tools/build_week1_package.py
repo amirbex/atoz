@@ -32,13 +32,15 @@ TEMPLATES_ROOT = ROOT / "قالب‌های-محتوا"
 MOTION_ROOT = ROOT / "لوگوموشن"
 SITE_UI_ROOT = ROOT / "رابط-وب‌سایت"
 
+BRAND_TOKENS = json.loads((ROOT / "brand/tokens.json").read_text(encoding="utf-8"))
+BRAND_COLORS = BRAND_TOKENS["color"]
 PILLARS = {
-    1: {"id": "education-sops", "name": "آموزش و استانداردسازی عملیاتی", "color": "#3B5998", "dark": "#6085D6", "hub": "کتابخانه و SOPها"},
-    2: {"id": "leadership", "name": "الهام‌بخشی، رهبری و ذهنیت", "color": "#0A1931", "dark": "#FFB400", "hub": "Solutions"},
-    3: {"id": "innovation-ai", "name": "نوآوری، هوش مصنوعی و اتوماسیون", "color": "#5D5FEF", "dark": "#8183FF", "hub": "بانک پرامپت"},
-    4: {"id": "finance-market", "name": "اقتصاد F&B و تحلیل بازار", "color": "#0F766E", "dark": "#2DD4BF", "hub": "آزمایشگاه ابزارها"},
-    5: {"id": "case-studies", "name": "مطالعات موردی و کالبدشکافی", "color": "#C05746", "dark": "#E06D5B", "hub": "مجله تخصصی"},
-    6: {"id": "community-roadmaps", "name": "جامعه‌سازی و نقشهٔ راه", "color": "#0284C7", "dark": "#38BDF8", "hub": "آکادمی"},
+    1: {"id": "education-sops", "name": "آموزش و استانداردسازی عملیاتی", "color": BRAND_COLORS["library"]["hex"], "hub": "کتابخانه و SOPها"},
+    2: {"id": "leadership", "name": "الهام‌بخشی، رهبری و ذهنیت", "color": BRAND_COLORS["strategic_navy"]["hex"], "hub": "Solutions"},
+    3: {"id": "innovation-ai", "name": "نوآوری، هوش مصنوعی و اتوماسیون", "color": BRAND_COLORS["ai_prompts"]["hex"], "hub": "بانک پرامپت"},
+    4: {"id": "finance-market", "name": "اقتصاد F&B و تحلیل بازار", "color": BRAND_COLORS["calculators"]["hex"], "hub": "آزمایشگاه ابزارها"},
+    5: {"id": "case-studies", "name": "مطالعات موردی و کالبدشکافی", "color": BRAND_COLORS["magazine"]["hex"], "hub": "مجله تخصصی"},
+    6: {"id": "community-roadmaps", "name": "جامعه‌سازی و نقشهٔ راه", "color": BRAND_COLORS["academy"]["hex"], "hub": "آکادمی"},
 }
 DAY_NAMES = ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه"]
 BRAND_SITE = "[[APPROVED_URL]]"
@@ -182,32 +184,41 @@ def shaped_text(text, x_right, y, size, color, font="Vazirmatn-Bold.ttf", max_wi
 def mark_svg(x,y,scale=0.045,color_variant="color"):
     return f'<g transform="translate({x} {y}) scale({scale})">{symbol_group(color_variant)}</g>'
 
+@lru_cache(maxsize=3)
+def _official_lockup_body(variant):
+    """Inline the exact canonical horizontal lockup, not a re-typeset approximation."""
+    source=ROOT/"logo"/"primary"/variant/"horizontal.svg"
+    svg=source.read_text(encoding="utf-8")
+    return svg[svg.find(">")+1:svg.rfind("</svg>")]
+
+def brand_lockup_svg(x,y,width,variant="color"):
+    scale=width/1170
+    return f'<g transform="translate({x} {y}) scale({scale:.6f})">{_official_lockup_body(variant)}</g>'
+
 def theme_color(pillar): return PILLARS[pillar]["color"]
 
 def make_card(title,subtitle,pillar,kind="feed",slide=1,total=1,style="editorial",background=None):
     W,H=(1080,1920) if kind in {"story","reel"} else ((1280,720) if kind=="youtube" else (1080,1350))
-    accent=theme_color(pillar); dark="#0A1931"; white="#FFFFFF"; pale="#F8FAFC"
+    accent=theme_color(pillar); dark=BRAND_COLORS["strategic_navy"]["hex"]; gold=BRAND_COLORS["innovation_gold"]["hex"]
+    white=BRAND_COLORS["pure_white"]["hex"]; pale=BRAND_COLORS["neutral_surface"]["hex"]
+    border=BRAND_COLORS["border"]["hex"]; secondary=BRAND_COLORS["text_secondary"]["hex"]
     bg=background or (dark if pillar==2 or style=="retro" else pale)
-    if style=="artwork": bg="#FDF6F5" if pillar==5 else "#F6F6FD"
-    if style=="handwritten-accent": bg="#FFFDF6"
-    if bg==dark: fg=white; secondary="#CBD5E1"
-    else: fg=dark; secondary="#475569"
-    if style=="retro": secondary="#D97706"
-    if kind=="youtube": bg=dark; fg=white
-    # Base flat 2D layout; color remains a section cue, not the whole identity.
+    if bg==dark: fg=white; secondary=border
+    else: fg=dark
+    if kind=="youtube": bg=dark; fg=white; secondary=border
+    # Layout may vary, but every sample stays inside the approved master and section palette.
     parts=[f'<rect width="{W}" height="{H}" fill="{bg}"/>']
-    parts.append(f'<rect x="0" y="0" width="{W}" height="24" fill="{accent}"/>')
+    parts.append(f'<rect x="0" y="0" width="{W}" height="12" fill="{gold}"/>')
     if style=="artwork":
-        parts.append(f'<circle cx="{W-85}" cy="245" r="190" fill="{accent}" opacity=".10"/><circle cx="75" cy="{H-260}" r="150" fill="#FFB400" opacity=".13"/>')
+        parts.append(f'<circle cx="{W-85}" cy="245" r="190" fill="{gold}" opacity=".10"/><circle cx="75" cy="{H-260}" r="150" fill="{dark}" opacity=".05"/>')
     elif style=="retro":
-        parts.append(f'<path d="M0 {H-300} Q{W/2} {H-500} {W} {H-300} L{W} {H} L0 {H}Z" fill="#E9D8A6" opacity=".36"/>')
-        for i in range(6): parts.append(f'<line x1="{40+i*18}" y1="170" x2="{40+i*18}" y2="{H-130}" stroke="#C05746" opacity=".11"/>')
+        parts.append(f'<path d="M0 {H-300} Q{W/2} {H-500} {W} {H-300} L{W} {H} L0 {H}Z" fill="{gold}" opacity=".10"/>')
+        for i in range(6): parts.append(f'<line x1="{40+i*18}" y1="170" x2="{40+i*18}" y2="{H-130}" stroke="{border}" opacity=".20"/>')
     elif style=="handwritten-accent":
-        parts.append(f'<path d="M90 {H-210} Q300 {H-260} 510 {H-215} T980 {H-220}" fill="none" stroke="#FFB400" stroke-width="8" stroke-linecap="round"/>')
-    # Logo and brand label; full domain/handle on normal-size creative.
-    parts.append(mark_svg(W-160,72,0.055))
-    parts.append(shaped_text("AtoZ",W-190,112,30,fg,"Montserrat-SemiBold.ttf",max_width=240)[0])
-    parts.append(shaped_text("AtoZ",W-190,165,25,accent,"Montserrat-ExtraBold.ttf",max_width=220)[0])
+        parts.append(f'<path d="M90 {H-210} Q300 {H-260} 510 {H-215} T980 {H-220}" fill="none" stroke="{gold}" stroke-width="8" stroke-linecap="round"/>')
+    # Use the exact approved horizontal lockup, including its original mark-to-wordmark proportions.
+    logo_variant="white" if bg==dark else "color"
+    parts.append(brand_lockup_svg(W-350,62,270,logo_variant))
     parts.append(shaped_text(f"ستون {pillar}  ·  {PILLARS[pillar]['name']}",W-70,245,28,accent,"Vazirmatn-Bold.ttf",max_width=W-150)[0])
     title_size=64 if kind in {"feed","story","reel"} else 54
     title_svg,title_h=shaped_text(title,W-82,330,title_size,fg,"Vazirmatn-ExtraBold.ttf",max_width=W-170,align="right")
@@ -216,15 +227,15 @@ def make_card(title,subtitle,pillar,kind="feed",slide=1,total=1,style="editorial
     body,body_h=shaped_text(subtitle,W-82,body_y,34,secondary,"Vazirmatn-Regular.ttf",max_width=W-180,align="right")
     parts.append(body)
     if kind=="carousel":
-        parts.append(f'<rect x="72" y="{H-150}" width="{W-144}" height="5" rx="2" fill="#CBD5E1"/>')
+        parts.append(f'<rect x="72" y="{H-150}" width="{W-144}" height="5" rx="2" fill="{border}"/>')
         parts.append(f'<rect x="72" y="{H-150}" width="{(W-144)*slide/max(total,1):.1f}" height="5" rx="2" fill="{accent}"/>')
         num=f"{slide:02d} / {total:02d}"
     else: num=""
     # Footer signature and site/handle, readable at the intended social size.
     footer_y=H-95
     parts.append(f'<line x1="70" y1="{footer_y-48}" x2="{W-70}" y2="{footer_y-48}" stroke="{accent}" stroke-opacity=".35" stroke-width="2"/>')
-    footer=f"{BRAND_SITE}  ·  {INSTAGRAM}"
-    parts.append(shaped_text(footer,W-78,footer_y,24,fg,"Montserrat-SemiBold.ttf",max_width=W-240)[0])
+    footer="OWNER REVIEW · AtoZ"
+    parts.append(shaped_text(footer,W-78,footer_y,20,fg,"Montserrat-SemiBold.ttf",max_width=W-240)[0])
     if num: parts.append(shaped_text(num,90,footer_y,22,accent,"Montserrat-Bold.ttf",max_width=140,align="right")[0])
     # Keep the CTA concise and editable in the companion text file.
     return f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}">'+''.join(parts)+'</svg>'
@@ -232,8 +243,8 @@ def make_card(title,subtitle,pillar,kind="feed",slide=1,total=1,style="editorial
 
 def make_document_html(title, body, caption, hashtags, extra=""):
     return f'''<!doctype html><html lang="fa" dir="rtl"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{html.escape(title)}</title>
-<style>@font-face{{font-family:Vazirmatn;src:url('../../../../tools/fonts/Vazirmatn-Regular.ttf')}}@font-face{{font-family:Vazirmatn;src:url('../../../../tools/fonts/Vazirmatn-Bold.ttf');font-weight:700}}body{{margin:0;background:#f1f5f9;color:#0A1931;font:16px/1.9 Vazirmatn,Tahoma,sans-serif}}main{{max-width:860px;margin:30px auto;padding:28px;background:#fff;border-radius:18px}}h1,h2{{line-height:1.5}}.copy{{white-space:pre-wrap;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:16px}}button{{background:#0A1931;color:#fff;border:0;border-radius:8px;padding:10px 16px;cursor:pointer;margin:8px 0}}small{{color:#64748b}}a{{color:#3B5998}}</style><main>
-<p><b>AtoZ</b> · {BRAND_SITE} · {INSTAGRAM}</p><h1>{html.escape(title)}</h1><p>{html.escape(body)}</p>{extra}
+<style>@font-face{{font-family:Vazirmatn;src:url('../../../brand-assets/fonts/Vazirmatn-Regular.ttf')}}@font-face{{font-family:Vazirmatn;src:url('../../../brand-assets/fonts/Vazirmatn-Bold.ttf');font-weight:700}}body{{margin:0;background:#F8FAFC;color:#0A1931;font:16px/1.9 Vazirmatn,Tahoma,sans-serif}}main{{max-width:860px;margin:30px auto;padding:28px;background:#FFFFFF;border:1px solid #D9E0EA;border-radius:18px}}h1,h2{{line-height:1.5}}.brand-line{{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-bottom:14px;border-bottom:1px solid #D9E0EA;color:#475569;font-size:12px}}.brand-line img{{width:148px;height:auto}}.copy{{white-space:pre-wrap;background:#F8FAFC;border:1px solid #D9E0EA;border-radius:12px;padding:16px}}button{{background:#0A1931;color:#FFFFFF;border:0;border-radius:8px;padding:10px 16px;cursor:pointer;margin:8px 0}}small{{color:#475569}}a{{color:#0A1931}}</style><main>
+<p class="brand-line"><img src="../../../brand-assets/primary/color/horizontal.svg" alt="AtoZ"><span>پیش‌نویس برای بازبینی مالک · انتشار خودکار خاموش</span></p><h1>{html.escape(title)}</h1><p>{html.escape(body)}</p>{extra}
 <h2>کپشن — قابل کپی</h2><div class="copy" id="caption">{html.escape(caption)}</div><button onclick="navigator.clipboard.writeText(document.getElementById('caption').innerText)">کپی کپشن</button>
 <h2>هشتگ‌ها — قابل کپی</h2><div class="copy" id="tags">{html.escape(hashtags)}</div><button onclick="navigator.clipboard.writeText(document.getElementById('tags').innerText)">کپی هشتگ‌ها</button>
 <p><small>پیش‌نویس برای بازبینی و انتشار دستی. لینک‌های خروجی را در صورت نیاز ویرایش کنید.</small></p></main></html>'''
@@ -500,7 +511,7 @@ def write_package_guide(plan):
 - فونت دست‌نویس Iran Sans Handwriting عمداً اضافه نشده؛ منتظر فایل و تأیید مجوز از مالک است.
 - فایل‌های موجود در `tools/fonts/` همراه با `tools/fonts/LICENSES.txt` هستند؛ فایل فونت ساختگی/نامشخص وارد نشده است.
 - لوگوی اصلی و خروجی‌های رسمی SVG/PNG در `logo/` و رنگ‌های مرجع در `brand/tokens.json` قرار دارند.
-- ساختار styleها: editorial، formal، minimal، artwork، retro و handwritten-accent. گزینهٔ handwritten-accent صرفاً یک خط تأکیدی برداری است و از فونت دست‌نویس استفاده نمی‌کند.
+- ساختار styleها: editorial، formal، minimal، artwork، retro و handwritten-accent؛ تفاوت فقط در چیدمان/تزئین است و رنگ‌ها از توکن‌های رسمی برند و کدهای دسته‌بندی مجاز می‌آیند. گزینهٔ handwritten-accent صرفاً یک خط طلایی برداری است و از فونت دست‌نویس استفاده نمی‌کند.
 
 ## دارایی‌های موجود در ریپو
 
