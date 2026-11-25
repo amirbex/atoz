@@ -168,7 +168,7 @@ def text_wrap(text, font, size, max_width):
     if current: lines.append(current)
     return lines
 
-def shaped_text(text, x_right, y, size, color, font="Vazirmatn-Bold.ttf", max_width=850, align="right"):
+def shaped_text(text, x_right, y, size, color, font="Vazirmatn-Bold.ttf", max_width=850, align="right", line_height=1.38):
     rtl = font.startswith("Vazirmatn")
     direction, script, language = ("rtl", "Arab", "fa") if rtl else ("ltr", "Latn", "en")
     lines=text_wrap(text,font,size,max_width)
@@ -176,10 +176,10 @@ def shaped_text(text, x_right, y, size, color, font="Vazirmatn-Bold.ttf", max_wi
     for i,line in enumerate(lines):
         run={"font":font,"text":line,"size":size,"direction":direction,"script":script,"language":language,"fill":color}
         body,w,h=line_svg([run],rtl=rtl)
-        x=(x_right-w) if align=="right" else (x_right-w/2)
-        yy=y+i*(size*1.38)
+        x=(x_right-w) if align=="right" else (x_right-w/2 if align=="center" else x_right)
+        yy=y+i*(size*line_height)
         parts.append(f'<g transform="translate({x:.1f} {yy:.1f})">{body}</g>')
-    return "".join(parts), len(lines)*size*1.38
+    return "".join(parts), len(lines)*size*line_height
 
 def mark_svg(x,y,scale=0.045,color_variant="color"):
     return f'<g transform="translate({x} {y}) scale({scale})">{symbol_group(color_variant)}</g>'
@@ -195,50 +195,84 @@ def brand_lockup_svg(x,y,width,variant="color"):
     scale=width/1170
     return f'<g transform="translate({x} {y}) scale({scale:.6f})">{_official_lockup_body(variant)}</g>'
 
+def pillar_icon_svg(pillar,x,y,size,dark=False):
+    """Draw a consistent, non-logo pictogram using only AtoZ master colors."""
+    navy=BRAND_COLORS["strategic_navy"]["hex"]; gold=BRAND_COLORS["innovation_gold"]["hex"]
+    accent=gold if dark else theme_color(pillar)
+    white=BRAND_COLORS["pure_white"]["hex"]; border=BRAND_COLORS["border"]["hex"]
+    scale=size/72; tile=navy if dark else white; icon=white if dark else navy
+    drawings={
+        1:'<path d="M10 15c9-5 17-4 22 2 5-6 13-7 30-2v37c-15-4-24-3-30 4-6-7-15-8-22-4z"/><path d="M32 17v39" stroke="{gold}"/>',
+        2:'<path d="M11 55V39h10v16M27 55V29h10v26M43 55V17h10v38"/><path d="m12 31 14-10 10 4 17-14M45 11h8v8" stroke="{gold}"/>',
+        3:'<rect x="17" y="17" width="30" height="30" rx="7"/><path d="M32 23v18M23 32h18M12 23h5m30 0h5M12 41h5m30 0h5M23 12v5m18-5v5M23 47v5m18-5v5" stroke="{gold}"/><circle cx="32" cy="32" r="4" fill="{gold}" stroke="none"/>',
+        4:'<rect x="16" y="10" width="32" height="52" rx="6"/><rect x="21" y="16" width="22" height="11" rx="2" stroke="{gold}"/><circle cx="24" cy="35" r="2" fill="{gold}"/><circle cx="32" cy="35" r="2"/><circle cx="40" cy="35" r="2"/><circle cx="24" cy="44" r="2"/><circle cx="32" cy="44" r="2"/><circle cx="40" cy="44" r="2"/><path d="M23 53h18" stroke="{gold}"/>',
+        5:'<path d="M14 13h28v35H14zM20 22h15M20 29h11"/><circle cx="43" cy="43" r="12" stroke="{gold}"/><path d="m52 52 9 9" stroke="{gold}"/>',
+        6:'<circle cx="32" cy="22" r="8"/><circle cx="14" cy="29" r="6"/><circle cx="50" cy="29" r="6"/><path d="M17 55c1-10 7-16 15-16s14 6 15 16M4 53c1-7 4-11 10-12m54 12c-1-7-4-11-10-12"/><path d="m21 28 5-3m25 3-5-3" stroke="{gold}"/>'
+    }
+    art=drawings[pillar].format(gold=gold)
+    return f'<g data-pillar-icon="{PILLARS[pillar]["id"]}" transform="translate({x} {y}) scale({scale:.4f})"><rect x="1" y="1" width="70" height="70" rx="20" fill="{tile}" stroke="{accent}" stroke-width="2.5"/><g fill="none" stroke="{icon}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">{art}</g></g>'
+
 def theme_color(pillar): return PILLARS[pillar]["color"]
 
 def make_card(title,subtitle,pillar,kind="feed",slide=1,total=1,style="editorial",background=None):
     W,H=(1080,1920) if kind in {"story","reel"} else ((1280,720) if kind=="youtube" else (1080,1350))
-    accent=theme_color(pillar); dark=BRAND_COLORS["strategic_navy"]["hex"]; gold=BRAND_COLORS["innovation_gold"]["hex"]
+    dark=BRAND_COLORS["strategic_navy"]["hex"]; gold=BRAND_COLORS["innovation_gold"]["hex"]
     white=BRAND_COLORS["pure_white"]["hex"]; pale=BRAND_COLORS["neutral_surface"]["hex"]
     border=BRAND_COLORS["border"]["hex"]; secondary=BRAND_COLORS["text_secondary"]["hex"]
-    bg=background or (dark if pillar==2 or style=="retro" else pale)
-    if bg==dark: fg=white; secondary=border
-    else: fg=dark
-    if kind=="youtube": bg=dark; fg=white; secondary=border
-    # Layout may vary, but every sample stays inside the approved master and section palette.
+    dark_mode=background==dark or (background is None and (pillar==2 or style=="retro")) or kind=="youtube"
+    bg=background or (dark if dark_mode else pale)
+    if bg not in {dark,pale,white}:
+        raise ValueError(f"Unapproved AtoZ creative background: {bg}")
+    fg=white if dark_mode else dark
+    body_ink=border if dark_mode else secondary
+    section=gold if dark_mode else theme_color(pillar)
     parts=[f'<rect width="{W}" height="{H}" fill="{bg}"/>']
+    # Quiet branded geometry keeps the surface intentional without introducing off-palette colors.
+    if not dark_mode:
+        parts.append(f'<circle cx="{W-12}" cy="{H-300}" r="190" fill="{gold}" opacity=".055"/>')
+        parts.append(f'<path d="M0 {H-360} Q180 {H-510} 360 {H-360}" fill="none" stroke="{border}" stroke-width="2" opacity=".7"/>')
+    else:
+        parts.append(f'<circle cx="{W-8}" cy="{H-320}" r="210" fill="none" stroke="{border}" stroke-width="2" opacity=".35"/>')
+        parts.append(f'<circle cx="{W-8}" cy="{H-320}" r="160" fill="none" stroke="{gold}" stroke-width="2" opacity=".22"/>')
+    # A consistent navy masthead provides a clear home for the canonical white lockup.
+    parts.append(f'<rect x="0" y="0" width="{W}" height="210" fill="{dark}"/>')
     parts.append(f'<rect x="0" y="0" width="{W}" height="12" fill="{gold}"/>')
-    if style=="artwork":
-        parts.append(f'<circle cx="{W-85}" cy="245" r="190" fill="{gold}" opacity=".10"/><circle cx="75" cy="{H-260}" r="150" fill="{dark}" opacity=".05"/>')
-    elif style=="retro":
-        parts.append(f'<path d="M0 {H-300} Q{W/2} {H-500} {W} {H-300} L{W} {H} L0 {H}Z" fill="{gold}" opacity=".10"/>')
-        for i in range(6): parts.append(f'<line x1="{40+i*18}" y1="170" x2="{40+i*18}" y2="{H-130}" stroke="{border}" opacity=".20"/>')
-    elif style=="handwritten-accent":
-        parts.append(f'<path d="M90 {H-210} Q300 {H-260} 510 {H-215} T980 {H-220}" fill="none" stroke="{gold}" stroke-width="8" stroke-linecap="round"/>')
-    # Use the exact approved horizontal lockup, including its original mark-to-wordmark proportions.
-    logo_variant="white" if bg==dark else "color"
-    parts.append(brand_lockup_svg(W-350,62,270,logo_variant))
-    parts.append(shaped_text(f"ستون {pillar}  ·  {PILLARS[pillar]['name']}",W-70,245,28,accent,"Vazirmatn-Bold.ttf",max_width=W-150)[0])
-    title_size=64 if kind in {"feed","story","reel"} else 54
-    title_svg,title_h=shaped_text(title,W-82,330,title_size,fg,"Vazirmatn-ExtraBold.ttf",max_width=W-170,align="right")
+    parts.append(brand_lockup_svg(W-400,54,320,"white"))
+    parts.append(shaped_text("OWNER REVIEW · WEEK 01",80,145,15,white,"Montserrat-SemiBold.ttf",max_width=440,align="left")[0])
+    # The content pillar gets one precise, consistent pictogram; it is not a substitute logo.
+    parts.append(pillar_icon_svg(pillar,72,252,92,dark=dark_mode))
+    section_label=shaped_text(f"ستون {pillar}  ·  {PILLARS[pillar]['name']}",W-78,318,25,section,"Vazirmatn-Bold.ttf",max_width=W-260)[0]
+    parts.append(f'<g data-section-accent="{section}">{section_label}</g>')
+    title_size=60 if len(title)<=34 else (54 if len(title)<=68 else 48)
+    title_y=398
+    title_svg,title_h=shaped_text(title,W-82,title_y,title_size,fg,"Vazirmatn-ExtraBold.ttf",max_width=W-164,align="right",line_height=1.25)
     parts.append(title_svg)
-    body_y=350+title_h+46
-    body,body_h=shaped_text(subtitle,W-82,body_y,34,secondary,"Vazirmatn-Regular.ttf",max_width=W-180,align="right")
-    parts.append(body)
+    body_size=31 if H>1500 else 28
+    body_y=title_y+title_h+42
+    body_max_width=W-220
+    body_lines=text_wrap(subtitle,"Vazirmatn-Regular.ttf",body_size,body_max_width)
+    footer_top=H-158
+    while body_size>23 and body_y+len(body_lines)*body_size*1.5+58>footer_top-28:
+        body_size-=2
+        body_lines=text_wrap(subtitle,"Vazirmatn-Regular.ttf",body_size,body_max_width)
+    body_svg,body_h=shaped_text(subtitle,W-118,body_y+18,body_size,body_ink,"Vazirmatn-Regular.ttf",max_width=body_max_width,align="right",line_height=1.5)
+    panel_y=body_y-6; panel_h=body_h+48
+    panel_fill=white if not dark_mode else dark
+    panel_opacity="1" if not dark_mode else ".78"
+    parts.append(f'<rect x="64" y="{panel_y}" width="{W-128}" height="{panel_h}" rx="24" fill="{panel_fill}" fill-opacity="{panel_opacity}" stroke="{border}" stroke-opacity=".75" stroke-width="2"/>')
+    parts.append(f'<rect x="{W-91}" y="{panel_y+18}" width="6" height="{max(28,panel_h-36)}" rx="3" fill="{section}"/>')
+    parts.append(body_svg)
+    # Navy footer band, gold rule and canonical master symbol create a repeatable end signature.
+    parts.append(f'<rect x="0" y="{footer_top}" width="{W}" height="{H-footer_top}" fill="{dark}"/>')
+    parts.append(f'<rect x="0" y="{footer_top}" width="{W}" height="7" fill="{gold}"/>')
     if kind=="carousel":
-        parts.append(f'<rect x="72" y="{H-150}" width="{W-144}" height="5" rx="2" fill="{border}"/>')
-        parts.append(f'<rect x="72" y="{H-150}" width="{(W-144)*slide/max(total,1):.1f}" height="5" rx="2" fill="{accent}"/>')
-        num=f"{slide:02d} / {total:02d}"
-    else: num=""
-    # Footer signature and site/handle, readable at the intended social size.
-    footer_y=H-95
-    parts.append(f'<line x1="70" y1="{footer_y-48}" x2="{W-70}" y2="{footer_y-48}" stroke="{accent}" stroke-opacity=".35" stroke-width="2"/>')
-    footer="OWNER REVIEW · AtoZ"
-    parts.append(shaped_text(footer,W-78,footer_y,20,fg,"Montserrat-SemiBold.ttf",max_width=W-240)[0])
-    if num: parts.append(shaped_text(num,90,footer_y,22,accent,"Montserrat-Bold.ttf",max_width=140,align="right")[0])
-    # Keep the CTA concise and editable in the companion text file.
-    return f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}">'+''.join(parts)+'</svg>'
+        track_y=H-126; track_x=144; track_w=W-216
+        parts.append(f'<rect x="{track_x}" y="{track_y}" width="{track_w}" height="5" rx="2.5" fill="{border}"/>')
+        parts.append(f'<rect x="{track_x}" y="{track_y}" width="{track_w*slide/max(total,1):.1f}" height="5" rx="2.5" fill="{gold}"/>')
+        parts.append(shaped_text(f"{slide:02d} / {total:02d}",84,H-59,17,gold,"Montserrat-Bold.ttf",max_width=120,align="left")[0])
+    parts.append(mark_svg(72,H-119,.055,"white"))
+    parts.append(shaped_text("OWNER REVIEW · AtoZ",W-78,H-63,18,white,"Montserrat-SemiBold.ttf",max_width=W-220)[0])
+    return f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-label="AtoZ creative preview for owner review" data-header="owner-review-week-01" data-footer="owner-review-atoz"><title>AtoZ · پیش‌نویس برای بازبینی مالک</title>'+''.join(parts)+'</svg>'
 
 
 def make_document_html(title, body, caption, hashtags, extra=""):

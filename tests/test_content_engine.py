@@ -38,7 +38,7 @@ class ContentEngineTests(unittest.TestCase):
         self.assertEqual(summary["deliveries"], 84)
         self.assertEqual(len(deliveries), 84)
         self.assertEqual(schema_errors(generated, PLAN_SCHEMA, "generated plan"), [])
-        self.assertIn("AtoZ horizontal lockup — color", deliveries[0]["_visual_svg"])
+        self.assertIn("AtoZ horizontal lockup — white", deliveries[0]["_visual_svg"])
         self.assertNotIn("APPROVAL-REQUIRED.invalid", deliveries[0]["_visual_svg"])
         self.assertNotIn("APPROVED_SOCIAL_HANDLE", deliveries[0]["_visual_svg"])
         self.assertTrue(any("AtoZ horizontal lockup — white" in d["_visual_svg"] for d in deliveries))
@@ -56,7 +56,12 @@ class ContentEngineTests(unittest.TestCase):
                     svg = renderer.make_card("نمونهٔ آزمون", "متن نمونه برای بازبینی هویت AtoZ", pillar, style=style)
                     self.assertLessEqual({color.upper() for color in re.findall(r"#[0-9A-Fa-f]{3,8}\b", svg)}, allowed)
                     self.assertIn("AtoZ horizontal lockup", svg)
+                    self.assertIn(f'data-pillar-icon="{renderer.PILLARS[pillar]["id"]}"', svg)
+                    self.assertIn('data-header="owner-review-week-01"', svg)
+                    self.assertIn('data-footer="owner-review-atoz"', svg)
                     self.assertNotIn("ATOZ", svg)
+        leadership_dark = renderer.make_card("نمونهٔ آزمون", "متن نمونه", 2)
+        self.assertIn('data-section-accent="#FFB400"', leadership_dark)
 
     def test_repository_preview_exposes_all_week_one_creatives(self):
         preview = Path(__file__).resolve().parents[1] / "content-pilot/test-output"
